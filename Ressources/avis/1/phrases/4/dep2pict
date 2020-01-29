@@ -1,0 +1,30 @@
+[GRAPH]{}
+[WORDS]{
+E1n1{word="L'"; subword="le#det";}
+E1n2{word="hôtel"; subword="hôtel#nc";}
+E1n23{word="est"; subword="être#v";}
+E1n4{word="un peu"; subword="un peu#adv";}
+E1n26{word="vieillot"; subword="vieillot#adj";}
+E1n6{word="mais"; subword="mais#coo";}
+E1n7{word="le"; subword="le#det";}
+E1n8{word="personnel"; subword="personnel#nc";}
+E1n9{word="est"; subword="être#v";}
+E1n12{word="très"; subword="très#adv";}
+E1n13{word="accueillant"; subword="accueillant#adj";}
+E1n35{word=""; subword="_#S";}
+E1n22{word="."; subword=".#_";}
+}
+[EDGES]{
+E1n2 -> E1n1{ label="det"; color="#409AFF";}
+E1n26 -> E1n4{ label="adj"; color="#FF4040";}
+E1n8 -> E1n7{ label="det"; color="#409AFF";}
+E1n13 -> E1n12{ label="adj"; color="#FF4040";}
+E1n9 -> E1n13{ label="comp"; color="#409AFF";}
+E1n9 -> E1n8{ label="subject"; color="#409AFF";}
+E1n6 -> E1n9{ label="coord3"; color="#409AFF";}
+E1n35 -> E1n22{ label="void"; color="#FF73E4";}
+E1n23 -> E1n35{ label="S"; color="#FF4040";}
+E1n23 -> E1n2{ label="subject"; color="#409AFF";}
+E1n23 -> E1n6{ label="S"; color="#FF4040";}
+E1n23 -> E1n26{ label="comp"; color="#409AFF";}
+}

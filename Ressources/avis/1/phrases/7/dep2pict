@@ -1,0 +1,20 @@
+[GRAPH]{}
+[WORDS]{
+E1n12{word=""; subword="_#comp";}
+E1n13{word=""; subword="_#S";}
+E1n9{word=""; subword="_#start";}
+E1n1{word="Climatisation"; subword="climatisation#nc";}
+E1n7{word="un peu"; subword="un peu#adv";}
+E1n8{word="bruyante"; subword="bruyant#adj";}
+E1n11{word=""; subword="_#S";}
+E1n6{word="."; subword=".#_";}
+}
+[EDGES]{
+E1n1 -> E1n8{ label="N2"; color="#FF4040";}
+E1n11 -> E1n6{ label="void"; color="#FF73E4";}
+E1n8 -> E1n7{ label="adj"; color="#FF4040";}
+E1n12 -> E1n1{ label="N2"; color="#409AFF";}
+E1n13 -> E1n11{ label="S"; color="#FF4040";}
+E1n13 -> E1n12{ label="comp"; color="#409AFF";}
+E1n13 -> E1n9{ label="start"; color="#409AFF";}
+}

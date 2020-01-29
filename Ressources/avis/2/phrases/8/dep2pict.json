@@ -1,0 +1,2 @@
+{"nodes":[{"id":5, "word": "La", "lemma": "le", "nature": "det"}, {"id":2, "word": "nourriture", "lemma": "nourriture", "nature": "nc"}, {"id":3, "word": "est", "lemma": "être", "nature": "v"}, {"id":7, "word": "mauvaise", "lemma": "mauvais", "nature": "adj"}],
+"edges": [{"source":2, "target":5, "label":"det"}, {"source":16, "target":15, "label":"Punct"}, {"source":3, "target":16, "label":"S"}, {"source":3, "target":7, "label":"comp"}, {"source":3, "target":2, "label":"subject"}]}

@@ -1,0 +1,50 @@
+[GRAPH]{}
+[WORDS]{
+E1n104{word=""; subword="_#start";}
+E1n113{word=""; subword="_#comp";}
+E1n114{word=""; subword="_#S";}
+E1n10{word="Bon"; subword="bon#adj";}
+E1n9{word="accueil"; subword="accueil#nc";}
+E1n70{word="de"; subword="de#prep";}
+E1n21{word="la"; subword="le#det";}
+E1n22{word="part"; subword="part#nc";}
+E1n23{word="du"; subword="de#prep";}
+E1n24{word="personnel"; subword="personnel#nc";}
+E1n106{word=""; subword="_#N2";}
+E1n25{word=","; subword=",#_";}
+E1n27{word="bonne"; subword="bon#adj";}
+E1n26{word="ambiance"; subword="ambiance#nc";}
+E1n43{word="au"; subword="uw#adj";}
+E1n44{word="bar"; subword="bar#nc";}
+E1n45{word="et"; subword="et#coo";}
+E1n46{word="un"; subword="un#det";}
+E1n56{word="super"; subword="super#adj";}
+E1n48{word="grand"; subword="grand#adj";}
+E1n54{word="spa"; subword="spa#nc";}
+E1n107{word=""; subword="_#S";}
+E1n72{word="."; subword=".#_";}
+}
+[EDGES]{
+E1n9 -> E1n10{ label="N"; color="#FF4040";}
+E1n9 -> E1n70{ label="N2"; color="#FF4040";}
+E1n44 -> E1n43{ label="N"; color="#FF4040";}
+E1n26 -> E1n44{ label="N"; color="#FF4040";}
+E1n26 -> E1n27{ label="N"; color="#FF4040";}
+E1n106 -> E1n26{ label="coord"; color="#409AFF";}
+E1n106 -> E1n25{ label="void"; color="#FF73E4";}
+E1n24 -> E1n106{ label="N2"; color="#FF4040";}
+E1n24 -> E1n45{ label="N2"; color="#FF4040";}
+E1n23 -> E1n24{ label="N2"; color="#409AFF";}
+E1n54 -> E1n48{ label="N"; color="#FF4040";}
+E1n54 -> E1n46{ label="det"; color="#409AFF";}
+E1n54 -> E1n56{ label="N"; color="#FF4040";}
+E1n45 -> E1n54{ label="coord3"; color="#409AFF";}
+E1n22 -> E1n23{ label="N2"; color="#FF4040";}
+E1n22 -> E1n21{ label="det"; color="#409AFF";}
+E1n70 -> E1n22{ label="N2"; color="#409AFF";}
+E1n107 -> E1n72{ label="void"; color="#FF73E4";}
+E1n113 -> E1n9{ label="N2"; color="#409AFF";}
+E1n114 -> E1n107{ label="S"; color="#FF4040";}
+E1n114 -> E1n113{ label="comp"; color="#409AFF";}
+E1n114 -> E1n104{ label="start"; color="#409AFF";}
+}

@@ -1,0 +1,28 @@
+[GRAPH]{}
+[WORDS]{
+E1n1{word="Changer"; subword="changer#v";}
+E1n2{word="les"; subword="le#det";}
+E1n3{word="matelas"; subword="matelas#nc";}
+E1n4{word="et"; subword="et#coo";}
+E1n5{word="les"; subword="cla#cla";}
+E1n6{word="doter"; subword="doter#v";}
+E1n13{word="de"; subword="un#det";}
+E1n9{word="housses"; subword="housse#nc";}
+E1n10{word="de"; subword="de#prep";}
+E1n11{word="protection"; subword="protection#nc";}
+E1n18{word=""; subword="_#S";}
+E1n14{word="."; subword=".#_";}
+}
+[EDGES]{
+E1n3 -> E1n2{ label="det"; color="#409AFF";}
+E1n10 -> E1n11{ label="N2"; color="#409AFF";}
+E1n9 -> E1n10{ label="N2"; color="#FF4040";}
+E1n9 -> E1n13{ label="det"; color="#409AFF";}
+E1n6 -> E1n5{ label="object"; color="#FF73E4";}
+E1n6 -> E1n9{ label="subject"; color="#409AFF";}
+E1n4 -> E1n6{ label="coord3"; color="#409AFF";}
+E1n18 -> E1n14{ label="void"; color="#FF73E4";}
+E1n1 -> E1n18{ label="S"; color="#FF4040";}
+E1n1 -> E1n4{ label="S"; color="#FF4040";}
+E1n1 -> E1n3{ label="object"; color="#409AFF";}
+}

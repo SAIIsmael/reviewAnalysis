@@ -1,0 +1,2 @@
+{"nodes":[{"id":1, "word": "Climatisation", "lemma": "climatisation", "nature": "nc"}, {"id":7, "word": "un peu", "lemma": "un peu", "nature": "adv"}, {"id":8, "word": "bruyante", "lemma": "bruyant", "nature": "adj"}],
+"edges": [{"source":1, "target":8, "label":"N2"}, {"source":11, "target":6, "label":"void"}, {"source":8, "target":7, "label":"adj"}, {"source":12, "target":1, "label":"N2"}, {"source":13, "target":11, "label":"S"}, {"source":13, "target":12, "label":"comp"}, {"source":13, "target":9, "label":"start"}]}

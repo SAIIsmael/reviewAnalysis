@@ -1,0 +1,22 @@
+[GRAPH]{}
+[WORDS]{
+E1n13{word="Nous"; subword="cln#cln";}
+E1n2{word="sommes"; subword="être#aux";}
+E1n7{word="vraiment"; subword="vraiment#adv";}
+E1n6{word="déçus"; subword="décevoir#v";}
+E1n10{word="par"; subword="par#prep";}
+E1n11{word="cet"; subword="ce#det";}
+E1n12{word="hôtel"; subword="hôtel#nc";}
+E1n28{word=""; subword="_#end";}
+E1n29{word=""; subword="_#S";}
+}
+[EDGES]{
+E1n12 -> E1n11{ label="det"; color="#409AFF";}
+E1n10 -> E1n12{ label="N2"; color="#409AFF";}
+E1n29 -> E1n28{ label="Punct"; color="#409AFF";}
+E1n6 -> E1n29{ label="S"; color="#FF4040";}
+E1n6 -> E1n10{ label="preparg"; color="#409AFF";}
+E1n6 -> E1n2{ label="Infl"; color="#FF4040";}
+E1n6 -> E1n13{ label="subject"; color="#FF73E4";}
+E1n6 -> E1n7{ label="v"; color="#FF4040";}
+}

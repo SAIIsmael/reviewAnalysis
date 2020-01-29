@@ -1,0 +1,2 @@
+{"nodes":[{"id":1, "word": "L'", "lemma": "le", "nature": "det"}, {"id":2, "word": "hôtel", "lemma": "hôtel", "nature": "nc"}, {"id":13, "word": "est", "lemma": "être", "nature": "aux"}, {"id":14, "word": "éloigné", "lemma": "éloigner", "nature": "v"}],
+"edges": [{"source":2, "target":1, "label":"det"}, {"source":24, "target":23, "label":"Punct"}, {"source":14, "target":24, "label":"S"}, {"source":14, "target":13, "label":"Infl"}, {"source":14, "target":2, "label":"subject"}]}

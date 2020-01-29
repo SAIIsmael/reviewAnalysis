@@ -1,0 +1,84 @@
+[GRAPH]{}
+[WORDS]{
+E1n80{word=""; subword="_#incise";}
+E1n82{word=""; subword="_#S";}
+E1n10{word="Bon"; subword="bon#adj";}
+E1n9{word="accueil"; subword="accueil#nc";}
+E1n84{word=""; subword="_#incise";}
+E1n88{word=""; subword="_#N2";}
+E1n20{word=","; subword=",#_";}
+E1n74{word="chambre"; subword="chambre#nc";}
+E1n75{word="d'"; subword="de#prep";}
+E1n23{word="aspect"; subword="aspect#nc";}
+E1n27{word="propre"; subword="propre#adj";}
+E1n73{word=","; subword=",#_";}
+E1n32{word="malheureusement"; subword="malheureusement#adv";}
+E1n34{word="mon"; subword="son#det";}
+E1n35{word="séjour"; subword="séjour#nc";}
+E1n36{word="s'"; subword="clr#clr";}
+E1n37{word="est"; subword="être#aux";}
+E1n38{word="terni"; subword="ternir#v";}
+E1n100{word=""; subword="_#S";}
+E1n39{word="en"; subword="en#prep";}
+E1n40{word="rentrant"; subword="rentrer#v";}
+E1n93{word=""; subword="_#VMod";}
+E1n41{word="dans"; subword="dans#prep";}
+E1n42{word="le"; subword="le#det";}
+E1n43{word="lit"; subword="lit#nc";}
+E1n61{word="par"; subword="par#prep";}
+E1n45{word="une"; subword="un#det";}
+E1n46{word="odeur"; subword="odeur#nc";}
+E1n62{word="de"; subword="de#prep";}
+E1n48{word="transpiration"; subword="transpiration#nc";}
+E1n49{word="sur"; subword="sur#prep";}
+E1n50{word="les"; subword="le#det";}
+E1n51{word="draps"; subword="drap#nc";}
+E1n52{word="et"; subword="et#coo";}
+E1n53{word="les"; subword="le#det";}
+E1n54{word="taies"; subword="taie#nc";}
+E1n55{word="d'"; subword="de#prep";}
+E1n56{word="oreiller"; subword="oreiller#nc";}
+E1n98{word=""; subword="_#end";}
+E1n99{word=""; subword="_#S";}
+}
+[EDGES]{
+E1n9 -> E1n10{ label="N"; color="#FF4040";}
+E1n9 -> E1n88{ label="N2"; color="#FF4040";}
+E1n82 -> E1n80{ label="incise"; color="#FF4040";}
+E1n82 -> E1n9{ label="position"; color="#409AFF";}
+E1n23 -> E1n27{ label="N2"; color="#FF4040";}
+E1n84 -> E1n20{ label="void"; color="#FF73E4";}
+E1n75 -> E1n23{ label="N2"; color="#409AFF";}
+E1n74 -> E1n75{ label="N2"; color="#FF4040";}
+E1n88 -> E1n84{ label="incise"; color="#FF4040";}
+E1n88 -> E1n74{ label="N2app"; color="#409AFF";}
+E1n80 -> E1n73{ label="void"; color="#FF73E4";}
+E1n35 -> E1n34{ label="det"; color="#409AFF";}
+E1n43 -> E1n42{ label="det"; color="#409AFF";}
+E1n43 -> E1n61{ label="N2"; color="#FF4040";}
+E1n41 -> E1n43{ label="N2"; color="#409AFF";}
+E1n93 -> E1n41{ label="PP"; color="#409AFF";}
+E1n46 -> E1n45{ label="det"; color="#409AFF";}
+E1n62 -> E1n48{ label="N2"; color="#409AFF";}
+E1n55 -> E1n56{ label="N2"; color="#409AFF";}
+E1n54 -> E1n53{ label="det"; color="#409AFF";}
+E1n52 -> E1n54{ label="coord3"; color="#409AFF";}
+E1n51 -> E1n55{ label="N2"; color="#FF4040";}
+E1n51 -> E1n52{ label="N2"; color="#FF4040";}
+E1n51 -> E1n50{ label="det"; color="#409AFF";}
+E1n48 -> E1n49{ label="N2"; color="#FF4040";}
+E1n61 -> E1n46{ label="N2"; color="#409AFF";}
+E1n49 -> E1n51{ label="N2"; color="#409AFF";}
+E1n99 -> E1n98{ label="Punct"; color="#409AFF";}
+E1n40 -> E1n93{ label="vmod"; color="#FF4040";}
+E1n40 -> E1n62{ label="preparg"; color="#409AFF";}
+E1n100 -> E1n40{ label="SubS"; color="#409AFF";}
+E1n100 -> E1n39{ label="en"; color="#FF73E4";}
+E1n38 -> E1n99{ label="S"; color="#FF4040";}
+E1n38 -> E1n37{ label="Infl"; color="#FF4040";}
+E1n38 -> E1n36{ label="clr"; color="#FF73E4";}
+E1n38 -> E1n35{ label="subject"; color="#409AFF";}
+E1n38 -> E1n32{ label="S"; color="#FF4040";}
+E1n38 -> E1n82{ label="S"; color="#FF4040";}
+E1n38 -> E1n100{ label="S"; color="#FF4040";}
+}

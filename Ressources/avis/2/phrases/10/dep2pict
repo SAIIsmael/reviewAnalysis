@@ -1,0 +1,18 @@
+[GRAPH]{}
+[WORDS]{
+E1n4{word="La"; subword="le#det";}
+E1n2{word="nourriture"; subword="nourriture#nc";}
+E1n3{word="est"; subword="être#v";}
+E1n15{word="vraiment"; subword="vraiment#adv";}
+E1n13{word="mauvaise"; subword="mauvais#adj";}
+E1n24{word=""; subword="_#end";}
+E1n25{word=""; subword="_#S";}
+}
+[EDGES]{
+E1n2 -> E1n4{ label="det"; color="#409AFF";}
+E1n25 -> E1n24{ label="Punct"; color="#409AFF";}
+E1n13 -> E1n15{ label="adj"; color="#FF4040";}
+E1n3 -> E1n25{ label="S"; color="#FF4040";}
+E1n3 -> E1n13{ label="comp"; color="#409AFF";}
+E1n3 -> E1n2{ label="subject"; color="#409AFF";}
+}

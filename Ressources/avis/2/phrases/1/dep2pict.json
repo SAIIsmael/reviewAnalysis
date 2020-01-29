@@ -1,0 +1,2 @@
+{"nodes":[{"id":1, "word": "Un", "lemma": "un", "nature": "det"}, {"id":2, "word": "bel", "lemma": "beau", "nature": "adj"}, {"id":4, "word": "hôtel", "lemma": "hôtel", "nature": "nc"}],
+"edges": [{"source":4, "target":2, "label":"N"}, {"source":4, "target":1, "label":"det"}, {"source":10, "target":4, "label":"N2"}, {"source":12, "target":11, "label":"Punct"}, {"source":13, "target":12, "label":"S"}, {"source":13, "target":10, "label":"comp"}, {"source":13, "target":9, "label":"start"}]}

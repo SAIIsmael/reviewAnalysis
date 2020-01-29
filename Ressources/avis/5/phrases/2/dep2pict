@@ -1,0 +1,59 @@
+[GRAPH]{}
+[WORDS]{
+E1n57{word=""; subword="_#start";}
+E1n66{word=""; subword="_#S";}
+E1n1{word="et même"; subword="et même#coo";}
+E1n2{word="pas"; subword="pas#advneg";}
+E1n64{word=""; subword="_#comp";}
+E1n13{word="un"; subword="un#det";}
+E1n14{word="verre"; subword="verre#nc";}
+E1n54{word="d'"; subword="de#prep";}
+E1n16{word="eau"; subword="eau#nc";}
+E1n17{word="pour"; subword="pour#prep";}
+E1n53{word="vous"; subword="cla#cla";}
+E1n21{word="accueillir"; subword="accueillir#v";}
+E1n60{word=""; subword="_#incise";}
+E1n37{word="\("; subword="(#_";}
+E1n22{word="alors que"; subword="alors que#csu";}
+E1n23{word="l'"; subword="le#det";}
+E1n24{word="eau"; subword="eau#nc";}
+E1n25{word="du"; subword="de#prep";}
+E1n26{word="_"; subword="le#det";}
+E1n27{word="robinet"; subword="robinet#nc";}
+E1n28{word="n'"; subword="ne#clneg";}
+E1n31{word="est"; subword="être#v";}
+E1n30{word="pas"; subword="pas#advneg";}
+E1n32{word="potable"; subword="potable#adj";}
+E1n38{word="\)"; subword=")#_";}
+E1n65{word=""; subword="_#S";}
+E1n56{word="."; subword=".#_";}
+}
+[EDGES]{
+E1n14 -> E1n13{ label="det"; color="#409AFF";}
+E1n14 -> E1n17{ label="N2"; color="#FF4040";}
+E1n14 -> E1n54{ label="N2"; color="#FF4040";}
+E1n27 -> E1n26{ label="det"; color="#409AFF";}
+E1n25 -> E1n27{ label="N2"; color="#409AFF";}
+E1n24 -> E1n25{ label="N2"; color="#FF4040";}
+E1n24 -> E1n23{ label="det"; color="#409AFF";}
+E1n31 -> E1n32{ label="comp"; color="#409AFF";}
+E1n31 -> E1n28{ label="clneg"; color="#FF73E4";}
+E1n31 -> E1n24{ label="subject"; color="#409AFF";}
+E1n31 -> E1n30{ label="V1"; color="#FF4040";}
+E1n60 -> E1n38{ label="void"; color="#FF73E4";}
+E1n60 -> E1n37{ label="void"; color="#FF73E4";}
+E1n22 -> E1n60{ label="incise"; color="#FF4040";}
+E1n22 -> E1n31{ label="SubS"; color="#409AFF";}
+E1n21 -> E1n22{ label="vmod"; color="#FF4040";}
+E1n21 -> E1n53{ label="object"; color="#FF73E4";}
+E1n17 -> E1n21{ label="S"; color="#409AFF";}
+E1n54 -> E1n16{ label="N2"; color="#409AFF";}
+E1n64 -> E1n14{ label="N2"; color="#409AFF";}
+E1n65 -> E1n56{ label="void"; color="#FF73E4";}
+E1n66 -> E1n65{ label="S"; color="#FF4040";}
+E1n66 -> E1n64{ label="comp"; color="#409AFF";}
+E1n66 -> E1n2{ label="advneg"; color="#FF73E4";}
+E1n66 -> E1n57{ label="start"; color="#409AFF";}
+E1n66 -> E1n1{ label="coo"; color="#FF73E4";}
+E1n25 -> E1n26{ label=""; color="#AAAAAA";}
+}

@@ -1,0 +1,16 @@
+[GRAPH]{}
+[WORDS]{
+E1n1{word="L'"; subword="le#det";}
+E1n2{word="hôtel"; subword="hôtel#nc";}
+E1n13{word="est"; subword="être#aux";}
+E1n14{word="éloigné"; subword="éloigner#v";}
+E1n23{word=""; subword="_#end";}
+E1n24{word=""; subword="_#S";}
+}
+[EDGES]{
+E1n2 -> E1n1{ label="det"; color="#409AFF";}
+E1n24 -> E1n23{ label="Punct"; color="#409AFF";}
+E1n14 -> E1n24{ label="S"; color="#FF4040";}
+E1n14 -> E1n13{ label="Infl"; color="#FF4040";}
+E1n14 -> E1n2{ label="subject"; color="#409AFF";}
+}

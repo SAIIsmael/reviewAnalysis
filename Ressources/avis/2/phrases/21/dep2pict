@@ -1,0 +1,18 @@
+[GRAPH]{}
+[WORDS]{
+E1n1{word="Je"; subword="cln#cln";}
+E1n2{word="recommande"; subword="recommander#v";}
+E1n5{word="vivement"; subword="vivement#adv";}
+E1n7{word="cet"; subword="ce#det";}
+E1n8{word="établissement"; subword="établissement#nc";}
+E1n10{word=""; subword="_#S";}
+E1n9{word=""; subword="_#end";}
+}
+[EDGES]{
+E1n8 -> E1n7{ label="det"; color="#409AFF";}
+E1n10 -> E1n9{ label="Punct"; color="#409AFF";}
+E1n2 -> E1n10{ label="S"; color="#FF4040";}
+E1n2 -> E1n8{ label="object"; color="#409AFF";}
+E1n2 -> E1n1{ label="subject"; color="#FF73E4";}
+E1n2 -> E1n5{ label="v"; color="#FF4040";}
+}

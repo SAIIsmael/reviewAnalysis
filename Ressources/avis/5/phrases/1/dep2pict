@@ -1,0 +1,59 @@
+[GRAPH]{}
+[WORDS]{
+E1n100{word=""; subword="_#S";}
+E1n67{word=""; subword="_#incise";}
+E1n96{word=""; subword="_#start";}
+E1n5{word="quant aux"; subword="quant à#prep";}
+E1n3{word="aux"; subword="le#det";}
+E1n4{word="repas"; subword="repas#nc";}
+E1n28{word=","; subword=",#_";}
+E1n6{word="on"; subword="cln#cln";}
+E1n50{word="sait"; subword="savoir#v";}
+E1n25{word="que"; subword="que#csu";}
+E1n9{word="la"; subword="le#det";}
+E1n10{word="Grèce"; subword="Grèce#np";}
+E1n26{word="vit"; subword="vivre#v";}
+E1n12{word="des"; subword="de#prep";}
+E1n13{word="_"; subword="le#det";}
+E1n14{word="difficultés"; subword="difficulté#nc";}
+E1n51{word=","; subword=",#_";}
+E1n53{word="mais"; subword="mais#coo";}
+E1n31{word="la"; subword="le#det";}
+E1n32{word="qualité"; subword="qualité#nc";}
+E1n33{word="laisse"; subword="laisser#v";}
+E1n42{word="vraiment"; subword="vraiment#adv";}
+E1n84{word=""; subword="_#VMod";}
+E1n37{word="à"; subword="à#prep";}
+E1n38{word="désirer"; subword="désirer#v";}
+E1n85{word=""; subword="_#S";}
+E1n45{word="."; subword=".#_";}
+}
+[EDGES]{
+E1n4 -> E1n3{ label="det"; color="#409AFF";}
+E1n5 -> E1n4{ label="N2"; color="#409AFF";}
+E1n10 -> E1n9{ label="det"; color="#409AFF";}
+E1n14 -> E1n13{ label="det"; color="#409AFF";}
+E1n12 -> E1n14{ label="N2"; color="#409AFF";}
+E1n26 -> E1n12{ label="preparg"; color="#409AFF";}
+E1n26 -> E1n10{ label="subject"; color="#409AFF";}
+E1n26 -> E1n53{ label="S"; color="#FF4040";}
+E1n25 -> E1n26{ label="SubS"; color="#409AFF";}
+E1n32 -> E1n31{ label="det"; color="#409AFF";}
+E1n37 -> E1n38{ label="S"; color="#409AFF";}
+E1n84 -> E1n37{ label="PP"; color="#409AFF";}
+E1n85 -> E1n45{ label="void"; color="#FF73E4";}
+E1n67 -> E1n28{ label="void"; color="#FF73E4";}
+E1n33 -> E1n84{ label="vmod"; color="#FF4040";}
+E1n33 -> E1n32{ label="subject"; color="#409AFF";}
+E1n33 -> E1n42{ label="v"; color="#FF4040";}
+E1n53 -> E1n33{ label="coord3"; color="#409AFF";}
+E1n53 -> E1n51{ label="void"; color="#FF73E4";}
+E1n100 -> E1n5{ label="PP"; color="#409AFF";}
+E1n100 -> E1n96{ label="start"; color="#409AFF";}
+E1n50 -> E1n85{ label="S2"; color="#FF4040";}
+E1n50 -> E1n25{ label="S"; color="#FF4040";}
+E1n50 -> E1n6{ label="subject"; color="#FF73E4";}
+E1n50 -> E1n67{ label="incise"; color="#FF4040";}
+E1n50 -> E1n100{ label="xcomp"; color="#409AFF";}
+E1n12 -> E1n13{ label=""; color="#AAAAAA";}
+}

@@ -1,0 +1,20 @@
+[GRAPH]{}
+[WORDS]{
+E1n10{word=""; subword="_#comp";}
+E1n13{word=""; subword="_#S";}
+E1n9{word=""; subword="_#start";}
+E1n1{word="Un"; subword="un#det";}
+E1n2{word="bel"; subword="beau#adj";}
+E1n4{word="hôtel"; subword="hôtel#nc";}
+E1n11{word=""; subword="_#end";}
+E1n12{word=""; subword="_#S";}
+}
+[EDGES]{
+E1n4 -> E1n2{ label="N"; color="#FF4040";}
+E1n4 -> E1n1{ label="det"; color="#409AFF";}
+E1n10 -> E1n4{ label="N2"; color="#409AFF";}
+E1n12 -> E1n11{ label="Punct"; color="#409AFF";}
+E1n13 -> E1n12{ label="S"; color="#FF4040";}
+E1n13 -> E1n10{ label="comp"; color="#409AFF";}
+E1n13 -> E1n9{ label="start"; color="#409AFF";}
+}

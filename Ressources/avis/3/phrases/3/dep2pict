@@ -1,0 +1,18 @@
+[GRAPH]{}
+[WORDS]{
+E1n27{word="Déjeuner"; subword="déjeûner#v";}
+E1n30{word="moyen"; subword="moyen#adj";}
+E1n22{word="à cause du"; subword="à cause de#prep";}
+E1n9{word="du"; subword="le#det";}
+E1n10{word="café"; subword="café#nc";}
+E1n32{word=""; subword="_#end";}
+E1n33{word=""; subword="_#S";}
+}
+[EDGES]{
+E1n10 -> E1n9{ label="det"; color="#409AFF";}
+E1n22 -> E1n10{ label="N2"; color="#409AFF";}
+E1n30 -> E1n22{ label="adjP"; color="#FF4040";}
+E1n33 -> E1n32{ label="Punct"; color="#409AFF";}
+E1n27 -> E1n33{ label="S"; color="#FF4040";}
+E1n27 -> E1n30{ label="S"; color="#FF4040";}
+}

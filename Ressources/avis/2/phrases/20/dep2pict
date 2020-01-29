@@ -1,0 +1,18 @@
+[GRAPH]{}
+[WORDS]{
+E1n1{word="J'"; subword="cln#cln";}
+E1n2{word="ai"; subword="avoir#aux";}
+E1n3{word="détesté"; subword="détester#v";}
+E1n4{word="la"; subword="le#det";}
+E1n5{word="nourriture"; subword="nourriture#nc";}
+E1n6{word=""; subword="_#end";}
+E1n7{word=""; subword="_#S";}
+}
+[EDGES]{
+E1n5 -> E1n4{ label="det"; color="#409AFF";}
+E1n7 -> E1n6{ label="Punct"; color="#409AFF";}
+E1n3 -> E1n7{ label="S"; color="#FF4040";}
+E1n3 -> E1n5{ label="object"; color="#409AFF";}
+E1n3 -> E1n2{ label="Infl"; color="#FF4040";}
+E1n3 -> E1n1{ label="subject"; color="#FF73E4";}
+}
