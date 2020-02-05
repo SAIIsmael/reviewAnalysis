@@ -3,6 +3,7 @@ const url = 'mongodb://localhost:27017';
 const assert = require('assert');
 const express = require('express');
 const bodyParser = require('body-parser');
+const treetagger = require('treetagger');
 const cors = require('cors');
 const app = express();
 app.use(express.json());
@@ -21,13 +22,38 @@ app.options('*', cors());
 app.listen(8888);
 
 // Database Name
-const db = 'hotelreview';
+const db = 'hotereview';
 
 // Use connect method to connect to the server
 MongoClient.connect(url, {
   useNewUrlParser: true
 }, (err, client) => {
-  let db = client.db("hotelreview");
-  console.log("Connected successfully to server");
+  let db = client.db("hotereview");
+  console.log("Server listening on port 8888");
+
+  app.get("/reviewType", cors(corsOptions), (req, res) => {
+    console.log("In /reviewType");
+    var tagger = new treetagger();
+
+    try {
+      db.collection("reviews").find().toArray((err, documents) => {
+        let review = documents[0].review;
+        console.log("Document trouvé : " + JSON.stringify(documents[0]));
+        console.log(" ");
+        console.log("Review de ce document : " + review);
+        console.log(" ");
+        let sentences = review.split(".");
+        console.log("Découpage en phrases :" + sentences);
+        console.log(" ");
+        tagger.tag(sentences[0], function(err, results) {
+          console.log("Etiquettage de la phrase 1 " + results);
+          res.end(JSON.stringify(sentences));
+        });
+      })
+    } catch (e) {
+      console.log("Error on getting reviews");
+      res.end(JSON.stringify([]));
+    }
+  });
 
 });
