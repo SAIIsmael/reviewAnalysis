@@ -5,6 +5,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const treetagger = require('treetagger');
 const cors = require('cors');
+const http = require('http');
 const app = express();
 app.use(express.json());
 
@@ -54,6 +55,24 @@ MongoClient.connect(url, {
       console.log("Error on getting reviews");
       res.end(JSON.stringify([]));
     }
+  });
+
+  app.get("/rezoChar", cors(corsOptions), (req, res) => {
+    http.get("http://www.jeuxdemots.org/rezo-dump.php?gotermsubmit=Chercher&gotermrel=char&rel=36?gotermsubmit=Chercher&gotermrel=char&rel=36", (resp) => {
+      let data = '';
+      resp.on('data', (chunk) => {
+        console.log("new chunk : ");
+        data += chunk;
+      });
+
+      resp.on('end', () => {
+        console.log("end : ");
+        console.log(data);
+        res.end(data);
+      });
+    }).on("error", (err) => {
+      console.log("Error:" + err.message);
+    });
   });
 
 });
