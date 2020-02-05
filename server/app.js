@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const treetagger = require('treetagger');
 const cors = require('cors');
 const http = require('http');
+const request = require('request');
 const app = express();
 app.use(express.json());
 
@@ -57,6 +58,18 @@ MongoClient.connect(url, {
     }
   });
 
+  app.get("/testreq", cors(corsOptions), (req, res) => {
+    request("http://www.jeuxdemots.org/rezo-dump.php?gotermsubmit=Chercher&gotermrel=char&rel=36?gotermsubmit=Chercher&gotermrel=char&rel=36", {
+      json: true
+    }, (err, res, body) => {
+      if (err) {
+        return console.log(err);
+      }
+      const regex = /((e;[0-9]+;.*)|(r;[0-9]+;.*))/gm;
+      console.log(body.match(regex));
+    });
+  });
+
   app.get("/rezoChar", cors(corsOptions), (req, res) => {
     http.get("http://www.jeuxdemots.org/rezo-dump.php?gotermsubmit=Chercher&gotermrel=char&rel=36?gotermsubmit=Chercher&gotermrel=char&rel=36", (resp) => {
       let data = '';
@@ -67,9 +80,11 @@ MongoClient.connect(url, {
 
       resp.on('end', () => {
         console.log("end : ");
+
         console.log(data);
-        res.end(data);
+        res.end(data.match("<CODE>(\r\n|\r|\n|.)*<\/CODE>"));
       });
+
     }).on("error", (err) => {
       console.log("Error:" + err.message);
     });
