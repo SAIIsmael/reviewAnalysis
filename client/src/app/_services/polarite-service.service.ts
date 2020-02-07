@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Subject, Subscription } from 'rxjs';
+import { Subject, Subscription, Observable } from 'rxjs';
 
 
 @Injectable({
@@ -13,7 +13,7 @@ export class PolariteServiceService {
   constructor(private http:HttpClient) { }
 
 
-requeterezo(word : any){
+requeterezo(word : any) : Observable<any> {
   console.log("ici dans service ");
   return this.http.get(this.url+word);
 }

@@ -60,21 +60,23 @@ MongoClient.connect(url, {
     }
   });
 
-  app.get("/testreq/:word", cors(corsOptions), (req, res) => {
-    console.log("mot avant : " + unescape(req.params.word));
-    let word = escape(req.params.word);
-    console.log("mot : " + word);
+  app.get("/testreq/:word", cors(corsOptions), (req,res) => {
+    let word = req.params.word;
+
+    console.log(word);
     console.log(url);
-    request("http://www.jeuxdemots.org/rezo-dump.php?gotermsubmit=Chercher&gotermrel=" + word + "&rel=36?gotermsubmit=Chercher&gotermrel=" + word + "&rel=36", {
+    request("http://www.jeuxdemots.org/rezo-dump.php?gotermsubmit=Chercher&gotermrel=" 
+    + word + "&rel=36?gotermsubmit=Chercher&gotermrel=" + word 
+              + "&rel=36", {
       json: true
-    }, (err, res, body) => {
+    }, (err, res2, body) => {
       if (err) {
         return console.log(err);
       }
       const regex = /((e;[0-9]+;.*)|(r;[0-9]+;.*))/gm;
       console.log(body.match(regex));
       let array = body.match(regex);
-
+      var polarray = [];
       let regexpolneutre = /.*POL-NEUTRE.*/gm;
       let regexpolpos = /.*POL-POS.*/gm;
       let regexpolneg = /.*POL-NEG.*/gm;
@@ -99,21 +101,29 @@ MongoClient.connect(url, {
 
         if (array[i][3].localeCompare(polneutre) == 0) {
           polneutre = array[i][5];
+          polarray.push(polneutre);
           console.log("polarité neutre : " + polneutre);
         }
 
         if (array[i][3].localeCompare(polpos) == 0) {
           polpos = array[i][5];
+          polarray.push(polpos);
           console.log("polarité positive : " + polpos);
         }
 
         if (array[i][3].localeCompare(polneg) == 0) {
           polneg = array[i][5];
+          polarray.push(polneg);
           console.log("polarité negative : " + polneg);
         }
       }
       console.log(array);
+      console.log("renvoi"+polarray);
+      res.end(JSON.stringify(polarray));
+      
+      
     });
+    
   });
 
   app.get("/polarite/:name", cors(corsOptions), (req, res) => {

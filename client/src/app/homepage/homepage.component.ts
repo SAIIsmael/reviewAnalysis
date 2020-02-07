@@ -9,7 +9,7 @@ import { PolariteServiceService } from '../_services/polarite-service.service';
 export class HomepageComponent implements OnInit {
 
   @Input() private word : any;
-
+  private tab : any[] = new Array();
   constructor(private polarite : PolariteServiceService) { }
 
   ngOnInit() {
@@ -25,10 +25,12 @@ export class HomepageComponent implements OnInit {
 
 
 
-requete (){
+requete() {
   console.log("ici dans component");
-  this.polarite.requeterezo(this.word).subscribe((data)=>{
-    console.log(data);
+  console.log(this.word);
+  this.polarite.requeterezo(this.word).subscribe(data =>{
+    this.tab = data;
+    console.log(this.tab);
   });
 }
 }

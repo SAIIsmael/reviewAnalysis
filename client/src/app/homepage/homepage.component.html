@@ -2,3 +2,9 @@
   <input type="text" value="" name="word" (input)="updateData($event.target.name, $event.target.value)">
   <button type="button" (click)="requete()">Valider</button>
 </div>
+
+<div *ngFor="let index of tab">
+  <span>
+     {{index}}
+  </span>  
+</div>
