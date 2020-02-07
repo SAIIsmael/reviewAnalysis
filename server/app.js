@@ -7,6 +7,7 @@ const treetagger = require('treetagger');
 const cors = require('cors');
 const http = require('http');
 const request = require('request');
+const fs = require('fs');
 const app = express();
 app.use(express.json());
 
@@ -67,7 +68,65 @@ MongoClient.connect(url, {
       }
       const regex = /((e;[0-9]+;.*)|(r;[0-9]+;.*))/gm;
       console.log(body.match(regex));
+      let array = body.match(regex);
+
+      let regexpolneutre = /.*POL-NEUTRE.*/gm;
+      let regexpolpos = /.*POL-POS.*/gm;
+      let regexpolneg = /.*POL-NEG.*/gm;
+
+      for (var i = 0; i < array.length; i++) {
+        array[i] = array[i].split(";");
+
+        if (array[i][2].match(regexpolneutre)) {
+          var polneutre = array[i][1];
+          console.log("NEUTRE : " + polneutre);
+        }
+
+        if (array[i][2].match(regexpolpos)) {
+          var polpos = array[i][1];
+          console.log("POS : " + array[i][1]);
+        }
+
+        if (array[i][2].match(regexpolneg)) {
+          var polneg = array[i][1];
+          console.log("NEG : " + array[i][1]);
+        }
+
+        if (array[i][3].localeCompare(polneutre) == 0) {
+          polneutre = array[i][5];
+          console.log("polarité neutre : " + polneutre);
+        }
+
+        if (array[i][3].localeCompare(polpos) == 0) {
+          polpos = array[i][5];
+          console.log("polarité positive : " + polpos);
+        }
+
+        if (array[i][3].localeCompare(polneg) == 0) {
+          polneg = array[i][5];
+          console.log("polarité negative : " + polneg);
+        }
+      }
+      console.log(array);
     });
+  });
+
+  app.get("/polarite/:name", cors(corsOptions), (req, res) => {
+    let name = '"' + req.params.name + '"';
+    let a = '';
+    var data = fs.readFileSync('../Ressources/polaritejdm.txt')
+      .toString()
+      .split('\n')
+      .map(e => e.trim())
+      .map(e => e.split(';').map(e => e.trim()));
+    let i = 0;
+    while (i < data.length && data[i][0].localeCompare(name) != 0) {
+      console.log(data[i]);
+      i++;
+    }
+    console.log(data[i]);
+    a = data[i][1];
+    console.log(a);
   });
 
   app.get("/rezoChar", cors(corsOptions), (req, res) => {
