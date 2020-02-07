@@ -7,6 +7,7 @@ const treetagger = require('treetagger');
 const cors = require('cors');
 const http = require('http');
 const request = require('request');
+var qs = require('querystring');
 const fs = require('fs');
 const app = express();
 app.use(express.json());
@@ -59,8 +60,11 @@ MongoClient.connect(url, {
     }
   });
 
-  app.get("/testreq", cors(corsOptions), (req, res) => {
-    request("http://www.jeuxdemots.org/rezo-dump.php?gotermsubmit=Chercher&gotermrel=char&rel=36?gotermsubmit=Chercher&gotermrel=char&rel=36", {
+  app.get("/testreq/:word", cors(corsOptions), (req, res) => {
+    let word = req.params.word;
+    console.log(word);
+    console.log(url);
+    request("http://www.jeuxdemots.org/rezo-dump.php?gotermsubmit=Chercher&gotermrel=" + word + "&rel=36?gotermsubmit=Chercher&gotermrel=" + word + "&rel=36", {
       json: true
     }, (err, res, body) => {
       if (err) {
