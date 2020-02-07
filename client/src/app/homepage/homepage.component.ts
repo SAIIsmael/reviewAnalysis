@@ -16,7 +16,19 @@ export class HomepageComponent implements OnInit {
   }
 
 
+  updateData(data, value){
+      switch(data){
+        case "word":
+        this.word = value;
+      }
+    }
+
+
+
 requete (){
-  this.polarite.requeterezo(this.word);
+  console.log("ici dans component");
+  this.polarite.requeterezo(this.word).subscribe((data)=>{
+    console.log(data);
+  });
 }
 }

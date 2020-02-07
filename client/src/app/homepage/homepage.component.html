@@ -1,5 +1,4 @@
 <div>
-    <input type ="text" [(ngModel)] = "word" name="word" >
-    <button type="button" (click) ="requete()" >Valider</button>
+  <input type="text" value="" name="word" (input)="updateData($event.target.name, $event.target.value)">
+  <button type="button" (click)="requete()">Valider</button>
 </div>
-

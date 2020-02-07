@@ -14,7 +14,6 @@ import { PolariteServiceService } from './_services/polarite-service.service'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpHeaders,
     HttpClientModule
   ],
   providers: [PolariteServiceService],

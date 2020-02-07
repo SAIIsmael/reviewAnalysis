@@ -62,7 +62,7 @@ MongoClient.connect(url, {
 
   app.get("/testreq/:word", cors(corsOptions), (req, res) => {
     console.log("mot avant : " + unescape(req.params.word));
-    let word = escape("crétin");
+    let word = escape(req.params.word);
     console.log("mot : " + word);
     console.log(url);
     request("http://www.jeuxdemots.org/rezo-dump.php?gotermsubmit=Chercher&gotermrel=" + word + "&rel=36?gotermsubmit=Chercher&gotermrel=" + word + "&rel=36", {
