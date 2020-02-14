@@ -8,13 +8,18 @@ import { Subject, Subscription, Observable } from 'rxjs';
 })
 export class PolariteServiceService {
 
-  private url = 'http://localhost:8888/testreq/';
+  private url = 'http://localhost:8888/';
 
   constructor(private http:HttpClient) { }
 
 
 requeterezo(word : any) : Observable<any> {
-  console.log("ici dans service ");
-  return this.http.get(this.url+word);
+  console.log("ici dans service rezo ");
+  return this.http.get(this.url+"testreq/"+word);
 }
+
+requetetreetagger() : Observable<any> {
+  console.log("ici dans service treetagger ");
+  return this.http.get(this.url+"reviewtype");
+  }
 }

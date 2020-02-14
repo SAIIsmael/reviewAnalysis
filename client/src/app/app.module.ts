@@ -4,12 +4,14 @@ import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
-import { PolariteServiceService } from './_services/polarite-service.service'
+import { PolariteServiceService } from './_services/polarite-service.service';
+import { SentenceTagComponent } from './sentence-tag/sentence-tag.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomepageComponent
+    HomepageComponent,
+    SentenceTagComponent
   ],
   imports: [
     BrowserModule,
