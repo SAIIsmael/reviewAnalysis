@@ -52,17 +52,17 @@ MongoClient.connect(url, {
         console.log("Découpage en phrases :" + sentences);
         console.log(" ");
         var i = 0;
-  
+
 
         sentences.forEach(element => {
           tagger.tag(element, function(err, results) {
-            tabtag.push((JSON.stringify(results)));
-            console.log(JSON.stringify(results));
-            if(sentences.length === tabtag.length){
+            tabtag.push(results);
+            console.log(results);
+            if (sentences.length === tabtag.length) {
               res.end(JSON.stringify(tabtag));
               console.log(JSON.stringify(tabtag));
             }
-          });  
+          });
         });
       });
     } catch (e) {
@@ -71,70 +71,70 @@ MongoClient.connect(url, {
     }
   });
 
-  app.get("/testreq/:word", cors(corsOptions), (req,res) => {
+  app.get("/testreq/:word", cors(corsOptions), (req, res) => {
     let word = req.params.word;
 
     console.log(word);
     console.log(url);
-    request("http://www.jeuxdemots.org/rezo-dump.php?gotermsubmit=Chercher&gotermrel=" 
-    + word + "&rel=36?gotermsubmit=Chercher&gotermrel=" + word 
-              + "&rel=36", {
-      json: true
-    }, (err, res2, body) => {
-      if (err) {
-        return console.log(err);
-      }
-      const regex = /((e;[0-9]+;.*)|(r;[0-9]+;.*))/gm;
-      console.log(body.match(regex));
-      let senay = body.match(regex);
-      var polsenay = [];
-      let regexpolneutre = /.*POL-NEUTRE.*/gm;
-      let regexpolpos = /.*POL-POS.*/gm;
-      let regexpolneg = /.*POL-NEG.*/gm;
-
-      for (var i = 0; i < senay.length; i++) {
-        senay[i] = senay[i].split(";");
-
-        if (senay[i][2].match(regexpolneutre)) {
-          var polneutre = senay[i][1];
-          console.log("NEUTRE : " + polneutre);
+    request("http://www.jeuxdemots.org/rezo-dump.php?gotermsubmit=Chercher&gotermrel=" +
+      word + "&rel=36?gotermsubmit=Chercher&gotermrel=" + word +
+      "&rel=36", {
+        json: true
+      }, (err, res2, body) => {
+        if (err) {
+          return console.log(err);
         }
+        const regex = /((e;[0-9]+;.*)|(r;[0-9]+;.*))/gm;
+        console.log(body.match(regex));
+        let senay = body.match(regex);
+        var polsenay = [];
+        let regexpolneutre = /.*POL-NEUTRE.*/gm;
+        let regexpolpos = /.*POL-POS.*/gm;
+        let regexpolneg = /.*POL-NEG.*/gm;
 
-        if (senay[i][2].match(regexpolpos)) {
-          var polpos = senay[i][1];
-          console.log("POS : " + senay[i][1]);
-        }
+        for (var i = 0; i < senay.length; i++) {
+          senay[i] = senay[i].split(";");
 
-        if (senay[i][2].match(regexpolneg)) {
-          var polneg = senay[i][1];
-          console.log("NEG : " + senay[i][1]);
-        }
+          if (senay[i][2].match(regexpolneutre)) {
+            var polneutre = senay[i][1];
+            console.log("NEUTRE : " + polneutre);
+          }
 
-        if (senay[i][3].localeCompare(polneutre) == 0) {
-          polneutre = senay[i][5];
-          polsenay.push(polneutre);
-          console.log("polarité neutre : " + polneutre);
-        }
+          if (senay[i][2].match(regexpolpos)) {
+            var polpos = senay[i][1];
+            console.log("POS : " + senay[i][1]);
+          }
 
-        if (senay[i][3].localeCompare(polpos) == 0) {
-          polpos = senay[i][5];
-          polsenay.push(polpos);
-          console.log("polarité positive : " + polpos);
-        }
+          if (senay[i][2].match(regexpolneg)) {
+            var polneg = senay[i][1];
+            console.log("NEG : " + senay[i][1]);
+          }
 
-        if (senay[i][3].localeCompare(polneg) == 0) {
-          polneg = senay[i][5];
-          polsenay.push(polneg);
-          console.log("polarité negative : " + polneg);
+          if (senay[i][3].localeCompare(polneutre) == 0) {
+            polneutre = senay[i][5];
+            polsenay.push(polneutre);
+            console.log("polarité neutre : " + polneutre);
+          }
+
+          if (senay[i][3].localeCompare(polpos) == 0) {
+            polpos = senay[i][5];
+            polsenay.push(polpos);
+            console.log("polarité positive : " + polpos);
+          }
+
+          if (senay[i][3].localeCompare(polneg) == 0) {
+            polneg = senay[i][5];
+            polsenay.push(polneg);
+            console.log("polarité negative : " + polneg);
+          }
         }
-      }
-      console.log(senay);
-      console.log("renvoi"+polsenay);
-      res.end(JSON.stringify(polsenay));
-      
-      
-    });
-    
+        console.log(senay);
+        console.log("renvoi" + polsenay);
+        res.end(JSON.stringify(polsenay));
+
+
+      });
+
   });
 
   app.get("/polarite/:name", cors(corsOptions), (req, res) => {

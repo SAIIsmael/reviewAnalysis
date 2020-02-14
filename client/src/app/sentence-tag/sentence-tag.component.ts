@@ -10,6 +10,7 @@ export class SentenceTagComponent implements OnInit {
 
   private sentence : any;
   private tab : any[] = new Array();
+  private motapolarise = [];
 
   constructor(private polarite : PolariteServiceService) { }
 
@@ -28,9 +29,23 @@ export class SentenceTagComponent implements OnInit {
     console.log("ici dans component sentence");
     this.polarite.requetetreetagger().subscribe(data =>{
       this.tab = data;
-      console.log(this.tab[0]);
-      this.tab[0].split("");
-      console.log(this.tab);
+      for (let i = 0; i < this.tab.length; i++) {
+          this.tab[i].forEach(element => {
+            if (element.pos == "ADJ" ){
+              this.motapolarise.push(element.t);
+              console.log(element);
+              if ( element.l != "<unknown>"){
+              this.polarite.requeterezo(element.t).subscribe(data=>{
+                console.log(element.t +":" + data);
+              })
+            }else{
+              this.polarite.requeterezo(element.l).subscribe(data=>{
+                console.log(element.l +":" + data);
+              })
+            }
+            }
+          });
+      }
     });
   }
 
