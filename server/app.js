@@ -116,39 +116,40 @@ MongoClient.connect(url, {
         var polneutre = "0";
         var polpos = "0";
         var polneg = "0";
+        if (senay) {
+          for (var i = 0; i < senay.length; i++) {
+            senay[i] = senay[i].split(";");
+            if (senay[i][2].match(regexpolneutre)) {
+              console.log("REGEX = " + senay[i][2]);
+              polneutre = senay[i][1];
+              console.log("NEUTRE : " + polneutre);
+            }
 
-        for (var i = 0; i < senay.length; i++) {
-          senay[i] = senay[i].split(";");
-          if (senay[i][2].match(regexpolneutre)) {
-            console.log("REGEX = " + senay[i][2]);
-            polneutre = senay[i][1];
-            console.log("NEUTRE : " + polneutre);
-          }
+            if (senay[i][2].match(regexpolpos)) {
+              polpos = senay[i][1];
+              console.log("POS : " + senay[i][1]);
+            }
 
-          if (senay[i][2].match(regexpolpos)) {
-            polpos = senay[i][1];
-            console.log("POS : " + senay[i][1]);
-          }
+            if (senay[i][2].match(regexpolneg)) {
+              polneg = senay[i][1];
+              console.log("NEG : " + senay[i][1]);
+            }
 
-          if (senay[i][2].match(regexpolneg)) {
-            polneg = senay[i][1];
-            console.log("NEG : " + senay[i][1]);
-          }
+            if (senay[i][3].localeCompare(polneutre) == 0) {
+              polneutre = senay[i][5];
 
-          if (senay[i][3].localeCompare(polneutre) == 0) {
-            polneutre = senay[i][5];
+              console.log("polarité neutre : " + polneutre);
+            }
 
-            console.log("polarité neutre : " + polneutre);
-          }
+            if (senay[i][3].localeCompare(polpos) == 0) {
+              polpos = senay[i][5];
+              console.log("polarité positive : " + polpos);
+            }
 
-          if (senay[i][3].localeCompare(polpos) == 0) {
-            polpos = senay[i][5];
-            console.log("polarité positive : " + polpos);
-          }
-
-          if (senay[i][3].localeCompare(polneg) == 0) {
-            polneg = senay[i][5];
-            console.log("polarité negative : " + polneg);
+            if (senay[i][3].localeCompare(polneg) == 0) {
+              polneg = senay[i][5];
+              console.log("polarité negative : " + polneg);
+            }
           }
         }
         polsenay.push({

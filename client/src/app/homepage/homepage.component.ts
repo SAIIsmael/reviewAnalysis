@@ -97,6 +97,7 @@ analyse(){
               console.log("mot :" + this.tab[i][j].l + "->" + "n:" + data[0].neutre + "p:" + data[0].positif + "neg:" + data[0].negatif);
               this.polariteNom.push({"nom" : this.tab[i][indiceNom].t, "polarité" : (data[0].positif - data[0].negatif) });
               console.log(JSON.stringify(this.polariteNom));
+              this.coloration();
           })
           })
         }else{
@@ -108,6 +109,7 @@ analyse(){
               console.log("mot :" + this.tab[i][j].l + "->" + "n:" + data[0].neutre + "p:" + data[0].positif + "neg:" + data[0].negatif);
               this.polariteNom.push({"nom" : this.tab[i][indiceNom].t, "polarité" : (data[0].positif - data[0].negatif) });
               console.log(JSON.stringify(this.polariteNom));
+              this.coloration();
             })
           })
         }
