@@ -15,6 +15,7 @@ export class HomepageComponent implements OnInit {
   private polaritePhrase : any;
   private red = false;
   private cpt;
+  private endPos = false;
 
   constructor(private polarite : PolariteServiceService) { }
 
@@ -41,22 +42,26 @@ requetePhrase(){
 reqrev(){
   console.log("dans req rev");
   this.polarite.requeteReview(this.sentence).subscribe(data =>{
-    console.log("recu : " + data);
+    console.log("recu : " + JSON.stringify(data));
     this.tab = data;
   });
 }
 
 nomplusproche(indice){
   let res = 10000000;
+  this.endPos = false;
   for ( let i = 0; i < this.tab.length; i++ ){
     for(let j = 0; j < this.tab[i].length; j++){
       if ( this.tab[i][j].pos == "NOM"){
+        console.log("ADJ"+ this.tab[i][indice].t+"POS : " + indice + ", NOM"+this.tab[i][j].t +"POS : " + j);
         if ( Math.abs(j-indice) < res){
             res = j;
+            console.log("RES DE NPP" + res);
         }
   }
 }
 }
+this.endPos = true;
 return res;
 }
 
@@ -86,7 +91,7 @@ analyse(){
         if ( this.tab[i][j].pos == "ADJ"){
           this.cpt++;
           var indiceNom = this.nomplusproche(j);
-          console.log("LE NOM LE PLUS PROCHE EST A LA POS :  " + indiceNom);
+          console.log(this.tab[i][j].t + ": LE NOM LE PLUS PROCHE EST A LA POS :  " + indiceNom);
           console.log(this.tab[i][j].pos);
           this.motapolarise.push(this.tab[i][j].t);
           if ( this.tab[i][j].l.includes("unknown")){
@@ -97,7 +102,6 @@ analyse(){
               console.log("mot :" + this.tab[i][j].l + "->" + "n:" + data[0].neutre + "p:" + data[0].positif + "neg:" + data[0].negatif);
               this.polariteNom.push({"nom" : this.tab[i][indiceNom].t, "polarité" : (data[0].positif - data[0].negatif) });
               console.log(JSON.stringify(this.polariteNom));
-              this.coloration();
           })
           })
         }else{
@@ -109,7 +113,6 @@ analyse(){
               console.log("mot :" + this.tab[i][j].l + "->" + "n:" + data[0].neutre + "p:" + data[0].positif + "neg:" + data[0].negatif);
               this.polariteNom.push({"nom" : this.tab[i][indiceNom].t, "polarité" : (data[0].positif - data[0].negatif) });
               console.log(JSON.stringify(this.polariteNom));
-              this.coloration();
             })
           })
         }
@@ -125,7 +128,7 @@ requete() {
   console.log(this.word);
   this.polarite.requeterezo(this.word).subscribe(data =>{
     this.tab = data;
-    console.log(this.tab);
+    console.log(data);
   });
 }
 }

@@ -23,6 +23,7 @@
     "mongo": "^0.1.0",
     "mongodb": "^3.3.3",
     "request": "^2.81.0",
+    "shelljs": "^0.8.3",
     "treetagger": "^0.1.1"
   }
 }

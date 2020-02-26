@@ -9,6 +9,7 @@ const http = require('http');
 const request = require('request');
 var qs = require('querystring');
 const fs = require('fs');
+const shell = require('shelljs')
 const app = express();
 app.use(express.json());
 
@@ -37,24 +38,35 @@ MongoClient.connect(url, {
 
   app.get("/review/:review", cors(corsOptions), (req, res) => {
     let review = req.params.review;
-    var s = [];
-    var tagger = new treetagger();
-    var tt = [];
-    console.log("in review with sentence :" + review);
-    s = review.split(".");
-    console.log("split : " + s);
-    s.forEach(element => {
-      tagger.tag(element, function(err, results) {
-        tt.push(results);
-        console.log(results);
-        if (s.length === tt.length) {
-          res.end(JSON.stringify(tt));
-          console.log(JSON.stringify(tt));
-        }
-      });
+    let tt = "";
+    fs.writeFile("tt.sh", 'echo "' + review + '" | tree-tagger-french', "utf8", function(err, file) {
+      if (err) throw err;
+      console.log('Saved!');
+      fs.writeFile("tt.res", shell.exec("./tt.sh"), function(err, file) {
+        if (err) throw err;
+        console.log('Saved!');
+        fs.readFile("tt.res", function read(err, data) {
+          tt = data.toString("utf8");
+          var results = [];
+          var lines = tt.trim().split('\n');
+          //  console.log(lines);
+          for (var i = 0; i < lines.length; i++) {
+            var line = lines[i];
+            var items = line.split('\t');
+            var item = {};
+            item.t = items[0];
+            item.pos = items[1];
+            item.l = items[2];
+            results.push(item);
+          }
+          var r = [];
+          r.push(results);
+          res.end(JSON.stringify(r));
+        })
+      })
     });
 
-  })
+  });
 
   app.get("/reviewType", cors(corsOptions), (req, res) => {
     console.log("In /reviewType");
