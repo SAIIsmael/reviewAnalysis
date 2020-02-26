@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SentenceTagComponent } from './sentence-tag.component';
 
@@ -15,7 +15,7 @@ describe('SentenceTagComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SentenceTagComponent);
-    component = fixture.componentInstance;
+     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 

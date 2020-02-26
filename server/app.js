@@ -35,6 +35,27 @@ MongoClient.connect(url, {
   let db = client.db("hotereview");
   console.log("Server listening on port 8888");
 
+  app.get("/review/:review", cors(corsOptions), (req, res) => {
+    let review = req.params.review;
+    var s = [];
+    var tagger = new treetagger();
+    var tt = [];
+    console.log("in review with sentence :" + review);
+    s = review.split(".");
+    console.log("split : " + s);
+    s.forEach(element => {
+      tagger.tag(element, function(err, results) {
+        tt.push(results);
+        console.log(results);
+        if (s.length === tt.length) {
+          res.end(JSON.stringify(tt));
+          console.log(JSON.stringify(tt));
+        }
+      });
+    });
+
+  })
+
   app.get("/reviewType", cors(corsOptions), (req, res) => {
     console.log("In /reviewType");
     var tagger = new treetagger();
@@ -88,46 +109,54 @@ MongoClient.connect(url, {
         console.log(body.match(regex));
         let senay = body.match(regex);
         var polsenay = [];
-        let regexpolneutre = /.*POL-NEUTRE.*/gm;
-        let regexpolpos = /.*POL-POS.*/gm;
-        let regexpolneg = /.*POL-NEG.*/gm;
+        let regexpolneutre = /.*POL-NEUTRE_PC.*/gm;
+        let regexpolpos = /.*POL-POS_PC.*/gm;
+        let regexpolneg = /.*POL-NEG_PC.*/gm;
+
+        var polneutre = "0";
+        var polpos = "0";
+        var polneg = "0";
 
         for (var i = 0; i < senay.length; i++) {
           senay[i] = senay[i].split(";");
-
           if (senay[i][2].match(regexpolneutre)) {
-            var polneutre = senay[i][1];
+            console.log("REGEX = " + senay[i][2]);
+            polneutre = senay[i][1];
             console.log("NEUTRE : " + polneutre);
           }
 
           if (senay[i][2].match(regexpolpos)) {
-            var polpos = senay[i][1];
+            polpos = senay[i][1];
             console.log("POS : " + senay[i][1]);
           }
 
           if (senay[i][2].match(regexpolneg)) {
-            var polneg = senay[i][1];
+            polneg = senay[i][1];
             console.log("NEG : " + senay[i][1]);
           }
 
           if (senay[i][3].localeCompare(polneutre) == 0) {
             polneutre = senay[i][5];
-            polsenay.push(polneutre);
+
             console.log("polarité neutre : " + polneutre);
           }
 
           if (senay[i][3].localeCompare(polpos) == 0) {
             polpos = senay[i][5];
-            polsenay.push(polpos);
             console.log("polarité positive : " + polpos);
           }
 
           if (senay[i][3].localeCompare(polneg) == 0) {
             polneg = senay[i][5];
-            polsenay.push(polneg);
             console.log("polarité negative : " + polneg);
           }
         }
+        polsenay.push({
+          "neutre": polneutre,
+          "positif": polpos,
+          "negatif": polneg
+        });
+
         console.log(senay);
         console.log("renvoi" + polsenay);
         res.end(JSON.stringify(polsenay));

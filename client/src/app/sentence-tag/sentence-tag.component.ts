@@ -26,21 +26,28 @@ export class SentenceTagComponent implements OnInit {
   }*/
 
   requete() {
-    console.log("ici dans component sentence");
     this.polarite.requetetreetagger().subscribe(data =>{
       this.tab = data;
+      
       for (let i = 0; i < this.tab.length; i++) {
           this.tab[i].forEach(element => {
             if (element.pos == "ADJ" ){
               this.motapolarise.push(element.t);
-              console.log(element);
-              if ( element.l != "<unknown>"){
+              if ( element.l.includes("unknown")){
               this.polarite.requeterezo(element.t).subscribe(data=>{
-                console.log(element.t +":" + data);
+                console.log(element.l + ": "+ element.l.includes("unknown") );
+                console.log("Terme: " + element.t +":" + data);
+                this.polarite.requeterezo(element.t).subscribe(data =>{
+                  console.log("mot :" + element.t + "->" + "n:" + data[0] + "p:" + data[1] + "neg:" + data[2]);
+                })
               })
             }else{
-              this.polarite.requeterezo(element.l).subscribe(data=>{
-                console.log(element.l +":" + data);
+              this.polarite.requeterezo(element.t).subscribe(data=>{
+                console.log(element.l + ": "+ element.l.includes("unknown") );
+                console.log("Lemme: " + element.l +":" + data);
+                this.polarite.requeterezo(element.l).subscribe(data =>{
+                  console.log("mot :" + element.l + "->" + "n:" + data[0] + "p:" + data[1] + "neg:" + data[2]);
+                })
               })
             }
             }

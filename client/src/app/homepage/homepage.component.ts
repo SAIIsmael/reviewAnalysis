@@ -7,9 +7,15 @@ import { PolariteServiceService } from '../_services/polarite-service.service';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-
+  @Input() private sentence : any;
   @Input() private word : any;
   private tab : any[] = new Array();
+  private motapolarise : any[] =  new Array();
+  private polariteNom : any[] = new Array();
+  private polaritePhrase : any;
+  private red = false;
+  private cpt;
+
   constructor(private polarite : PolariteServiceService) { }
 
   ngOnInit() {
@@ -20,10 +26,97 @@ export class HomepageComponent implements OnInit {
       switch(data){
         case "word":
         this.word = value;
+        break;
+        case "sentence":
+        this.sentence = value;
+        //console.log(this.sentence);
       }
     }
 
 
+requetePhrase(){
+
+}
+
+reqrev(){
+  console.log("dans req rev");
+  this.polarite.requeteReview(this.sentence).subscribe(data =>{
+    console.log("recu : " + data);
+    this.tab = data;
+  });
+}
+
+nomplusproche(indice){
+  let res = 10000000;
+  for ( let i = 0; i < this.tab.length; i++ ){
+    for(let j = 0; j < this.tab[i].length; j++){
+      if ( this.tab[i][j].pos == "NOM"){
+        if ( Math.abs(j-indice) < res){
+            res = j;
+        }
+  }
+}
+}
+return res;
+}
+
+coloration(){
+    let som = 0;
+    console.log("COLORATION POLARITE NOM : " + JSON.stringify(this.polariteNom));
+    for (let k =0; k < this.polariteNom.length; k++){
+      som+=this.polariteNom[k].polarité;
+    }
+    this.polaritePhrase = {"phrase":this.sentence,"polarité":som/this.cpt};
+    console.log("POLARITE DE LA PHRASE : " + JSON.stringify(this.polaritePhrase));
+    if(som/this.cpt < 0){
+    this.red = true;
+  }else{
+    this.red = false;
+  }
+
+  }
+
+analyse(){
+  this.cpt = 0;
+  this.polariteNom = [];
+  for (let i = 0; i < this.tab.length; i++) {
+    if ( this.tab[i].length > 1){
+      for(let j = 0; j < this.tab[i].length; j++){
+        console.log(JSON.stringify(this.tab[i][j]));
+        if ( this.tab[i][j].pos == "ADJ"){
+          this.cpt++;
+          var indiceNom = this.nomplusproche(j);
+          console.log("LE NOM LE PLUS PROCHE EST A LA POS :  " + indiceNom);
+          console.log(this.tab[i][j].pos);
+          this.motapolarise.push(this.tab[i][j].t);
+          if ( this.tab[i][j].l.includes("unknown")){
+          this.polarite.requeterezo(this.tab[i][j].t).subscribe(data=>{
+            console.log(this.tab[i][j].l + ": "+ this.tab[i][j].l.includes("unknown") );
+            console.log("Terme: " + this.tab[i][j].t +":" + data);
+            this.polarite.requeterezo(this.tab[i][j].t).subscribe(data =>{
+              console.log("mot :" + this.tab[i][j].l + "->" + "n:" + data[0].neutre + "p:" + data[0].positif + "neg:" + data[0].negatif);
+              this.polariteNom.push({"nom" : this.tab[i][indiceNom].t, "polarité" : (data[0].positif - data[0].negatif) });
+              console.log(JSON.stringify(this.polariteNom));
+          })
+          })
+        }else{
+          this.polarite.requeterezo(this.tab[i][j].t).subscribe(data=>{
+            console.log(this.tab[i][j].l + ": "+ this.tab[i][j].l.includes("unknown") );
+            console.log("Lemme: " + this.tab[i][j].l +":" + data);
+            this.polarite.requeterezo(this.tab[i][j].l).subscribe(data =>{
+              console.log("RECU POUR POLARITE -> " + JSON.stringify(data[0]));
+              console.log("mot :" + this.tab[i][j].l + "->" + "n:" + data[0].neutre + "p:" + data[0].positif + "neg:" + data[0].negatif);
+              this.polariteNom.push({"nom" : this.tab[i][indiceNom].t, "polarité" : (data[0].positif - data[0].negatif) });
+              console.log(JSON.stringify(this.polariteNom));
+            })
+          })
+        }
+        }
+
+      }
+    }
+      }
+  }
 
 requete() {
   console.log("ici dans component");
