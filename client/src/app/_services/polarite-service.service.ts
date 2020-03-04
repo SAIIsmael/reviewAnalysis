@@ -24,4 +24,7 @@ requetetreetagger() : Observable<any> {
 requeteReview(review : any) : Observable<any> {
   return this.http.get(this.url+"review/" + review);
 }
+requeteInten(word) : Observable<any> {
+  return this.http.get(this.url+"isIntensifieur/" + word);
+}
 }
