@@ -77,14 +77,17 @@ MongoClient.connect(url, {
         ArrayI[i] = ArrayI[i].split(":");
       }
       let isInten = "false";
+      let mul = "0";
       for (var i = 0; i < ArrayI.length; i++) {
-        console.log("Array : " + ArrayI[i][0] + "word : " + word);
+        //console.log("Array : " + ArrayI[i][0] + "word : " + word);
         if (ArrayI[i][0].localeCompare(word) == 0) {
           isInten = "true";
+          mul = ArrayI[i][1];
         }
       }
       res.end(JSON.stringify({
-        "Intensifieur": isInten
+        "Intensifieur": isInten,
+        "coef": mul
       }));
     });
   });
