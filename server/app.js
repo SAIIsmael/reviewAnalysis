@@ -68,6 +68,30 @@ MongoClient.connect(url, {
 
   });
 
+
+  app.get("/isIntensifieur/:word", cors(corsOptions), (req, res) => {
+    let word = req.params.word;
+    fs.readFile("../Ressources/lexique_intensifieurs.txt", function read(err, data) {
+      tt = data.toString("utf8");
+      let ArrayI = tt.split("\n");
+      for (var i = 0; i < ArrayI.length; i++) {
+        ArrayI[i] = ArrayI[i].split(":");
+      }
+      let isInten = "false";
+      let mul = "0";
+      for (var i = 0; i < ArrayI.length; i++) {
+        //console.log("Array : " + ArrayI[i][0] + "word : " + word);
+        if (ArrayI[i][0].localeCompare(word) == 0) {
+          isInten = "true";
+          mul = ArrayI[i][1];
+        }
+      }
+      res.end(JSON.stringify({
+        "Intensifieur": isInten,
+        "coef": mul
+      }));
+    });
+
   app.get("/neg/:word", cors(corsOptions), (req, res) => {
     console.log("In /reviewType");
     
@@ -90,6 +114,7 @@ MongoClient.connect(url, {
       console.log("Error neg service");
       res.end(JSON.stringify([]));
     }
+
   });
 
   app.get("/reviewType", cors(corsOptions), (req, res) => {

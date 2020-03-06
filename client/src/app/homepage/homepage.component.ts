@@ -153,8 +153,44 @@ neg(){
       }
     }
   }
-}
 
+  intense(){
+    for (let i = 0; i < this.tab.length; i++) {
+      for(let j = 0; j < this.tab[i].length; j++){
+        if ( this.tab[i][j].pos == "ADV"){
+          this.polarite.requeteInten(this.tab[i][j].t).subscribe(data => {
+
+            console.log(JSON.stringify("le serveur a rendu : "+data));
+
+            if(data.Intensifieur === "true"){
+              let nomplusproche = this.nomplusproche(j);
+              console.log("valeur de nomplusproche: " + nomplusproche);
+
+              let indicepl = this.MatchNameByIndex(this.tab[i][nomplusproche],i);
+
+              console.log("ici "+this.polariteNom[indicepl]);
+
+              this.polariteNom[indicepl].polarité = this.polariteNom[indicepl].polarité * data.coef;
+
+            }
+
+          })
+        }
+      }
+    }
+  }
+  
+  MatchNameByIndex(nom,indice){
+    let res = 0 ;
+    for(let i = 0 ; i<this.polariteNom.length;i++){
+
+      if(this.polariteNom[i].nom.localeCompare(nom)==0 && this.polariteNom[i].pos==indice){
+          res = i ;
+      }
+    }
+  return res ;
+  }
+}
 requete() {
   console.log("ici dans component");
   console.log(this.word);
