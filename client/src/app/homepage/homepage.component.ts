@@ -87,42 +87,73 @@ analyse(){
   for (let i = 0; i < this.tab.length; i++) {
     if ( this.tab[i].length > 1){
       for(let j = 0; j < this.tab[i].length; j++){
-        console.log(JSON.stringify(this.tab[i][j]));
+      
         if ( this.tab[i][j].pos == "ADJ"){
           this.cpt++;
           var indiceNom = this.nomplusproche(j);
-          console.log(this.tab[i][j].t + ": LE NOM LE PLUS PROCHE EST A LA POS :  " + indiceNom);
-          console.log(this.tab[i][j].pos);
+         
           this.motapolarise.push(this.tab[i][j].t);
           if ( this.tab[i][j].l.includes("unknown")){
           this.polarite.requeterezo(this.tab[i][j].t).subscribe(data=>{
-            console.log(this.tab[i][j].l + ": "+ this.tab[i][j].l.includes("unknown") );
-            console.log("Terme: " + this.tab[i][j].t +":" + data);
+            
             this.polarite.requeterezo(this.tab[i][j].t).subscribe(data =>{
-              console.log("mot :" + this.tab[i][j].l + "->" + "n:" + data[0].neutre + "p:" + data[0].positif + "neg:" + data[0].negatif);
+              
               this.polariteNom.push({"nom" : this.tab[i][indiceNom].t, "polarité" : (data[0].positif - data[0].negatif) });
-              console.log(JSON.stringify(this.polariteNom));
-          })
+            
+            })
           })
         }else{
           this.polarite.requeterezo(this.tab[i][j].t).subscribe(data=>{
-            console.log(this.tab[i][j].l + ": "+ this.tab[i][j].l.includes("unknown") );
-            console.log("Lemme: " + this.tab[i][j].l +":" + data);
+            
             this.polarite.requeterezo(this.tab[i][j].l).subscribe(data =>{
-              console.log("RECU POUR POLARITE -> " + JSON.stringify(data[0]));
-              console.log("mot :" + this.tab[i][j].l + "->" + "n:" + data[0].neutre + "p:" + data[0].positif + "neg:" + data[0].negatif);
-              this.polariteNom.push({"nom" : this.tab[i][indiceNom].t, "polarité" : (data[0].positif - data[0].negatif) });
-              console.log(JSON.stringify(this.polariteNom));
-            })
-          })
+              
+              this.polariteNom.push({"nom" : this.tab[i][indiceNom].t, "polarité" : (data[0].positif - data[0].negatif) , "pos" : i});
+              
+                  })
+              })
+          }
         }
-        }
-
       }
     }
-      }
   }
-  
+}
+
+MatchNameByIndex(nom,indice){
+  let res = 0 ;
+  for(let i = 0 ; i<this.polariteNom.length;i++){
+    
+    if(this.polariteNom[i].nom.localeCompare(nom)==0 && this.polariteNom[i].pos==indice){
+        res = i ;
+    }
+  }
+return res ; 
+}
+
+neg(){
+  for (let i = 0; i < this.tab.length; i++) {
+    for(let j = 0; j < this.tab[i].length; j++){
+      if ( this.tab[i][j].pos == "ADV"){
+        this.polarite.requeteNeg(this.tab[i][j].t).subscribe(data => {
+
+          console.log(JSON.stringify("le serveur a rendu : "+data));
+
+          if(data === "true"){
+            let nomplusproche = this.nomplusproche(j);
+            console.log("valeur de nomplusproche: " + nomplusproche);
+           
+            let indicepl = this.MatchNameByIndex(this.tab[i][nomplusproche],i);
+
+            console.log("ici "+this.polariteNom[indicepl]);
+
+            this.polariteNom[indicepl].polarité = this.polariteNom[indicepl].polarité * -1;
+
+          }
+            
+        })
+      }
+    }
+  }
+
   intense(){
     for (let i = 0; i < this.tab.length; i++) {
       for(let j = 0; j < this.tab[i].length; j++){
@@ -159,7 +190,7 @@ analyse(){
     }
   return res ;
   }
-
+}
 requete() {
   console.log("ici dans component");
   console.log(this.word);
