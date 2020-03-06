@@ -68,6 +68,30 @@ MongoClient.connect(url, {
 
   });
 
+  app.get("/neg/:word", cors(corsOptions), (req, res) => {
+    console.log("In /reviewType");
+    
+    var word = req.params.word;
+    console.log("le word vaut "+ word);
+
+    try {
+      fs.readFile("../Ressources/lexique_negation.txt", function read(err, data) {
+        tt = data.toString("utf8");
+        var lines = tt.trim().split('\n');
+         console.log(lines);
+        for (var i = 0; i < lines.length; i++) {
+          var line = lines[i];
+          if(line.localeCompare(word)==0)
+          res.end(JSON.stringify("true"));
+        } 
+        res.end(JSON.stringify("false"));
+      })  
+    } catch (e) {
+      console.log("Error neg service");
+      res.end(JSON.stringify([]));
+    }
+  });
+
   app.get("/reviewType", cors(corsOptions), (req, res) => {
     console.log("In /reviewType");
     var tagger = new treetagger();

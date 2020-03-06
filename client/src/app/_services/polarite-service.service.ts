@@ -15,7 +15,7 @@ export class PolariteServiceService {
 
 requeterezo(word : any) : Observable<any> {
   return this.http.get(this.url+"testreq/"+word);
-}
+  }
 
 requetetreetagger() : Observable<any> {
   return this.http.get(this.url+"reviewtype");
@@ -23,5 +23,8 @@ requetetreetagger() : Observable<any> {
 
 requeteReview(review : any) : Observable<any> {
   return this.http.get(this.url+"review/" + review);
-}
+  }
+requeteNeg(word : any) : Observable<any> {
+  return this.http.get(this.url+"neg/"+word);
+  }
 }
