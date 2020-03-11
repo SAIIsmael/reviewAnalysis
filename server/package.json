@@ -17,9 +17,13 @@
   },
   "homepage": "https://gitlab.com/Amoross/e-commerce#readme",
   "dependencies": {
+    "async": "^3.1.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongo": "^0.1.0",
-    "mongodb": "^3.3.3"
+    "mongodb": "^3.3.3",
+    "request": "^2.81.0",
+    "shelljs": "^0.8.3",
+    "treetagger": "^0.1.1"
   }
 }

@@ -1,0 +1,24 @@
+<textarea name="sentence" (input)="updateData($event.target.name, $event.target.value)" rows=" 8" cols="80"></textarea>
+<button type="button" (click)="reqrev()">envoyer avis</button>
+<button type="button" (click)="analyse()">analyse</button>
+<button type="button" (click)="coloration()">coloration</button>
+
+<button type="button" (click)="intense()">intense</button>
+
+<button type="button" (click)="neg()">negation</button>
+
+
+
+<span class="rouge" *ngIf="red">{{sentence}}</span>
+<span class="vert" *ngIf="!red">{{sentence}}</span>
+
+<div>
+  <input type="text" value="" name="word" (input)="updateData($event.target.name, $event.target.value)">
+  <button type="button" (click)="requete()">Valider</button>
+</div>
+
+<div *ngFor="let index of tab">
+  <span>
+    {{index}}
+  </span>
+</div>
