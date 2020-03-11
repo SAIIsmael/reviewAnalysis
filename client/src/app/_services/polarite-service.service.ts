@@ -27,7 +27,7 @@ requeteReview(review : any) : Observable<any> {
 requeteInten(word) : Observable<any> {
   return this.http.get(this.url+"isIntensifieur/" + word);
 }
-  }
+
 requeteNeg(word : any) : Observable<any> {
   return this.http.get(this.url+"neg/"+word);
   }
