@@ -1,1 +1,1 @@
-echo "," | tree-tagger-french
+echo "Un jardin trés propre." | tree-tagger-french

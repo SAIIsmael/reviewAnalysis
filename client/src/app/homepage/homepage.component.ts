@@ -118,7 +118,7 @@ analyse(){
   }
 }
 
-MatchNameByIndex(nom,indice){
+/*MatchNameByIndex(nom,indice){
   let res = 0 ;
   for(let i = 0 ; i<this.polariteNom.length;i++){
     
@@ -127,7 +127,7 @@ MatchNameByIndex(nom,indice){
     }
   }
 return res ; 
-}
+}*/
 
 neg(){
   for (let i = 0; i < this.tab.length; i++) {
@@ -153,6 +153,7 @@ neg(){
       }
     }
   }
+}
 
   intense(){
     for (let i = 0; i < this.tab.length; i++) {
@@ -190,7 +191,7 @@ neg(){
     }
   return res ;
   }
-}
+
 requete() {
   console.log("ici dans component");
   console.log(this.word);

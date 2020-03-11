@@ -91,6 +91,8 @@ MongoClient.connect(url, {
         "coef": mul
       }));
     });
+  });
+  
 
   app.get("/neg/:word", cors(corsOptions), (req, res) => {
     console.log("In /reviewType");
@@ -265,5 +267,5 @@ MongoClient.connect(url, {
       console.log("Error:" + err.message);
     });
   });
-
 });
+
