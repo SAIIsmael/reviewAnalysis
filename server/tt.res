@@ -1,5 +1,4 @@
-Un	DET:ART	un
+le	DET:ART	le
+magnifique	ADJ	magnifique
 jardin	NOM	jardin
-trés	ADJ	<unknown>
-propre	ADJ	propre
 .	SENT	.

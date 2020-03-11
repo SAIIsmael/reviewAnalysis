@@ -36,6 +36,16 @@ MongoClient.connect(url, {
   let db = client.db("hotereview");
   console.log("Server listening on port 8888");
 
+  app.get("/getphrase/:phrase", cors(corsOptions), (req, res) => {
+    let phrase = req.params.phrase;
+    request('http://127.0.0.1:5000/getgraph/'+phrase, { json: true }, (err, res2, body) => {
+  if (err) { return console.log(err); }
+    console.log(body);
+    res.end(JSON.stringify(body));
+    });  
+  });
+
+
   app.get("/review/:review", cors(corsOptions), (req, res) => {
     let review = req.params.review;
     let tt = "";
