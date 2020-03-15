@@ -1,21 +1,34 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PolariteServiceService } from '../_services/polarite-service.service';
 
+
+interface edge{
+  source:string;
+  target:string;     
+}
+
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css']
 })
+
 export class HomepageComponent implements OnInit {
   @Input() private sentence : any;
   @Input() private word : any;
   private tab : any[] = new Array();
+  private graphe : any;
   private motapolarise : any[] =  new Array();
   private polariteNom : any[] = new Array();
   private polaritePhrase : any;
   private red = false;
   private cpt;
   private endPos = false;
+  private words : any[] = new Array();
+  private edges : any[] = new Array();
+  
+
+  
 
   constructor(private polarite : PolariteServiceService) { }
 
@@ -30,13 +43,40 @@ export class HomepageComponent implements OnInit {
         break;
         case "sentence":
         this.sentence = value;
+        
         //console.log(this.sentence);
       }
     }
 
 
-requetePhrase(){
-
+getgraphe(){
+  console.log(this.sentence);
+  this.polarite.requeteGraphe(this.sentence).subscribe(data =>{
+    console.log("recu : " + JSON.stringify(data));
+    this.graphe = JSON.stringify(data);
+    this.words = data.graph.words;
+    this.edges = data.graph.links;
+    console.log("words : "+this.words+" taille : "+this.words.length);
+    console.log("edges : "+this.edges+" taille : "+this.edges.length);
+    
+      
+    for(let i=0;i<this.words.length;i++){
+        let label = this.words[i].label;
+        let idword = this.words[i].id;
+        console.log("traitement du mot "+label+" d'id "+idword)
+        for(let j = 0; j< this.edges.length;j++){
+          console.log("l arete courante est : "+JSON.stringify(this.edges[j]));
+          if(idword==this.edges[j].target){
+            console.log("correspondance trouvee entre  "+this.edges[j].target+" et "+idword)
+            this.edges[j].target = label;
+          }
+          else if(idword==this.edges[j].source){
+            console.log("correspondance trouvee entre  "+this.edges[j].source+" et "+idword)
+            this.edges[j].source = label;
+          }
+        }
+    }
+  });
 }
 
 reqrev(){

@@ -32,4 +32,8 @@ requeteNeg(word : any) : Observable<any> {
   return this.http.get(this.url+"neg/"+word);
   }
 
+  requeteGraphe(phrase : any ) : Observable<any> {
+    return this.http.get(this.url+"getgraphe/"+phrase);
+  }
+
 }

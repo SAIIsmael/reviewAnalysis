@@ -1,3 +1,5 @@
+
+
 <textarea name="sentence" (input)="updateData($event.target.name, $event.target.value)" rows=" 8" cols="80"></textarea>
 <button type="button" (click)="reqrev()">envoyer avis</button>
 <button type="button" (click)="analyse()">analyse</button>
@@ -6,6 +8,7 @@
 <button type="button" (click)="intense()">intense</button>
 
 <button type="button" (click)="neg()">negation</button>
+<button type="button" (click)="getgraphe()">graphe</button>
 
 
 
@@ -22,3 +25,6 @@
     {{index}}
   </span>
 </div>
+
+  
+

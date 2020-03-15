@@ -1,1 +1,1 @@
-echo "le magnifique jardin." | tree-tagger-french
+echo "Ceci est un test." | tree-tagger-french

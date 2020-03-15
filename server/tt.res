@@ -1,4 +1,5 @@
-le	DET:ART	le
-magnifique	ADJ	magnifique
-jardin	NOM	jardin
+Ceci	PRO:DEM	ceci
+est	VER:pres	être
+un	DET:ART	un
+test	NOM	test
 .	SENT	.

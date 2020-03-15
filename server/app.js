@@ -14,7 +14,7 @@ const app = express();
 app.use(express.json());
 
 var corsOptions = {
-  origin: 'http://localhost:4200',
+  origin: '*',
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
@@ -23,6 +23,22 @@ var corsOptions = {
 app.use(express.urlencoded({
   extended: true
 }));
+
+/*app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  if (req.method === 'OPTIONS') {
+      var headers = {};
+  // headers["Access-Control-Allow-Origin"] = req.headers.origin;
+      headers["Access-Control-Allow-Origin"] = "*";
+      headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS";
+      headers["Access-Control-Allow-Credentials"] = false;
+      headers["Access-Control-Max-Age"] = '86400'; // 24 hours
+      res.writeHead(200, headers);
+     res.end();
+  } else {
+      next();
+  }
+});*/
 app.options('*', cors());
 app.listen(8888);
 
@@ -36,7 +52,7 @@ MongoClient.connect(url, {
   let db = client.db("hotereview");
   console.log("Server listening on port 8888");
 
-  app.get("/getphrase/:phrase", cors(corsOptions), (req, res) => {
+  app.get("/getgraphe/:phrase", cors(corsOptions), (req, res) => {
     let phrase = req.params.phrase;
     request('http://127.0.0.1:5000/getgraph/'+phrase, { json: true }, (err, res2, body) => {
   if (err) { return console.log(err); }
