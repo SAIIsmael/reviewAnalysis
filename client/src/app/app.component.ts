@@ -20,7 +20,7 @@ export class AppComponent {
             { name: "id", type: "number" },
             { name: "part", type: "string" },
             { name: "polarity", type: "number" },
-            { name: "synonymes", type: "string" },
+            { name: "synonyms", type: "string" },
             { name: "subpart", type: "array" }
         ],
         root: "root",
@@ -37,7 +37,7 @@ export class AppComponent {
     [
         { text: "part", dataField: "part", minWidth: 200, width: 200 },
         { text: "polarity", dataField: "polarity", width: 100 },
-        { text: "synonymes", dataField: "synonymes", width: 200 }
+        { text: "synonyms", dataField: "synonyms", width: 200 }
     ];
 
     ready: any = () => {
