@@ -1,0 +1,17 @@
+hôtel					1
+	chambre				11
+		literie			111
+		salle de bain	112
+		équipement		114
+			télévision	1141
+	restauration		12
+		petit-déjeuner	121
+		repas			122
+		boisson			125
+		service			127
+	installations		13
+	personnel			14
+	activités			15
+		animation		151
+	extérieur			16
+		accès			161
