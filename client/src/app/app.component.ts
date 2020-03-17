@@ -15,7 +15,7 @@ export class AppComponent {
     source: any =
     {
         dataType: "json",
-        url: "./assets/ontologieHotellerieV2.json",
+        url: "./assets/ontologieHotellerie.json",
         dataFields: [
             { name: "id", type: "number" },
             { name: "part", type: "string" },
