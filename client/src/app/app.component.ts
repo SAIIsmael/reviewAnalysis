@@ -36,7 +36,19 @@ export class AppComponent {
     columns: any[] =
     [
         { text: "part", dataField: "part", minWidth: 200, width: 200 },
-        { text: "polarity", dataField: "polarity", width: 100 },
+        { text: "polarity", dataField: "polarity", width: 100,
+
+            cellsRenderer: function (row, column, value, rowData) {
+                if (value <0) {
+                    return '<span style="color: #D00000; font-weight: bold;">' + value + '</span>';
+                }
+                if (value >0) {
+                    return '<span style="color: #00D000; font-weight: bold;">' + value + '</span>';
+                }
+                return value;
+            }
+
+        },
         { text: "synonyms", dataField: "synonyms", width: 200 }
     ];
 

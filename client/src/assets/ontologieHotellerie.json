@@ -9,7 +9,7 @@
 				{
 					"id" : 11,
 					"part" : "chambre",
-					"polarity" : 0,
+					"polarity" : 1,
 					"synonyms" : ["chambre à coucher", "chambrée", "suite", "dortoir"],
 					"subpart" : [
 						{
@@ -196,7 +196,7 @@
 				{
 					"id" : 12,
 					"part" : "restauration",
-					"polarity" : 0,
+					"polarity" : -1,
 					"synonyms" : ["nourriture", "cuisine"],
 					"subpart" : [
 						{
