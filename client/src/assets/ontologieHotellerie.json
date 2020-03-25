@@ -197,7 +197,7 @@
 					"id" : 12,
 					"part" : "restauration",
 					"polarity" : -1,
-					"synonyms" : ["nourriture", "cuisine"],
+					"synonyms" : ["restaurant", "nourriture"],
 					"subpart" : [
 						{
 							"id" : 121,
@@ -216,7 +216,7 @@
 									"id" : 1212,
 									"part" : "thé",
 									"polarity" : 0,
-									"synonyms" : [],
+									"synonyms" : ["infusion"],
 									"subpart" : []
 								},
 								{
@@ -230,7 +230,7 @@
 									"id" : 1214,
 									"part" : "viennoiserie",
 									"polarity" : 0,
-									"synonyms" : [],
+									"synonyms" : ["croissant", "pain au chocolat", "chocolatine"],
 									"subpart" : []
 								}
 							]
@@ -239,13 +239,13 @@
 							"id" : 122,
 							"part" : "repas",
 							"polarity" : 0,
-							"synonyms" : [],
+							"synonyms" : ["déjeuner", "souper"],
 							"subpart" : [
 								{
 									"id" : 1221,
 									"part" : "buffet",
 									"polarity" : 0,
-									"synonyms" : [],
+									"synonyms" : ["à volonté"],
 									"subpart" : []
 								}
 							]
@@ -268,13 +268,13 @@
 							"id" : 125,
 							"part" : "boisson",
 							"polarity" : 0,
-							"synonyms" : [],
+							"synonyms" : ["rafraîchissement"],
 							"subpart" : [
 								{
 									"id" : 1251,
 									"part" : "eau",
 									"polarity" : 0,
-									"synonyms" : [],
+									"synonyms" : ["eau minérale"],
 									"subpart" : []
 								},
 								{
@@ -295,7 +295,7 @@
 									"id" : 1254,
 									"part" : "jus de fruit",
 									"polarity" : 0,
-									"synonyms" : ["soda"],
+									"synonyms" : ["soda", "coca"],
 									"subpart" : []
 								}
 							]
@@ -317,7 +317,7 @@
 									"id" : 1271,
 									"part" : "serveur",
 									"polarity" : 0,
-									"synonyms" : [],
+									"synonyms" : ["barman", "maître d'hotel", "sommelier"],
 									"subpart" : []
 								}
 							]
@@ -326,7 +326,7 @@
 				},
 				{
 					"id" : 13,
-					"part" : "installations",
+					"part" : "installation",
 					"polarity" : 0,
 					"synonyms" : [],
 					"subpart" : [
@@ -355,7 +355,7 @@
 							"id" : 134,
 							"part" : "salle de sport",
 							"polarity" : 0,
-							"synonyms" : ["gym"],
+							"synonyms" : ["gym", "salle de musculation"],
 							"subpart" : []
 						},
 						{
@@ -385,7 +385,7 @@
 					"id" : 14,
 					"part" : "personnel",
 					"polarity" : 0,
-					"synonyms" : ["équipe", "staff"],
+					"synonyms" : ["équipe", "staff", "employé"],
 					"subpart" : [
 						{
 							"id" : 141,
@@ -428,14 +428,14 @@
 							"id" : 152,
 							"part" : "soirée",
 							"polarity" : 0,
-							"synonyms" : ["discothèque"],
+							"synonyms" : ["discothèque", "dancing"],
 							"subpart" : []
 						},
 						{
 							"id" : 153,
 							"part" : "excursion",
 							"polarity" : 0,
-							"synonyms" : [],
+							"synonyms" : ["sortie", "visite"],
 							"subpart" : []
 						}
 					]
@@ -465,7 +465,7 @@
 							"id" : 162,
 							"part" : "parking",
 							"polarity" : 0,
-							"synonyms" : [],
+							"synonyms" : ["voiture"],
 							"subpart" : []
 						},
 						{
@@ -486,14 +486,14 @@
 							"id" : 165,
 							"part" : "piscine",
 							"polarity" : 0,
-							"synonyms" : [],
+							"synonyms" : ["petite bassin", "pataugeoire"],
 							"subpart" : []
 						},
 						{
 							"id" : 166,
 							"part" : "plage",
 							"polarity" : 0,
-							"synonyms" : ["bord de mer"],
+							"synonyms" : ["bord de mer", "mer"],
 							"subpart" : []
 						}
 					]

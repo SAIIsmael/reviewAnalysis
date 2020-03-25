@@ -8,8 +8,8 @@ const cors = require('cors');
 const http = require('http');
 const request = require('request');
 var qs = require('querystring');
-const fs = require('fs');
-const shell = require('shelljs')
+const shell = require('shelljs');
+//const auxFun = require('./auxiliary_functions');
 const app = express();
 app.use(express.json());
 
@@ -27,14 +27,40 @@ app.options('*', cors());
 app.listen(8888);
 
 // Database Name
-const db = 'hotereview';
+const db = 'hoterelview';
 
 // Use connect method to connect to the server
 MongoClient.connect(url, {
   useNewUrlParser: true
 }, (err, client) => {
-  let db = client.db("hotereview");
+  let db = client.db("hotelreview");
   console.log("Server listening on port 8888");
+
+  app.get("/review/matchPattern/:phrase", cors(corsOptions), (req, res) => {
+    let sentence = req.params.phrase;
+
+    fs.readFile("../patternAnalysis/output/patternClean.txt",
+      function read(err, data) {
+        const regex = /%%%(.|\n)*/gm;
+        let value = "0";
+        let expArray = [];
+        let exps = data.toString("utf8").match(regex).toString().replace('%%%', '').toString();
+        expArray = exps.trim().split("&");
+        for (var i = 0; i < expArray.length; i++) {
+          expArray[i] = expArray[i].trim().split(":");
+        }
+        for (var i = 0; i < expArray.length; i++) {
+          var re = new RegExp(expArray[i][0]);
+          if (sentence.match(re)) {
+            console.log("IL Y A EU MATCH : " + expArray[i][1]);
+            value = expArray[i][1];
+          }
+        }
+        res.end(JSON.stringify({
+          "polarité": value
+        }))
+      });
+  });
 
   app.get("/review/:review", cors(corsOptions), (req, res) => {
     let review = req.params.review;
@@ -49,7 +75,6 @@ MongoClient.connect(url, {
           tt = data.toString("utf8");
           var results = [];
           var lines = tt.trim().split('\n');
-          //  console.log(lines);
           for (var i = 0; i < lines.length; i++) {
             var line = lines[i];
             var items = line.split('\t');
@@ -80,7 +105,6 @@ MongoClient.connect(url, {
       let isInten = "false";
       let mul = "0";
       for (var i = 0; i < ArrayI.length; i++) {
-        //console.log("Array : " + ArrayI[i][0] + "word : " + word);
         if (ArrayI[i][0].localeCompare(word) == 0) {
           isInten = "true";
           mul = ArrayI[i][1];
@@ -91,25 +115,26 @@ MongoClient.connect(url, {
         "coef": mul
       }));
     });
+  });
 
   app.get("/neg/:word", cors(corsOptions), (req, res) => {
     console.log("In /reviewType");
-    
+
     var word = req.params.word;
-    console.log("le word vaut "+ word);
+    console.log("le word vaut " + word);
 
     try {
       fs.readFile("../Ressources/lexique_negation.txt", function read(err, data) {
         tt = data.toString("utf8");
         var lines = tt.trim().split('\n');
-         console.log(lines);
+        console.log(lines);
         for (var i = 0; i < lines.length; i++) {
           var line = lines[i];
-          if(line.localeCompare(word)==0)
-          res.end(JSON.stringify("true"));
-        } 
+          if (line.localeCompare(word) == 0)
+            res.end(JSON.stringify("true"));
+        }
         res.end(JSON.stringify("false"));
-      })  
+      })
     } catch (e) {
       console.log("Error neg service");
       res.end(JSON.stringify([]));

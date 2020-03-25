@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PolariteServiceService } from '../_services/polarite-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -17,7 +18,13 @@ export class HomepageComponent implements OnInit {
   private cpt;
   private endPos = false;
 
-  constructor(private polarite : PolariteServiceService) { }
+  private review = [];
+  private tmp = [];
+  private sentenceTags = [];
+  private parsedWord = [];
+  private polarizedWords = [];
+
+  constructor(private polarite : PolariteServiceService, private router : Router) { }
 
   ngOnInit() {
   }
@@ -36,6 +43,7 @@ export class HomepageComponent implements OnInit {
 
 
 requetePhrase(){
+
 
 }
 
@@ -81,34 +89,40 @@ coloration(){
 
   }
 
+matchPattern(){
+  this.polarite.requetePattern(this.sentence).subscribe(data =>{
+    console.log(data);
+  })
+}
+
 analyse(){
   this.cpt = 0;
   this.polariteNom = [];
   for (let i = 0; i < this.tab.length; i++) {
     if ( this.tab[i].length > 1){
       for(let j = 0; j < this.tab[i].length; j++){
-      
+
         if ( this.tab[i][j].pos == "ADJ"){
           this.cpt++;
           var indiceNom = this.nomplusproche(j);
-         
+
           this.motapolarise.push(this.tab[i][j].t);
           if ( this.tab[i][j].l.includes("unknown")){
           this.polarite.requeterezo(this.tab[i][j].t).subscribe(data=>{
-            
+
             this.polarite.requeterezo(this.tab[i][j].t).subscribe(data =>{
-              
+
               this.polariteNom.push({"nom" : this.tab[i][indiceNom].t, "polarité" : (data[0].positif - data[0].negatif) });
-            
+
             })
           })
         }else{
           this.polarite.requeterezo(this.tab[i][j].t).subscribe(data=>{
-            
+
             this.polarite.requeterezo(this.tab[i][j].l).subscribe(data =>{
-              
+
               this.polariteNom.push({"nom" : this.tab[i][indiceNom].t, "polarité" : (data[0].positif - data[0].negatif) , "pos" : i});
-              
+
                   })
               })
           }
@@ -121,12 +135,12 @@ analyse(){
 MatchNameByIndex(nom,indice){
   let res = 0 ;
   for(let i = 0 ; i<this.polariteNom.length;i++){
-    
+
     if(this.polariteNom[i].nom.localeCompare(nom)==0 && this.polariteNom[i].pos==indice){
         res = i ;
     }
   }
-return res ; 
+return res ;
 }
 
 neg(){
@@ -140,7 +154,7 @@ neg(){
           if(data === "true"){
             let nomplusproche = this.nomplusproche(j);
             console.log("valeur de nomplusproche: " + nomplusproche);
-           
+
             let indicepl = this.MatchNameByIndex(this.tab[i][nomplusproche],i);
 
             console.log("ici "+this.polariteNom[indicepl]);
@@ -148,12 +162,12 @@ neg(){
             this.polariteNom[indicepl].polarité = this.polariteNom[indicepl].polarité * -1;
 
           }
-            
+
         })
       }
     }
   }
-
+}
   intense(){
     for (let i = 0; i < this.tab.length; i++) {
       for(let j = 0; j < this.tab[i].length; j++){
@@ -179,18 +193,7 @@ neg(){
       }
     }
   }
-  
-  MatchNameByIndex(nom,indice){
-    let res = 0 ;
-    for(let i = 0 ; i<this.polariteNom.length;i++){
 
-      if(this.polariteNom[i].nom.localeCompare(nom)==0 && this.polariteNom[i].pos==indice){
-          res = i ;
-      }
-    }
-  return res ;
-  }
-}
 requete() {
   console.log("ici dans component");
   console.log(this.word);
