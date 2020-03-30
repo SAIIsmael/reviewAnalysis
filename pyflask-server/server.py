@@ -1,3 +1,6 @@
+
+####### LANCEMENT LIGNE DE COMMANDE : 1)export FLASK_APP=server.py
+###### 2) flask run
 from flask import Flask
 from flask import jsonify
 import re
