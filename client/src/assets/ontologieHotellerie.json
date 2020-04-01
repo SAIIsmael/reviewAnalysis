@@ -3,7 +3,7 @@
 		{
 			"id" : 1,
 			"part" : "hôtel",
-			"polarity" : 0,
+			"polarity" : 1,
 			"synonyms" : ["établissement", "auberge", "motel", "gîte"],
 			"subpart" : [
 				{
