@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { jqxTreeGridComponent } from 'jqwidgets-ng/jqxtreegrid';
+import * as ontologyMemory from '../../assets/ontologieHotellerie.json';
 
 @Component({
   selector: 'app-ontology',
@@ -8,24 +9,30 @@ import { jqxTreeGridComponent } from 'jqwidgets-ng/jqxtreegrid';
 })
 export class OntologyComponent implements OnInit {
 
-  @ViewChild('treeGridReference', {static: false}) treeGrid: jqxTreeGridComponent;
+	constructor() {}
+
+	ngOnInit() {
+	}
+
+    @ViewChild('treeGridReference', {static: false}) treeGrid: jqxTreeGridComponent;
 
     source: any =
     {
         dataType: "json",
-        url: "./assets/ontologieHotellerie.json",
+        localData: ontologyMemory,
+//      url: "./assets/ontologieHotellerie.json",
         dataFields: [
             { name: "id", type: "number" },
             { name: "part", type: "string" },
-            { name: "polarity", type: "number" },
             { name: "synonyms", type: "string" },
-            { name: "subpart", type: "array" }
+            { name: "polarity", type: "number" },
+            { name: "subparts", type: "array" }
         ],
         root: "root",
         id: "id",
         hierarchy:
         {
-        	root: "subpart"
+        	root: "subparts"
         }
     }
 
@@ -53,11 +60,56 @@ export class OntologyComponent implements OnInit {
     ready: any = () => {
 //            this.treeGrid.expandAll();
             this.treeGrid.collapseAll();
+            this.setPolarity("dortoir",12);
+            this.setPolarity("WC",-5);
     };
 
-  constructor() {}
+	private find(obj,part,polarity) {
+		var trace=false;
+		var find=false;
+		for (var key in obj) {
+			if (obj.hasOwnProperty(key)) {
+				var val = obj[key];
+				if(trace) console.log("key="+key);
+				if(trace) console.log("val="+val);
+				if(key=="part") {
+					if(val==part) {
+						console.log("FIND part: "+part+" !!!");
+						find=true;
+					}
+				}
+				if(key=="synonyms") {
+					if(!find) {
+						for (var i=0; i<val.length; i++) {
+							if(trace) console.log("synonym="+val[i]);
+							if(val[i]==part) {
+								console.log("FIND synonym: "+part+" !!!");
+								find=true;
+							}
+						}
+					}
+				}
+				if(key=="polarity") {
+					if(find) {
+						console.log("SET polarity: "+polarity+" !!!");
+						obj[key]=polarity;
+						this.treeGrid.updateBoundData();
+					}
+				}
+				if(key=="subparts") {
+					if(!find) {
+						for (var j=0; j<val.length; j++) {
+							if(trace) console.log("subpart="+val[j]);
+							this.find(val[j],part,polarity);
+						}
+					}
+				}
+			}
+		}
+	}
 
-  ngOnInit() {
-  }
+	setPolarity(part,polarity) {
+		this.find(ontologyMemory.root[0],part,polarity);
+	}
 
 }
