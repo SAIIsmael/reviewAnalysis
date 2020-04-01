@@ -1,6 +1,15 @@
 [{
+  "hName": "hotel 1",
   "fname": "jean",
   "lname": "jean",
+  "rating": 4.5,
+  "date_of_stay": "1577951605",
+  "review": "Chambres spacieuses et bien agrémentées. Minibar apprécié. Propreté correcte. Climatisation efficace."
+}, {
+  "hName": "hotel 1",
+  "fname": "jean",
+  "lname": "jean",
+  "rating": 2,
   "date_of_stay": "1577951605",
   "review": "Chambres spacieuses et bien agrémentées. Minibar apprécié. Propreté correcte. Climatisation efficace."
 }]

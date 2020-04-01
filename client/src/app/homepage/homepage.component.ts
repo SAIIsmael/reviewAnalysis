@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PolariteServiceService } from '../_services/polarite-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -17,7 +18,13 @@ export class HomepageComponent implements OnInit {
   private cpt;
   private endPos = false;
 
-  constructor(private polarite : PolariteServiceService) { }
+  private review = [];
+  private tmp = [];
+  private sentenceTags = [];
+  private parsedWord = [];
+  private polarizedWords = [];
+
+  constructor(private polarite : PolariteServiceService, private router : Router) { }
 
   ngOnInit() {
   }
@@ -37,6 +44,105 @@ export class HomepageComponent implements OnInit {
 
 requetePhrase(){
 
+
+}
+
+test(){
+  this.tmp = [];
+  this.review = this.sentence.split('.');
+  this.review.pop();
+  console.log(this.review);
+  this.review.forEach(sentence =>{
+    this.polarite.ttSentence(sentence).subscribe(data =>{
+      this.tmp.push(data);
+      console.log("Received : " + JSON.stringify(this.tmp));
+      console.log('ATTENTION ICI PB CALLBACK VOIR AVEC MR.POMPIDOR');
+    })
+  })
+}
+
+testPolarite(){
+  this.sentenceTags = [];
+for (let i = 0; i < this.tmp.length; i++) {
+  for(let j = 0; j < this.tmp[i][0].length; j++){
+    this.tmp[i][0][j].sentence = i;
+    this.sentenceTags.push(this.tmp[i][0][j]);
+}
+}
+console.log(JSON.stringify(this.sentenceTags));
+this.sentenceTags.forEach(word =>{
+  console.log("WORD : " + JSON.stringify(word));
+    if ( word.l.includes("unknown")){
+  this.polarite.requeterezo(word.t).subscribe(data=>{
+  console.log("T : "+word.t+" -> "+ JSON.stringify(data[0]));
+  word.polarite =data[0];
+  console.log('NEW WORD : '+ JSON.stringify(word));
+})
+}else{
+  this.polarite.requeterezo(word.l).subscribe(data=>{
+  console.log("L : "+word.l+" -> "+ JSON.stringify(data[0]));
+  word.polarite = data[0];
+  console.log('NEW WORD : '+ JSON.stringify(word));
+})
+}
+});
+
+}
+
+printReviewTagged(){
+  console.log(JSON.stringify(this.sentenceTags));
+}
+
+testColoration(){
+  this.parsedWord = this.sentence.split(".");
+  for ( let i = 0; i < this.parsedWord.length; i++){
+  //  console.log("test color, parsedWord =  " + JSON.stringify(this.parsedWord[i]));
+    if ( this.parsedWord[i].length > 1 ){
+    this.parsedWord[i] = this.parsedWord[i].split(" ");
+    let hasBeenSplice = false;
+    for ( let j = 0; j < this.parsedWord[i].length; j++){
+        if ( i > 0 && !hasBeenSplice){
+      //    console.log("PARSED WORD FIRST LETTER : " + this.parsedWord[i][0]);
+          this.parsedWord[i].splice(0,1);
+          hasBeenSplice = true;
+        }
+    }
+//    console.log("test color, new parsedWord =  " + JSON.stringify(this.parsedWord[i]));
+
+    }
+}
+this.polarizedWords = [];
+  for( let i = 0; i < this.sentenceTags.length; i++){
+
+    let polarite = 0;
+    let intens = 0;
+    let neg = 1;
+    let npp;
+    if (this.sentenceTags[i].pos.localeCompare("ADJ") == 0 ){
+       npp =  this.parsedWord[this.sentenceTags[i].sentence][this.sentenceTags[i].npp];
+
+      console.log("[*"+(this.sentenceTags[i].polarite.positif - this.sentenceTags[i].polarite.negatif)+"] par adjectif plus proche : " + this.sentenceTags[i].t + " sur " + this.parsedWord[this.sentenceTags[i].sentence][this.sentenceTags[i].npp]);
+        polarite += (this.sentenceTags[i].polarite.positif - this.sentenceTags[i].polarite.negatif);
+      }
+      if (this.sentenceTags[i].itens > 0 ){
+       npp =  this.parsedWord[this.sentenceTags[i].sentence][this.sentenceTags[i].npp];
+        console.log("[*" +this.sentenceTags[i].itens+"] par intens : " + this.sentenceTags[i].t + " sur " + this.parsedWord[this.sentenceTags[i].sentence][this.sentenceTags[i].npp]);
+        intens+=this.sentenceTags[i].itens;
+      }
+      if (this.sentenceTags[i].neg == true){
+         npp =  this.parsedWord[this.sentenceTags[i].sentence][this.sentenceTags[i].npp];
+        console.log("[* -1]par negation : " + this.sentenceTags[i].t + " sur " + this.parsedWord[this.sentenceTags[i].sentence][this.sentenceTags[i].npp]);
+        neg*=this.sentenceTags[i].neg;
+      }
+      this.polarizedWords.push({"word":npp, "polarité":polarite, "neg":neg, "intensifieur":intens});
+
+    }
+
+}
+
+
+debugPolarize(){
+  console.log(this.polarizedWords);
 }
 
 reqrev(){
@@ -80,6 +186,12 @@ coloration(){
   }
 
   }
+
+matchPattern(){
+  this.polarite.requetePattern(this.sentence).subscribe(data =>{
+    console.log(data);
+  })
+}
 
 analyse(){
   this.cpt = 0;
