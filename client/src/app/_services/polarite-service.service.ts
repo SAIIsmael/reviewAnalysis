@@ -13,31 +13,47 @@ export class PolariteServiceService {
   constructor(private http:HttpClient) { }
 
 
-requeterezo(word : any) : Observable<any> {
-  return this.http.get(this.url+"testreq/"+word);
+  requeterezo(word : any) : Observable<any> {
+    return this.http.get(this.url+"testreq/"+word);
   }
 
-requetetreetagger() : Observable<any> {
-  return this.http.get(this.url+"reviewtype");
+  requetetreetagger() : Observable<any> {
+    return this.http.get(this.url+"reviewtype");
   }
 
-requeteReview(review : any) : Observable<any> {
-  return this.http.get(this.url+"review/" + review);
-}
-requeteInten(word) : Observable<any> {
-  return this.http.get(this.url+"isIntensifieur/" + word);
-}
-
-requeteNeg(word : any) : Observable<any> {
-  return this.http.get(this.url+"neg/"+word);
+  requeteReview(review : any) : Observable<any> {
+    return this.http.get(this.url+"review/" + review);
+  }
+  requeteInten(word) : Observable<any> {
+    return this.http.get(this.url+"isIntensifieur/" + word);
   }
 
-requetePattern(sentence : any) : Observable<any> {
-  return this.http.get(this.url+"review/matchPattern/"+ sentence);
-}
+  requeteNeg(word : any) : Observable<any> {
+    return this.http.get(this.url+"neg/"+word);
+  }
 
-ttSentence(sentence : any) : Observable<any>{
-  return this.http.get(this.url+"analysis/"+sentence);
-}
+  requetePattern(sentence : any) : Observable<any> {
+    return this.http.get(this.url+"review/matchPattern/"+ sentence);
+  }
+
+  loadOntologie() : Observable<any> {
+    return this.http.get(this.url+"ontologie/load");
+  }
+
+  setOntologie(word: string, polarity: number) : Observable<any> {
+    return this.http.get(this.url+"ontologie/set/"+word+"/"+polarity);
+  }
+
+  resetOntologie() : Observable<any> {
+    return this.http.get(this.url+"ontologie/reset");
+  }
+
+  dumpOntologie() : Observable<any> {
+    return this.http.get(this.url+"ontologie/dump");
+  }
+
+  ttSentence(sentence : any) : Observable<any>{
+    return this.http.get(this.url+"analysis/"+sentence);
+  }
 
 }

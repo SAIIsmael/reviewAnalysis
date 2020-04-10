@@ -1,0 +1,745 @@
+{
+	"root": [
+		{
+			"id": 1,
+			"part": "hôtel",
+			"synonyms": [
+				"établissement",
+				"auberge",
+				"motel",
+				"gîte"
+			],
+			"polarities": [],
+			"polaritymean": 0,
+			"subparts": [
+				{
+					"id": 11,
+					"part": "chambre",
+					"synonyms": [
+						"chambre à coucher",
+						"chambrée",
+						"suite",
+						"dortoir"
+					],
+					"polarities": [],
+					"polaritymean": 0,
+					"subparts": [
+						{
+							"id": 111,
+							"part": "literie",
+							"synonyms": [
+								"lit",
+								"couchage",
+								"couchette"
+							],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": [
+								{
+									"id": 1111,
+									"part": "matelas",
+									"synonyms": [
+										"couche"
+									],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								},
+								{
+									"id": 1112,
+									"part": "drap",
+									"synonyms": [
+										"lingerie"
+									],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								},
+								{
+									"id": 1113,
+									"part": "couette",
+									"synonyms": [
+										"couverture",
+										"édredon",
+										"duvet"
+									],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								},
+								{
+									"id": 1114,
+									"part": "oreiller",
+									"synonyms": [
+										"coussin",
+										"polochon",
+										"traversin",
+										"taie"
+									],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								},
+								{
+									"id": 1115,
+									"part": "sommier",
+									"synonyms": [
+										"paillasse"
+									],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								},
+								{
+									"id": 1116,
+									"part": "lit bébé",
+									"synonyms": [
+										"lit enfant"
+									],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								}
+							]
+						},
+						{
+							"id": 112,
+							"part": "salle de bain",
+							"synonyms": [
+								"salle d'eau"
+							],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": [
+								{
+									"id": 1121,
+									"part": "lavabo",
+									"synonyms": [
+										"évier",
+										"lave-mains",
+										"vasque"
+									],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								},
+								{
+									"id": 1122,
+									"part": "douche",
+									"synonyms": [
+										"douche italienne"
+									],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								},
+								{
+									"id": 1123,
+									"part": "baignoire",
+									"synonyms": [
+										"bain"
+									],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								},
+								{
+									"id": 1124,
+									"part": "bidet",
+									"synonyms": [],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								},
+								{
+									"id": 1125,
+									"part": "miroir",
+									"synonyms": [
+										"glace"
+									],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								},
+								{
+									"id": 1126,
+									"part": "serviette",
+									"synonyms": [
+										"essuie-mains",
+										"serviette de bain",
+										"serviette de toilette",
+										"sèche-mains"
+									],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								}
+							]
+						},
+						{
+							"id": 113,
+							"part": "toilettes",
+							"synonyms": [
+								"WC",
+								"water-closet",
+								"cuvette",
+								"cabinet",
+								"latrines",
+								" petit coin"
+							],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": []
+						},
+						{
+							"id": 114,
+							"part": "équipement",
+							"synonyms": [
+								"matériel"
+							],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": [
+								{
+									"id": 1141,
+									"part": "télévision",
+									"synonyms": [
+										"télé",
+										"poste de télévision",
+										"téléviseur",
+										"tv",
+										"petit écran"
+									],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": [
+										{
+											"id": 11411,
+											"part": "télécommande",
+											"synonyms": [
+												"zapette"
+											],
+											"polarities": [],
+											"polaritymean": 0,
+											"subparts": []
+										}
+									]
+								},
+								{
+									"id": 1142,
+									"part": "coffre",
+									"synonyms": [
+										"coffre-fort",
+										"cassette"
+									],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								},
+								{
+									"id": 1143,
+									"part": "mini bar",
+									"synonyms": [
+										"frigidaire",
+										"frigo",
+										"réfrigérateur",
+										"frigo bar"
+									],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								}
+							]
+						},
+						{
+							"id": 115,
+							"part": "rangement",
+							"synonyms": [
+								"placard",
+								"armoire",
+								"penderie",
+								"garde-robe",
+								"commode"
+							],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": []
+						},
+						{
+							"id": 116,
+							"part": "décoration",
+							"synonyms": [
+								"agencement",
+								"arrangement",
+								"aménagement",
+								"peinture",
+								"rideaux"
+							],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": []
+						},
+						{
+							"id": 117,
+							"part": "climatisation",
+							"synonyms": [
+								"climatiseur",
+								"clim",
+								"air conditionné",
+								"ventilation",
+								"chauffage"
+							],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": []
+						},
+						{
+							"id": 118,
+							"part": "terrasse",
+							"synonyms": [
+								"balcon"
+							],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": []
+						},
+						{
+							"id": 119,
+							"part": "propreté",
+							"synonyms": [
+								"ménage",
+								"nettoyage",
+								"poussières",
+								"aspirateur",
+								"balai"
+							],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": []
+						}
+					]
+				},
+				{
+					"id": 12,
+					"part": "restauration",
+					"synonyms": [
+						"restaurant",
+						"nourriture"
+					],
+					"polarities": [],
+					"polaritymean": 0,
+					"subparts": [
+						{
+							"id": 121,
+							"part": "petit-déjeuner",
+							"synonyms": [],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": [
+								{
+									"id": 1211,
+									"part": "café",
+									"synonyms": [],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								},
+								{
+									"id": 1212,
+									"part": "thé",
+									"synonyms": [
+										"infusion"
+									],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								},
+								{
+									"id": 1213,
+									"part": "chocolat",
+									"synonyms": [
+										"cacao"
+									],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								},
+								{
+									"id": 1214,
+									"part": "viennoiserie",
+									"synonyms": [
+										"croissant",
+										"pain au chocolat",
+										"chocolatine"
+									],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								}
+							]
+						},
+						{
+							"id": 122,
+							"part": "repas",
+							"synonyms": [
+								"déjeuner",
+								"souper"
+							],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": [
+								{
+									"id": 1221,
+									"part": "buffet",
+									"synonyms": [
+										"à volonté"
+									],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								}
+							]
+						},
+						{
+							"id": 123,
+							"part": "demi-pension",
+							"synonyms": [],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": []
+						},
+						{
+							"id": 124,
+							"part": "pension-complète",
+							"synonyms": [],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": []
+						},
+						{
+							"id": 125,
+							"part": "boisson",
+							"synonyms": [
+								"rafraîchissement"
+							],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": [
+								{
+									"id": 1251,
+									"part": "eau",
+									"synonyms": [
+										"eau minérale"
+									],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								},
+								{
+									"id": 1252,
+									"part": "vin",
+									"synonyms": [],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								},
+								{
+									"id": 1253,
+									"part": "bière",
+									"synonyms": [],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								},
+								{
+									"id": 1254,
+									"part": "jus de fruit",
+									"synonyms": [
+										"soda",
+										"coca"
+									],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								}
+							]
+						},
+						{
+							"id": 126,
+							"part": "cuisinier",
+							"synonyms": [
+								"chef",
+								"cuistot"
+							],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": []
+						},
+						{
+							"id": 127,
+							"part": "service",
+							"synonyms": [],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": [
+								{
+									"id": 1271,
+									"part": "serveur",
+									"synonyms": [
+										"barman",
+										"maître d'hotel",
+										"sommelier"
+									],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"id": 13,
+					"part": "installation",
+					"synonyms": [],
+					"polarities": [],
+					"polaritymean": 0,
+					"subparts": [
+						{
+							"id": 131,
+							"part": "spa",
+							"synonyms": [],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": []
+						},
+						{
+							"id": 132,
+							"part": "sauna",
+							"synonyms": [],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": []
+						},
+						{
+							"id": 133,
+							"part": "jacuzzi",
+							"synonyms": [],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": []
+						},
+						{
+							"id": 134,
+							"part": "salle de sport",
+							"synonyms": [
+								"gym",
+								"salle de musculation"
+							],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": []
+						},
+						{
+							"id": 135,
+							"part": "internet",
+							"synonyms": [
+								"wifi"
+							],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": []
+						},
+						{
+							"id": 136,
+							"part": "escalier",
+							"synonyms": [],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": []
+						},
+						{
+							"id": 137,
+							"part": "ascenseur",
+							"synonyms": [],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": []
+						}
+					]
+				},
+				{
+					"id": 14,
+					"part": "personnel",
+					"synonyms": [
+						"équipe",
+						"staff",
+						"employé"
+					],
+					"polarities": [],
+					"polaritymean": 0,
+					"subparts": [
+						{
+							"id": 141,
+							"part": "accueil",
+							"synonyms": [
+								"réception"
+							],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": []
+						},
+						{
+							"id": 142,
+							"part": "disponibilité",
+							"synonyms": [],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": []
+						}
+					]
+				},
+				{
+					"id": 15,
+					"part": "activités",
+					"synonyms": [],
+					"polarities": [],
+					"polaritymean": 0,
+					"subparts": [
+						{
+							"id": 151,
+							"part": "animation",
+							"synonyms": [],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": [
+								{
+									"id": 1511,
+									"part": "animateur",
+									"synonyms": [],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								}
+							]
+						},
+						{
+							"id": 152,
+							"part": "soirée",
+							"synonyms": [
+								"discothèque",
+								"dancing"
+							],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": []
+						},
+						{
+							"id": 153,
+							"part": "excursion",
+							"synonyms": [
+								"sortie",
+								"visite"
+							],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": []
+						}
+					]
+				},
+				{
+					"id": 16,
+					"part": "extérieur",
+					"synonyms": [],
+					"polarities": [],
+					"polaritymean": 0,
+					"subparts": [
+						{
+							"id": 161,
+							"part": "accès",
+							"synonyms": [],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": [
+								{
+									"id": 1611,
+									"part": "accès handicapé",
+									"synonyms": [],
+									"polarities": [],
+									"polaritymean": 0,
+									"subparts": []
+								}
+							]
+						},
+						{
+							"id": 162,
+							"part": "parking",
+							"synonyms": [
+								"voiture"
+							],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": []
+						},
+						{
+							"id": 163,
+							"part": "cadre",
+							"synonyms": [
+								"environnement",
+								"vue"
+							],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": []
+						},
+						{
+							"id": 164,
+							"part": "jardin",
+							"synonyms": [
+								"parc",
+								"espaces verts"
+							],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": []
+						},
+						{
+							"id": 165,
+							"part": "piscine",
+							"synonyms": [
+								"petite bassin",
+								"pataugeoire"
+							],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": []
+						},
+						{
+							"id": 166,
+							"part": "plage",
+							"synonyms": [
+								"bord de mer",
+								"mer"
+							],
+							"polarities": [],
+							"polaritymean": 0,
+							"subparts": []
+						}
+					]
+				},
+				{
+					"id": 17,
+					"part": "bruit",
+					"synonyms": [
+						"insonorisation",
+						"calme",
+						"tranquillité"
+					],
+					"polarities": [],
+					"polaritymean": 0,
+					"subparts": []
+				}
+			]
+		}
+	]
+}

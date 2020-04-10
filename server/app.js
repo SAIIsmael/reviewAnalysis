@@ -291,4 +291,169 @@ MongoClient.connect(url, {
     });
   });
 
+	// retourne le contenu de l ontologie depuis la base
+	app.get("/ontologie/load", cors(corsOptions), (req,res) => {
+		console.log("/ontologie/load");
+		try {
+			//get collection
+			db.collection("ontologie").find().toArray((err, ontologie) => {
+				delete ontologie[0]['_id'];
+				res.end(JSON.stringify(ontologie[0]));
+			});
+		} catch(e) {
+			console.log("Erreur sur /ontologie/load: "+e);
+			res.end(JSON.stringify([]));
+		}
+	});
+
+	// 
+	app.get("/ontologie/set/:word/:polarity", cors(corsOptions), (req,res) => {
+		let word=req.params.word;
+		let polarity=req.params.polarity;
+		console.log("/ontologie/set/"+word+"/"+polarity);
+		try {
+			//get collection
+			db.collection("ontologie").find().toArray((err, ontologie) => {
+				delete ontologie[0]['_id'];
+				// add polarity
+				search(ontologie[0].root[0],word,polarity);
+				try{
+					// drop collection
+					db.collection("ontologie").drop({}, () => {
+						// put collection
+						db.collection("ontologie").insertOne(ontologie[0], () => {
+							console.log("ontologie set ok");
+							delete ontologie[0]['_id'];
+							res.end(JSON.stringify(ontologie[0]));
+						});
+					});
+				}catch(e) {
+					console.log("Erreur sur /ontologie/set/"+word+"/"+polarity+": "+e);
+					res.end(JSON.stringify([]));
+				}
+			});
+		} catch(e) {
+			console.log("Erreur sur /ontologie/set/"+word+"/"+polarity+": "+e);
+			res.end(JSON.stringify([]));
+		}
+	});
+
+	// recherche recursivement la partie de l ontologie a polariser
+	function search(obj,part,polarity) {
+		var trace=true;
+    var find=false;
+    var polaritymean=0;
+		for (var key in obj) {
+			if (obj.hasOwnProperty(key)) {
+				var val = obj[key];
+				if(key=="part") {
+					if(val==part) {
+						if(trace) console.log("find part: "+part);
+						find=true;
+					}
+				}
+				if(key=="synonyms") {
+					if(!find) {
+						for (var i=0; i<val.length; i++) {
+							if(val[i]==part) {
+								if(trace) console.log("find synonym: "+part);
+								find=true;
+							}
+						}
+					}
+				}
+				if(key=="polarities") {
+					if(find) {
+            if(trace) console.log("add polarity: "+polarity);
+            
+            var nbPol=val.length;
+            if(nbPol>0) {
+              for (var i=0; i<nbPol; i++) {
+                polaritymean += parseInt(val[i]);
+              }
+            }
+            val.push(polarity);
+            polaritymean += parseInt(polarity);
+            nbPol++;
+            polaritymean = Math.round(polaritymean/nbPol);
+          }
+				}
+				if(key=="polaritymean") {
+					if(find) {
+						if(trace) console.log("mean polarity: "+polaritymean);
+						obj[key]=polaritymean;
+					}
+				}
+				if(key=="subparts") {
+					if(!find) {
+						for (var j=0; j<val.length; j++) {
+							search(val[j],part,polarity);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// monte le contenu de l ontologie depuis le fichier vierge vers la base et retourne ce nouveau contenu
+	app.get("/ontologie/reset", cors(corsOptions), (req,res) => {
+		console.log("/ontologie/reset");
+		try{
+				// drop collection
+				db.collection("ontologie").drop({}, () => {
+				const fs = require('fs');
+				try{
+					// read file
+					fs.readFile('ontologieHotellerie.json', (err, fromfile) => {
+						let ontologie = JSON.parse(fromfile);
+						try{
+							// put collection
+							db.collection("ontologie").insertOne(ontologie, () => {
+								console.log("ontologie reset ok");
+								delete ontologie['_id'];
+								res.end(JSON.stringify(ontologie));
+							});
+						}catch(e) {
+							console.log("Erreur sur /ontologie/reset: "+e);
+							res.end(JSON.stringify([]));
+						}
+					});
+				}catch(e) {
+					console.log("Erreur sur /ontologie/reset: "+e);
+					res.end(JSON.stringify([]));
+				}
+			});
+		}catch(e) {
+			console.log("Erreur sur /ontologie/reset: "+e);
+			res.end(JSON.stringify([]));
+		}
+	});
+
+	// descend le contenu de l ontologie depuis la base vers le fichier dump
+	app.get("/ontologie/dump", cors(corsOptions), (req,res) => {
+		console.log("/ontologie/dump");
+		const fs = require('fs');
+		try {
+			// get collection
+			db.collection("ontologie").find().toArray((err, ontologie) => {
+				delete ontologie[0]['_id'];
+				let tofile = JSON.stringify(ontologie[0]);
+				try{
+					// write file
+					fs.writeFile('./dump.json', tofile, (err) => {
+						console.log("ontologie dump ok");
+						res.end(JSON.stringify([]));
+					});
+				}catch(e) {
+					console.log("Erreur sur /ontologie/dump: "+e);
+					res.end(JSON.stringify([]));
+				}
+			});
+		} catch(e) {
+			console.log("Erreur sur /ontologie/dump: "+e);
+			res.end(JSON.stringify([]));
+		}
+	});
+
+
 });
