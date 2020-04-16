@@ -9,8 +9,8 @@
 				"motel",
 				"gîte"
 			],
-			"polarities": [],
-			"polaritymean": 0,
+			"reviews": [],
+			"reviewmean": null,
 			"subparts": [
 				{
 					"id": 11,
@@ -21,8 +21,8 @@
 						"suite",
 						"dortoir"
 					],
-					"polarities": [],
-					"polaritymean": 0,
+					"reviews": [],
+					"reviewmean": null,
 					"subparts": [
 						{
 							"id": 111,
@@ -32,8 +32,8 @@
 								"couchage",
 								"couchette"
 							],
-							"polarities": [],
-							"polaritymean": 0,
+							"reviews": [],
+							"reviewmean": null,
 							"subparts": [
 								{
 									"id": 1111,
@@ -41,9 +41,11 @@
 									"synonyms": [
 										"couche"
 									],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								},
 								{
 									"id": 1112,
@@ -51,9 +53,11 @@
 									"synonyms": [
 										"lingerie"
 									],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								},
 								{
 									"id": 1113,
@@ -63,9 +67,11 @@
 										"édredon",
 										"duvet"
 									],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								},
 								{
 									"id": 1114,
@@ -76,9 +82,11 @@
 										"traversin",
 										"taie"
 									],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								},
 								{
 									"id": 1115,
@@ -86,9 +94,11 @@
 									"synonyms": [
 										"paillasse"
 									],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								},
 								{
 									"id": 1116,
@@ -96,11 +106,15 @@
 									"synonyms": [
 										"lit enfant"
 									],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								}
-							]
+							],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 112,
@@ -108,8 +122,8 @@
 							"synonyms": [
 								"salle d'eau"
 							],
-							"polarities": [],
-							"polaritymean": 0,
+							"reviews": [],
+							"reviewmean": null,
 							"subparts": [
 								{
 									"id": 1121,
@@ -119,9 +133,11 @@
 										"lave-mains",
 										"vasque"
 									],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								},
 								{
 									"id": 1122,
@@ -129,9 +145,11 @@
 									"synonyms": [
 										"douche italienne"
 									],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								},
 								{
 									"id": 1123,
@@ -139,17 +157,21 @@
 									"synonyms": [
 										"bain"
 									],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								},
 								{
 									"id": 1124,
 									"part": "bidet",
 									"synonyms": [],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								},
 								{
 									"id": 1125,
@@ -157,9 +179,11 @@
 									"synonyms": [
 										"glace"
 									],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								},
 								{
 									"id": 1126,
@@ -170,11 +194,15 @@
 										"serviette de toilette",
 										"sèche-mains"
 									],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								}
-							]
+							],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 113,
@@ -187,9 +215,11 @@
 								"latrines",
 								" petit coin"
 							],
-							"polarities": [],
-							"polaritymean": 0,
-							"subparts": []
+							"reviews": [],
+							"reviewmean": null,
+							"subparts": [],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 114,
@@ -197,8 +227,8 @@
 							"synonyms": [
 								"matériel"
 							],
-							"polarities": [],
-							"polaritymean": 0,
+							"reviews": [],
+							"reviewmean": null,
 							"subparts": [
 								{
 									"id": 1141,
@@ -210,8 +240,8 @@
 										"tv",
 										"petit écran"
 									],
-									"polarities": [],
-									"polaritymean": 0,
+									"reviews": [],
+									"reviewmean": null,
 									"subparts": [
 										{
 											"id": 11411,
@@ -219,11 +249,15 @@
 											"synonyms": [
 												"zapette"
 											],
-											"polarities": [],
-											"polaritymean": 0,
-											"subparts": []
+											"reviews": [],
+											"reviewmean": null,
+											"subparts": [],
+											"subpartmean": null,
+											"polarity": null
 										}
-									]
+									],
+									"subpartmean": null,
+									"polarity": null
 								},
 								{
 									"id": 1142,
@@ -232,9 +266,11 @@
 										"coffre-fort",
 										"cassette"
 									],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								},
 								{
 									"id": 1143,
@@ -245,11 +281,15 @@
 										"réfrigérateur",
 										"frigo bar"
 									],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								}
-							]
+							],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 115,
@@ -261,9 +301,11 @@
 								"garde-robe",
 								"commode"
 							],
-							"polarities": [],
-							"polaritymean": 0,
-							"subparts": []
+							"reviews": [],
+							"reviewmean": null,
+							"subparts": [],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 116,
@@ -275,9 +317,11 @@
 								"peinture",
 								"rideaux"
 							],
-							"polarities": [],
-							"polaritymean": 0,
-							"subparts": []
+							"reviews": [],
+							"reviewmean": null,
+							"subparts": [],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 117,
@@ -289,9 +333,11 @@
 								"ventilation",
 								"chauffage"
 							],
-							"polarities": [],
-							"polaritymean": 0,
-							"subparts": []
+							"reviews": [],
+							"reviewmean": null,
+							"subparts": [],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 118,
@@ -299,9 +345,11 @@
 							"synonyms": [
 								"balcon"
 							],
-							"polarities": [],
-							"polaritymean": 0,
-							"subparts": []
+							"reviews": [],
+							"reviewmean": null,
+							"subparts": [],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 119,
@@ -313,11 +361,15 @@
 								"aspirateur",
 								"balai"
 							],
-							"polarities": [],
-							"polaritymean": 0,
-							"subparts": []
+							"reviews": [],
+							"reviewmean": null,
+							"subparts": [],
+							"subpartmean": null,
+							"polarity": null
 						}
-					]
+					],
+					"subpartmean": null,
+					"polarity": null
 				},
 				{
 					"id": 12,
@@ -326,23 +378,25 @@
 						"restaurant",
 						"nourriture"
 					],
-					"polarities": [],
-					"polaritymean": 0,
+					"reviews": [],
+					"reviewmean": null,
 					"subparts": [
 						{
 							"id": 121,
 							"part": "petit-déjeuner",
 							"synonyms": [],
-							"polarities": [],
-							"polaritymean": 0,
+							"reviews": [],
+							"reviewmean": null,
 							"subparts": [
 								{
 									"id": 1211,
 									"part": "café",
 									"synonyms": [],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								},
 								{
 									"id": 1212,
@@ -350,9 +404,11 @@
 									"synonyms": [
 										"infusion"
 									],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								},
 								{
 									"id": 1213,
@@ -360,9 +416,11 @@
 									"synonyms": [
 										"cacao"
 									],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								},
 								{
 									"id": 1214,
@@ -372,11 +430,15 @@
 										"pain au chocolat",
 										"chocolatine"
 									],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								}
-							]
+							],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 122,
@@ -385,8 +447,8 @@
 								"déjeuner",
 								"souper"
 							],
-							"polarities": [],
-							"polaritymean": 0,
+							"reviews": [],
+							"reviewmean": null,
 							"subparts": [
 								{
 									"id": 1221,
@@ -394,27 +456,35 @@
 									"synonyms": [
 										"à volonté"
 									],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								}
-							]
+							],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 123,
 							"part": "demi-pension",
 							"synonyms": [],
-							"polarities": [],
-							"polaritymean": 0,
-							"subparts": []
+							"reviews": [],
+							"reviewmean": null,
+							"subparts": [],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 124,
 							"part": "pension-complète",
 							"synonyms": [],
-							"polarities": [],
-							"polaritymean": 0,
-							"subparts": []
+							"reviews": [],
+							"reviewmean": null,
+							"subparts": [],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 125,
@@ -422,8 +492,8 @@
 							"synonyms": [
 								"rafraîchissement"
 							],
-							"polarities": [],
-							"polaritymean": 0,
+							"reviews": [],
+							"reviewmean": null,
 							"subparts": [
 								{
 									"id": 1251,
@@ -431,25 +501,31 @@
 									"synonyms": [
 										"eau minérale"
 									],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								},
 								{
 									"id": 1252,
 									"part": "vin",
 									"synonyms": [],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								},
 								{
 									"id": 1253,
 									"part": "bière",
 									"synonyms": [],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								},
 								{
 									"id": 1254,
@@ -458,11 +534,15 @@
 										"soda",
 										"coca"
 									],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								}
-							]
+							],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 126,
@@ -471,16 +551,18 @@
 								"chef",
 								"cuistot"
 							],
-							"polarities": [],
-							"polaritymean": 0,
-							"subparts": []
+							"reviews": [],
+							"reviewmean": null,
+							"subparts": [],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 127,
 							"part": "service",
 							"synonyms": [],
-							"polarities": [],
-							"polaritymean": 0,
+							"reviews": [],
+							"reviewmean": null,
 							"subparts": [
 								{
 									"id": 1271,
@@ -490,44 +572,56 @@
 										"maître d'hotel",
 										"sommelier"
 									],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								}
-							]
+							],
+							"subpartmean": null,
+							"polarity": null
 						}
-					]
+					],
+					"subpartmean": null,
+					"polarity": null
 				},
 				{
 					"id": 13,
 					"part": "installation",
 					"synonyms": [],
-					"polarities": [],
-					"polaritymean": 0,
+					"reviews": [],
+					"reviewmean": null,
 					"subparts": [
 						{
 							"id": 131,
 							"part": "spa",
 							"synonyms": [],
-							"polarities": [],
-							"polaritymean": 0,
-							"subparts": []
+							"reviews": [],
+							"reviewmean": null,
+							"subparts": [],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 132,
 							"part": "sauna",
 							"synonyms": [],
-							"polarities": [],
-							"polaritymean": 0,
-							"subparts": []
+							"reviews": [],
+							"reviewmean": null,
+							"subparts": [],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 133,
 							"part": "jacuzzi",
 							"synonyms": [],
-							"polarities": [],
-							"polaritymean": 0,
-							"subparts": []
+							"reviews": [],
+							"reviewmean": null,
+							"subparts": [],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 134,
@@ -536,9 +630,11 @@
 								"gym",
 								"salle de musculation"
 							],
-							"polarities": [],
-							"polaritymean": 0,
-							"subparts": []
+							"reviews": [],
+							"reviewmean": null,
+							"subparts": [],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 135,
@@ -546,27 +642,35 @@
 							"synonyms": [
 								"wifi"
 							],
-							"polarities": [],
-							"polaritymean": 0,
-							"subparts": []
+							"reviews": [],
+							"reviewmean": null,
+							"subparts": [],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 136,
 							"part": "escalier",
 							"synonyms": [],
-							"polarities": [],
-							"polaritymean": 0,
-							"subparts": []
+							"reviews": [],
+							"reviewmean": null,
+							"subparts": [],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 137,
 							"part": "ascenseur",
 							"synonyms": [],
-							"polarities": [],
-							"polaritymean": 0,
-							"subparts": []
+							"reviews": [],
+							"reviewmean": null,
+							"subparts": [],
+							"subpartmean": null,
+							"polarity": null
 						}
-					]
+					],
+					"subpartmean": null,
+					"polarity": null
 				},
 				{
 					"id": 14,
@@ -576,8 +680,8 @@
 						"staff",
 						"employé"
 					],
-					"polarities": [],
-					"polaritymean": 0,
+					"reviews": [],
+					"reviewmean": null,
 					"subparts": [
 						{
 							"id": 141,
@@ -585,43 +689,53 @@
 							"synonyms": [
 								"réception"
 							],
-							"polarities": [],
-							"polaritymean": 0,
-							"subparts": []
+							"reviews": [],
+							"reviewmean": null,
+							"subparts": [],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 142,
 							"part": "disponibilité",
 							"synonyms": [],
-							"polarities": [],
-							"polaritymean": 0,
-							"subparts": []
+							"reviews": [],
+							"reviewmean": null,
+							"subparts": [],
+							"subpartmean": null,
+							"polarity": null
 						}
-					]
+					],
+					"subpartmean": null,
+					"polarity": null
 				},
 				{
 					"id": 15,
 					"part": "activités",
 					"synonyms": [],
-					"polarities": [],
-					"polaritymean": 0,
+					"reviews": [],
+					"reviewmean": null,
 					"subparts": [
 						{
 							"id": 151,
 							"part": "animation",
 							"synonyms": [],
-							"polarities": [],
-							"polaritymean": 0,
+							"reviews": [],
+							"reviewmean": null,
 							"subparts": [
 								{
 									"id": 1511,
 									"part": "animateur",
 									"synonyms": [],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								}
-							]
+							],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 152,
@@ -630,9 +744,11 @@
 								"discothèque",
 								"dancing"
 							],
-							"polarities": [],
-							"polaritymean": 0,
-							"subparts": []
+							"reviews": [],
+							"reviewmean": null,
+							"subparts": [],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 153,
@@ -641,35 +757,43 @@
 								"sortie",
 								"visite"
 							],
-							"polarities": [],
-							"polaritymean": 0,
-							"subparts": []
+							"reviews": [],
+							"reviewmean": null,
+							"subparts": [],
+							"subpartmean": null,
+							"polarity": null
 						}
-					]
+					],
+					"subpartmean": null,
+					"polarity": null
 				},
 				{
 					"id": 16,
 					"part": "extérieur",
 					"synonyms": [],
-					"polarities": [],
-					"polaritymean": 0,
+					"reviews": [],
+					"reviewmean": null,
 					"subparts": [
 						{
 							"id": 161,
 							"part": "accès",
 							"synonyms": [],
-							"polarities": [],
-							"polaritymean": 0,
+							"reviews": [],
+							"reviewmean": null,
 							"subparts": [
 								{
 									"id": 1611,
 									"part": "accès handicapé",
 									"synonyms": [],
-									"polarities": [],
-									"polaritymean": 0,
-									"subparts": []
+									"reviews": [],
+									"reviewmean": null,
+									"subparts": [],
+									"subpartmean": null,
+									"polarity": null
 								}
-							]
+							],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 162,
@@ -677,9 +801,11 @@
 							"synonyms": [
 								"voiture"
 							],
-							"polarities": [],
-							"polaritymean": 0,
-							"subparts": []
+							"reviews": [],
+							"reviewmean": null,
+							"subparts": [],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 163,
@@ -688,9 +814,11 @@
 								"environnement",
 								"vue"
 							],
-							"polarities": [],
-							"polaritymean": 0,
-							"subparts": []
+							"reviews": [],
+							"reviewmean": null,
+							"subparts": [],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 164,
@@ -699,9 +827,11 @@
 								"parc",
 								"espaces verts"
 							],
-							"polarities": [],
-							"polaritymean": 0,
-							"subparts": []
+							"reviews": [],
+							"reviewmean": null,
+							"subparts": [],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 165,
@@ -710,9 +840,11 @@
 								"petite bassin",
 								"pataugeoire"
 							],
-							"polarities": [],
-							"polaritymean": 0,
-							"subparts": []
+							"reviews": [],
+							"reviewmean": null,
+							"subparts": [],
+							"subpartmean": null,
+							"polarity": null
 						},
 						{
 							"id": 166,
@@ -721,11 +853,15 @@
 								"bord de mer",
 								"mer"
 							],
-							"polarities": [],
-							"polaritymean": 0,
-							"subparts": []
+							"reviews": [],
+							"reviewmean": null,
+							"subparts": [],
+							"subpartmean": null,
+							"polarity": null
 						}
-					]
+					],
+					"subpartmean": null,
+					"polarity": null
 				},
 				{
 					"id": 17,
@@ -735,11 +871,15 @@
 						"calme",
 						"tranquillité"
 					],
-					"polarities": [],
-					"polaritymean": 0,
-					"subparts": []
+					"reviews": [],
+					"reviewmean": null,
+					"subparts": [],
+					"subpartmean": null,
+					"polarity": null
 				}
-			]
+			],
+			"subpartmean": null,
+			"polarity": null
 		}
 	]
 }

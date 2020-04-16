@@ -36,20 +36,20 @@ export class PolariteServiceService {
     return this.http.get(this.url+"review/matchPattern/"+ sentence);
   }
 
-  loadOntologie() : Observable<any> {
-    return this.http.get(this.url+"ontologie/load");
+  loadOntology() : Observable<any> {
+    return this.http.get(this.url+"ontology/load");
   }
 
-  setOntologie(word: string, polarity: number) : Observable<any> {
-    return this.http.get(this.url+"ontologie/set/"+word+"/"+polarity);
+  setOntology(word: string, polarity: number) : Observable<any> {
+    return this.http.get(this.url+"ontology/set/"+word+"/"+polarity);
   }
 
-  resetOntologie() : Observable<any> {
-    return this.http.get(this.url+"ontologie/reset");
+  resetOntology() : Observable<any> {
+    return this.http.get(this.url+"ontology/reset");
   }
 
-  dumpOntologie() : Observable<any> {
-    return this.http.get(this.url+"ontologie/dump");
+  dumpOntology() : Observable<any> {
+    return this.http.get(this.url+"ontology/dump");
   }
 
   ttSentence(sentence : any) : Observable<any>{

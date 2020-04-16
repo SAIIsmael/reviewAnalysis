@@ -292,165 +292,201 @@ MongoClient.connect(url, {
   });
 
 	// retourne le contenu de l ontologie depuis la base
-	app.get("/ontologie/load", cors(corsOptions), (req,res) => {
-		console.log("/ontologie/load");
+	app.get("/ontology/load", cors(corsOptions), (req,res) => {
+		console.log("/ontology/load");
 		try {
 			//get collection
-			db.collection("ontologie").find().toArray((err, ontologie) => {
-				delete ontologie[0]['_id'];
-				res.end(JSON.stringify(ontologie[0]));
+			db.collection("ontology").find().toArray((err, ontology) => {
+				delete ontology[0]['_id'];
+				res.end(JSON.stringify(ontology[0]));
 			});
 		} catch(e) {
-			console.log("Erreur sur /ontologie/load: "+e);
+			console.log("Erreur sur /ontology/load: "+e);
 			res.end(JSON.stringify([]));
 		}
 	});
 
-	// 
-	app.get("/ontologie/set/:word/:polarity", cors(corsOptions), (req,res) => {
+	// affecte la valeur de polarité a la partie de l ontologie correspondande
+	app.get("/ontology/set/:word/:polarity", cors(corsOptions), (req,res) => {
 		let word=req.params.word;
 		let polarity=req.params.polarity;
-		console.log("/ontologie/set/"+word+"/"+polarity);
+		console.log("/ontology/set/"+word+"/"+polarity);
 		try {
 			//get collection
-			db.collection("ontologie").find().toArray((err, ontologie) => {
-				delete ontologie[0]['_id'];
+			db.collection("ontology").find().toArray((err, ontology) => {
+				delete ontology[0]['_id'];
 				// add polarity
-				search(ontologie[0].root[0],word,polarity);
+				setPolarity(ontology[0].root[0],word,polarity);
 				try{
 					// drop collection
-					db.collection("ontologie").drop({}, () => {
+					db.collection("ontology").drop({}, () => {
 						// put collection
-						db.collection("ontologie").insertOne(ontologie[0], () => {
-							console.log("ontologie set ok");
-							delete ontologie[0]['_id'];
-							res.end(JSON.stringify(ontologie[0]));
+						db.collection("ontology").insertOne(ontology[0], () => {
+							delete ontology[0]['_id'];
+							res.end(JSON.stringify(ontology[0]));
 						});
 					});
 				}catch(e) {
-					console.log("Erreur sur /ontologie/set/"+word+"/"+polarity+": "+e);
+					console.log("Erreur sur /ontology/set/"+word+"/"+polarity+": "+e);
 					res.end(JSON.stringify([]));
 				}
 			});
 		} catch(e) {
-			console.log("Erreur sur /ontologie/set/"+word+"/"+polarity+": "+e);
+			console.log("Erreur sur /ontology/set/"+word+"/"+polarity+": "+e);
 			res.end(JSON.stringify([]));
 		}
 	});
 
 	// recherche recursivement la partie de l ontologie a polariser
-	function search(obj,part,polarity) {
+	function setPolarity(node,part,polarity) {
 		var trace=true;
     var find=false;
-    var polaritymean=0;
-		for (var key in obj) {
-			if (obj.hasOwnProperty(key)) {
-				var val = obj[key];
+    var id=0;
+    var reviewmean=null;
+    var subparts=[];
+    var subpartmean=null;
+    var result=null;
+		for (var key in node) {
+			if (node.hasOwnProperty(key)) {
+				var value = node[key];
+				if(key=="id") {
+          id=value;
+					// if(trace) console.log("id part: "+value);
+				}
 				if(key=="part") {
-					if(val==part) {
+					if(value.toLowerCase()==part.toLowerCase()) {
 						if(trace) console.log("find part: "+part);
 						find=true;
 					}
 				}
 				if(key=="synonyms") {
 					if(!find) {
-						for (var i=0; i<val.length; i++) {
-							if(val[i]==part) {
+						for (var i=0; i<value.length; i++) {
+							if(value[i].toLowerCase()==part.toLowerCase()) {
 								if(trace) console.log("find synonym: "+part);
 								find=true;
 							}
 						}
 					}
 				}
-				if(key=="polarities") {
+				if(key=="reviews") {
 					if(find) {
-            if(trace) console.log("add polarity: "+polarity);
-            
-            var nbPol=val.length;
-            if(nbPol>0) {
-              for (var i=0; i<nbPol; i++) {
-                polaritymean += parseInt(val[i]);
-              }
+            if(trace) console.log("add to reviews: "+polarity);
+            value.push(polarity);
+            reviewmean=0;
+            for (var i=0; i<value.length; i++) {
+              reviewmean += parseInt(value[i]);
             }
-            val.push(polarity);
-            polaritymean += parseInt(polarity);
-            nbPol++;
-            polaritymean = Math.round(polaritymean/nbPol);
+            reviewmean = Math.round(reviewmean/value.length);
           }
 				}
-				if(key=="polaritymean") {
+				if(key=="reviewmean") {
 					if(find) {
-						if(trace) console.log("mean polarity: "+polaritymean);
-						obj[key]=polaritymean;
-					}
+						if(trace) console.log("new review mean: "+reviewmean);
+						node[key]=reviewmean;
+          }
+          else
+            reviewmean=node[key];
 				}
 				if(key=="subparts") {
-					if(!find) {
-						for (var j=0; j<val.length; j++) {
-							search(val[j],part,polarity);
-						}
-					}
+          for (var j=0; j<value.length; j++) {
+            subresult = setPolarity(value[j],part,polarity);
+            if(subresult!=null) {
+              subparts.push(subresult);
+            }
+          }
+          if(subparts!=null) {
+            if(subparts.length>0) {
+              subpartmean=0;
+              for (var i=0; i<subparts.length; i++) {
+                subpartmean += parseInt(subparts[i]);
+              }
+              subpartmean = Math.round(subpartmean/subparts.length);
+            }
+          }
 				}
-			}
-		}
+				if(key=="subpartmean") {
+          if(subpartmean!=null)
+            node[key]=subpartmean;
+        }
+				if(key=="polarity") {
+          var polarity=null;
+          var nbmean=0;
+          if(reviewmean!=null) {
+            polarity += reviewmean;
+            nbmean++;
+          }
+          if(subpartmean!=null) {
+            polarity += subpartmean;
+            nbmean++;
+          }
+          if(nbmean>1) {
+            polarity = Math.round(polarity/nbmean);
+          }
+          if(polarity!=null) {
+            node[key]=polarity;
+            result = polarity;
+          }
+        }
+      }
+    }
+    return result;
 	}
 
 	// monte le contenu de l ontologie depuis le fichier vierge vers la base et retourne ce nouveau contenu
-	app.get("/ontologie/reset", cors(corsOptions), (req,res) => {
-		console.log("/ontologie/reset");
+	app.get("/ontology/reset", cors(corsOptions), (req,res) => {
+		console.log("/ontology/reset");
 		try{
 				// drop collection
-				db.collection("ontologie").drop({}, () => {
+				db.collection("ontology").drop({}, () => {
 				const fs = require('fs');
 				try{
 					// read file
 					fs.readFile('ontologieHotellerie.json', (err, fromfile) => {
-						let ontologie = JSON.parse(fromfile);
+						let ontology = JSON.parse(fromfile);
 						try{
 							// put collection
-							db.collection("ontologie").insertOne(ontologie, () => {
-								console.log("ontologie reset ok");
-								delete ontologie['_id'];
-								res.end(JSON.stringify(ontologie));
+							db.collection("ontology").insertOne(ontology, () => {
+								delete ontology['_id'];
+								res.end(JSON.stringify(ontology));
 							});
 						}catch(e) {
-							console.log("Erreur sur /ontologie/reset: "+e);
+							console.log("Erreur sur /ontology/reset: "+e);
 							res.end(JSON.stringify([]));
 						}
 					});
 				}catch(e) {
-					console.log("Erreur sur /ontologie/reset: "+e);
+					console.log("Erreur sur /ontology/reset: "+e);
 					res.end(JSON.stringify([]));
 				}
 			});
 		}catch(e) {
-			console.log("Erreur sur /ontologie/reset: "+e);
+			console.log("Erreur sur /ontology/reset: "+e);
 			res.end(JSON.stringify([]));
 		}
 	});
 
 	// descend le contenu de l ontologie depuis la base vers le fichier dump
-	app.get("/ontologie/dump", cors(corsOptions), (req,res) => {
-		console.log("/ontologie/dump");
+	app.get("/ontology/dump", cors(corsOptions), (req,res) => {
+		console.log("/ontology/dump");
 		const fs = require('fs');
 		try {
 			// get collection
-			db.collection("ontologie").find().toArray((err, ontologie) => {
-				delete ontologie[0]['_id'];
-				let tofile = JSON.stringify(ontologie[0]);
+			db.collection("ontology").find().toArray((err, ontology) => {
+				delete ontology[0]['_id'];
+				let tofile = JSON.stringify(ontology[0]);
 				try{
 					// write file
 					fs.writeFile('./dump.json', tofile, (err) => {
-						console.log("ontologie dump ok");
 						res.end(JSON.stringify([]));
 					});
 				}catch(e) {
-					console.log("Erreur sur /ontologie/dump: "+e);
+					console.log("Erreur sur /ontology/dump: "+e);
 					res.end(JSON.stringify([]));
 				}
 			});
 		} catch(e) {
-			console.log("Erreur sur /ontologie/dump: "+e);
+			console.log("Erreur sur /ontology/dump: "+e);
 			res.end(JSON.stringify([]));
 		}
 	});

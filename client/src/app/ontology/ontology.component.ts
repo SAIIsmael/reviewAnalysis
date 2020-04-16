@@ -13,18 +13,19 @@ export class OntologyComponent implements OnInit {
 
 	private ontologyMemory: any = new Object();
 
-	private word: string = "";
-	private polarity: number = 0;
+	private part: string = "";
+	private polarity: number = null;
 
 	constructor(private polariteService : PolariteServiceService) {}
 	
 	ngOnInit() {
+		this.load();
 	}
 
 	updateData(data, value){
 		switch(data){
-			case "word":
-				this.word = value;
+			case "part":
+				this.part = value;
 			break;
 			case "polarity":
 				this.polarity = value;
@@ -34,7 +35,7 @@ export class OntologyComponent implements OnInit {
 
 	setPolarity() {
 
-		this.polariteService.setOntologie(this.word,this.polarity).subscribe(data =>{
+		this.polariteService.setOntology(this.part,this.polarity).subscribe(data =>{
 			Object.assign(this.ontologyMemory, data);
 			this.treeGrid.updateBoundData();
 			this.treeGrid.expandAll();
@@ -43,7 +44,7 @@ export class OntologyComponent implements OnInit {
 	}
 
 	load() {
-		this.polariteService.loadOntologie().subscribe(data =>{
+		this.polariteService.loadOntology().subscribe(data =>{
 			Object.assign(this.ontologyMemory, data);
 			this.treeGrid.updateBoundData();
 			this.treeGrid.expandAll();
@@ -51,7 +52,7 @@ export class OntologyComponent implements OnInit {
 	}
 
 	reset() {
-		this.polariteService.resetOntologie().subscribe(data =>{
+		this.polariteService.resetOntology().subscribe(data =>{
 			Object.assign(this.ontologyMemory, data);
 			this.treeGrid.updateBoundData();
 			this.treeGrid.expandAll();
@@ -59,7 +60,7 @@ export class OntologyComponent implements OnInit {
 	}
 
 	dump() {
-		this.polariteService.dumpOntologie().subscribe(data =>{
+		this.polariteService.dumpOntology().subscribe(data =>{
 		});
 	}
 
@@ -71,9 +72,11 @@ export class OntologyComponent implements OnInit {
             { name: "id", type: "number" },
             { name: "part", type: "string" },
             { name: "synonyms", type: "string" },
-            { name: "polarities", type: "number" },
-            { name: "polaritymean", type: "number" },
-            { name: "subparts", type: "array" }
+            { name: "reviews", type: "number" },
+            { name: "reviewmean", type: "number" },
+            { name: "subparts", type: "array" },
+            { name: "subpartmean", type: "number" },
+            { name: "polarity", type: "number" }
         ],
         root: "root",
         id: "id",
@@ -87,17 +90,31 @@ export class OntologyComponent implements OnInit {
 
     public columns: any[] =
     [
-        { text: "Parts", dataField: "part", width: 220 },
-        { text: "Polarity mean", dataField: "polaritymean", width: 100,
+        { text: "Parts", dataField: "part", width: 200 },
+        { text: "Synonyms", dataField: "synonyms", width: 250 },
+        { text: "Reviews", dataField: "reviews", width: 125 },
+        { text: "Review mean", dataField: "reviewmean", width: 100,
             cellsRenderer: function (row, column, value, rowData) {
                 if (value <0) { return '<span style="color: #D00000; font-weight: bold;">' + value + '</span>'; }
                 if (value >0) { return '<span style="color: #00D000; font-weight: bold;">' + value + '</span>'; }
                 return value;
             }
         },
-        { text: "Polarity values", dataField: "polarities", width: 150 },
-        { text: "Synonyms", dataField: "synonyms", width: 250 }
-    ];
+        { text: "Subpart mean", dataField: "subpartmean", width: 125,
+            cellsRenderer: function (row, column, value, rowData) {
+                if (value <0) { return '<span style="color: #D00000; font-weight: bold;">' + value + '</span>'; }
+                if (value >0) { return '<span style="color: #00D000; font-weight: bold;">' + value + '</span>'; }
+                return value;
+            }
+        },
+        { text: "Polarity", dataField: "polarity", width: 100,
+			cellsRenderer: function (row, column, value, rowData) {
+				if (value <0) { return '<span style="color: #D00000; font-weight: bold;">' + value + '</span>'; }
+				if (value >0) { return '<span style="color: #00D000; font-weight: bold;">' + value + '</span>'; }
+                return value;
+			}
+		}
+];
 
 	public ready: any = () => {
 		this.treeGrid.expandAll();

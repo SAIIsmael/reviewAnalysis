@@ -1,4 +1,4 @@
-<label>word </label><input type="text" value="" (input)="updateData($event.target.name, $event.target.value)" name="word"/>
+<label>part </label><input type="text" value="" (input)="updateData($event.target.name, $event.target.value)" name="part"/>
 <label>polarity </label><input type="number" value=0 (input)="updateData($event.target.name, $event.target.value)"name="polarity"/>
 <button type="button" (click)="setPolarity()">Set</button>
 <br>
@@ -8,5 +8,5 @@
 <button type="button" (click)="reset()">Reset</button>
 <button type="button" (click)="dump()">Dump</button>
 <br>
-<jqxTreeGrid #treeGridReference [width]="720" [height]="'auto'" [source]="dataAdapter" [pageable]="false" [columns]="columns" [ready]="ready">
+<jqxTreeGrid #treeGridReference [width]="900" [height]="'auto'" [source]="dataAdapter" [pageable]="false" [columns]="columns" [ready]="ready">
 </jqxTreeGrid>
