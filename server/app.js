@@ -340,17 +340,17 @@ MongoClient.connect(url, {
 	// recherche recursivement la partie de l ontologie a polariser
 	function setPolarity(node,part,polarity) {
 		var trace=true;
-    var find=false;
-    var id=0;
-    var reviewmean=null;
-    var subparts=[];
-    var subpartmean=null;
-    var result=null;
+	var find=false;
+	var id=0;
+	var reviewmean=null;
+	var subparts=[];
+	var subpartmean=null;
+	var result=null;
 		for (var key in node) {
 			if (node.hasOwnProperty(key)) {
 				var value = node[key];
 				if(key=="id") {
-          id=value;
+					id=value;
 					// if(trace) console.log("id part: "+value);
 				}
 				if(key=="part") {
@@ -371,66 +371,66 @@ MongoClient.connect(url, {
 				}
 				if(key=="reviews") {
 					if(find) {
-            if(trace) console.log("add to reviews: "+polarity);
-            value.push(polarity);
-            reviewmean=0;
-            for (var i=0; i<value.length; i++) {
-              reviewmean += parseInt(value[i]);
-            }
-            reviewmean = Math.round(reviewmean/value.length);
-          }
+						if(trace) console.log("add to reviews: "+polarity);
+						value.push(polarity);
+						reviewmean=0;
+						for (var i=0; i<value.length; i++) {
+							reviewmean += parseInt(value[i]);
+						}
+						reviewmean = Math.round(reviewmean/value.length);
+					}
 				}
 				if(key=="reviewmean") {
 					if(find) {
 						if(trace) console.log("new review mean: "+reviewmean);
 						node[key]=reviewmean;
-          }
-          else
-            reviewmean=node[key];
+					}
+					else
+						reviewmean=node[key];
 				}
 				if(key=="subparts") {
-          for (var j=0; j<value.length; j++) {
-            subresult = setPolarity(value[j],part,polarity);
-            if(subresult!=null) {
-              subparts.push(subresult);
-            }
-          }
-          if(subparts!=null) {
-            if(subparts.length>0) {
-              subpartmean=0;
-              for (var i=0; i<subparts.length; i++) {
-                subpartmean += parseInt(subparts[i]);
-              }
-              subpartmean = Math.round(subpartmean/subparts.length);
-            }
-          }
+					for (var j=0; j<value.length; j++) {
+						subresult = setPolarity(value[j],part,polarity);
+						if(subresult!=null) {
+							subparts.push(subresult);
+						}
+					}
+					if(subparts!=null) {
+						if(subparts.length>0) {
+							subpartmean=0;
+							for (var i=0; i<subparts.length; i++) {
+								subpartmean += parseInt(subparts[i]);
+							}
+							subpartmean = Math.round(subpartmean/subparts.length);
+						}
+					}
 				}
 				if(key=="subpartmean") {
-          if(subpartmean!=null)
-            node[key]=subpartmean;
-        }
+					if(subpartmean!=null)
+						node[key]=subpartmean;
+				}
 				if(key=="polarity") {
-          var polarity=null;
-          var nbmean=0;
-          if(reviewmean!=null) {
-            polarity += reviewmean;
-            nbmean++;
-          }
-          if(subpartmean!=null) {
-            polarity += subpartmean;
-            nbmean++;
-          }
-          if(nbmean>1) {
-            polarity = Math.round(polarity/nbmean);
-          }
-          if(polarity!=null) {
-            node[key]=polarity;
-            result = polarity;
-          }
-        }
-      }
-    }
-    return result;
+					var polarity=null;
+					var nbmean=0;
+					if(reviewmean!=null) {
+						polarity += reviewmean;
+						nbmean++;
+					}
+					if(subpartmean!=null) {
+						polarity += subpartmean;
+						nbmean++;
+					}
+					if(nbmean>1) {
+						polarity = Math.round(polarity/nbmean);
+					}
+					if(polarity!=null) {
+						node[key]=polarity;
+						result = polarity;
+					}
+				}
+			}
+		}
+		return result;
 	}
 
 	// monte le contenu de l ontologie depuis le fichier vierge vers la base et retourne ce nouveau contenu
