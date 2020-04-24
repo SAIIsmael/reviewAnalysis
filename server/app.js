@@ -307,16 +307,16 @@ MongoClient.connect(url, {
 	});
 
 	// affecte la valeur de polarité a la partie de l ontologie correspondande
-	app.get("/ontology/set/:word/:polarity", cors(corsOptions), (req,res) => {
-		let word=req.params.word;
+	app.get("/ontology/set/:part/:polarity", cors(corsOptions), (req,res) => {
+		let part=req.params.part;
 		let polarity=req.params.polarity;
-		console.log("/ontology/set/"+word+"/"+polarity);
+		console.log("/ontology/set/"+part+"/"+polarity);
 		try {
 			//get collection
 			db.collection("ontology").find().toArray((err, ontology) => {
 				delete ontology[0]['_id'];
 				// add polarity
-				setPolarity(ontology[0].root[0],word,polarity);
+				setPolarity(ontology[0].root[0],part,polarity);
 				try{
 					// drop collection
 					db.collection("ontology").drop({}, () => {
@@ -327,12 +327,12 @@ MongoClient.connect(url, {
 						});
 					});
 				}catch(e) {
-					console.log("Erreur sur /ontology/set/"+word+"/"+polarity+": "+e);
+					console.log("Erreur sur /ontology/set/"+part+"/"+polarity+": "+e);
 					res.end(JSON.stringify([]));
 				}
 			});
 		} catch(e) {
-			console.log("Erreur sur /ontology/set/"+word+"/"+polarity+": "+e);
+			console.log("Erreur sur /ontology/set/"+part+"/"+polarity+": "+e);
 			res.end(JSON.stringify([]));
 		}
 	});
