@@ -1,5 +1,6 @@
-<label>part </label><input type="text" value="" (input)="updateData($event.target.name, $event.target.value)" name="part"/>
-<label>polarity </label><input type="number" value=0 (input)="updateData($event.target.name, $event.target.value)"name="polarity"/>
+<label>id </label><input type="number" (input)="updateData($event.target.name, $event.target.value)" name="idreview"/>
+<label>polarity </label><input type="number" (input)="updateData($event.target.name, $event.target.value)"name="reviewpol"/>
+<label>part </label><input type="text" (input)="updateData($event.target.name, $event.target.value)" name="part"/>
 <button type="button" (click)="setPolarity()">Set</button>
 <br>
 <button id="collapseBt" (click)="this.treeGrid.collapseAll()">Collapse</button>

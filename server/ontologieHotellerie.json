@@ -1,7 +1,7 @@
 {
 	"root": [
 		{
-			"id": 1,
+			"idpart": 1,
 			"part": "hôtel",
 			"synonyms": [
 				"établissement",
@@ -13,7 +13,7 @@
 			"reviewmean": null,
 			"subparts": [
 				{
-					"id": 11,
+					"idpart": 11,
 					"part": "chambre",
 					"synonyms": [
 						"chambre à coucher",
@@ -25,7 +25,7 @@
 					"reviewmean": null,
 					"subparts": [
 						{
-							"id": 111,
+							"idpart": 111,
 							"part": "literie",
 							"synonyms": [
 								"lit",
@@ -36,7 +36,7 @@
 							"reviewmean": null,
 							"subparts": [
 								{
-									"id": 1111,
+									"idpart": 1111,
 									"part": "matelas",
 									"synonyms": [
 										"couche"
@@ -48,7 +48,7 @@
 									"polarity": null
 								},
 								{
-									"id": 1112,
+									"idpart": 1112,
 									"part": "drap",
 									"synonyms": [
 										"lingerie"
@@ -60,7 +60,7 @@
 									"polarity": null
 								},
 								{
-									"id": 1113,
+									"idpart": 1113,
 									"part": "couette",
 									"synonyms": [
 										"couverture",
@@ -74,7 +74,7 @@
 									"polarity": null
 								},
 								{
-									"id": 1114,
+									"idpart": 1114,
 									"part": "oreiller",
 									"synonyms": [
 										"coussin",
@@ -89,7 +89,7 @@
 									"polarity": null
 								},
 								{
-									"id": 1115,
+									"idpart": 1115,
 									"part": "sommier",
 									"synonyms": [
 										"paillasse"
@@ -101,7 +101,7 @@
 									"polarity": null
 								},
 								{
-									"id": 1116,
+									"idpart": 1116,
 									"part": "lit bébé",
 									"synonyms": [
 										"lit enfant"
@@ -117,7 +117,7 @@
 							"polarity": null
 						},
 						{
-							"id": 112,
+							"idpart": 112,
 							"part": "salle de bain",
 							"synonyms": [
 								"salle d'eau"
@@ -126,7 +126,7 @@
 							"reviewmean": null,
 							"subparts": [
 								{
-									"id": 1121,
+									"idpart": 1121,
 									"part": "lavabo",
 									"synonyms": [
 										"évier",
@@ -140,7 +140,7 @@
 									"polarity": null
 								},
 								{
-									"id": 1122,
+									"idpart": 1122,
 									"part": "douche",
 									"synonyms": [
 										"douche italienne"
@@ -152,7 +152,7 @@
 									"polarity": null
 								},
 								{
-									"id": 1123,
+									"idpart": 1123,
 									"part": "baignoire",
 									"synonyms": [
 										"bain"
@@ -164,7 +164,7 @@
 									"polarity": null
 								},
 								{
-									"id": 1124,
+									"idpart": 1124,
 									"part": "bidet",
 									"synonyms": [],
 									"reviews": [],
@@ -174,7 +174,7 @@
 									"polarity": null
 								},
 								{
-									"id": 1125,
+									"idpart": 1125,
 									"part": "miroir",
 									"synonyms": [
 										"glace"
@@ -186,7 +186,7 @@
 									"polarity": null
 								},
 								{
-									"id": 1126,
+									"idpart": 1126,
 									"part": "serviette",
 									"synonyms": [
 										"essuie-mains",
@@ -205,7 +205,7 @@
 							"polarity": null
 						},
 						{
-							"id": 113,
+							"idpart": 113,
 							"part": "toilettes",
 							"synonyms": [
 								"WC",
@@ -222,7 +222,7 @@
 							"polarity": null
 						},
 						{
-							"id": 114,
+							"idpart": 114,
 							"part": "équipement",
 							"synonyms": [
 								"matériel"
@@ -231,7 +231,7 @@
 							"reviewmean": null,
 							"subparts": [
 								{
-									"id": 1141,
+									"idpart": 1141,
 									"part": "télévision",
 									"synonyms": [
 										"télé",
@@ -244,7 +244,7 @@
 									"reviewmean": null,
 									"subparts": [
 										{
-											"id": 11411,
+											"idpart": 11411,
 											"part": "télécommande",
 											"synonyms": [
 												"zapette"
@@ -260,7 +260,7 @@
 									"polarity": null
 								},
 								{
-									"id": 1142,
+									"idpart": 1142,
 									"part": "coffre",
 									"synonyms": [
 										"coffre-fort",
@@ -273,7 +273,7 @@
 									"polarity": null
 								},
 								{
-									"id": 1143,
+									"idpart": 1143,
 									"part": "mini bar",
 									"synonyms": [
 										"frigidaire",
@@ -292,7 +292,7 @@
 							"polarity": null
 						},
 						{
-							"id": 115,
+							"idpart": 115,
 							"part": "rangement",
 							"synonyms": [
 								"placard",
@@ -308,7 +308,7 @@
 							"polarity": null
 						},
 						{
-							"id": 116,
+							"idpart": 116,
 							"part": "décoration",
 							"synonyms": [
 								"agencement",
@@ -324,7 +324,7 @@
 							"polarity": null
 						},
 						{
-							"id": 117,
+							"idpart": 117,
 							"part": "climatisation",
 							"synonyms": [
 								"climatiseur",
@@ -340,7 +340,7 @@
 							"polarity": null
 						},
 						{
-							"id": 118,
+							"idpart": 118,
 							"part": "terrasse",
 							"synonyms": [
 								"balcon"
@@ -352,7 +352,7 @@
 							"polarity": null
 						},
 						{
-							"id": 119,
+							"idpart": 119,
 							"part": "propreté",
 							"synonyms": [
 								"ménage",
@@ -372,7 +372,7 @@
 					"polarity": null
 				},
 				{
-					"id": 12,
+					"idpart": 12,
 					"part": "restauration",
 					"synonyms": [
 						"restaurant",
@@ -382,14 +382,14 @@
 					"reviewmean": null,
 					"subparts": [
 						{
-							"id": 121,
+							"idpart": 121,
 							"part": "petit-déjeuner",
 							"synonyms": [],
 							"reviews": [],
 							"reviewmean": null,
 							"subparts": [
 								{
-									"id": 1211,
+									"idpart": 1211,
 									"part": "café",
 									"synonyms": [],
 									"reviews": [],
@@ -399,7 +399,7 @@
 									"polarity": null
 								},
 								{
-									"id": 1212,
+									"idpart": 1212,
 									"part": "thé",
 									"synonyms": [
 										"infusion"
@@ -411,7 +411,7 @@
 									"polarity": null
 								},
 								{
-									"id": 1213,
+									"idpart": 1213,
 									"part": "chocolat",
 									"synonyms": [
 										"cacao"
@@ -423,7 +423,7 @@
 									"polarity": null
 								},
 								{
-									"id": 1214,
+									"idpart": 1214,
 									"part": "viennoiserie",
 									"synonyms": [
 										"croissant",
@@ -441,7 +441,7 @@
 							"polarity": null
 						},
 						{
-							"id": 122,
+							"idpart": 122,
 							"part": "repas",
 							"synonyms": [
 								"déjeuner",
@@ -451,7 +451,7 @@
 							"reviewmean": null,
 							"subparts": [
 								{
-									"id": 1221,
+									"idpart": 1221,
 									"part": "buffet",
 									"synonyms": [
 										"à volonté"
@@ -467,7 +467,7 @@
 							"polarity": null
 						},
 						{
-							"id": 123,
+							"idpart": 123,
 							"part": "demi-pension",
 							"synonyms": [],
 							"reviews": [],
@@ -477,7 +477,7 @@
 							"polarity": null
 						},
 						{
-							"id": 124,
+							"idpart": 124,
 							"part": "pension-complète",
 							"synonyms": [],
 							"reviews": [],
@@ -487,7 +487,7 @@
 							"polarity": null
 						},
 						{
-							"id": 125,
+							"idpart": 125,
 							"part": "boisson",
 							"synonyms": [
 								"rafraîchissement"
@@ -496,7 +496,7 @@
 							"reviewmean": null,
 							"subparts": [
 								{
-									"id": 1251,
+									"idpart": 1251,
 									"part": "eau",
 									"synonyms": [
 										"eau minérale"
@@ -508,7 +508,7 @@
 									"polarity": null
 								},
 								{
-									"id": 1252,
+									"idpart": 1252,
 									"part": "vin",
 									"synonyms": [],
 									"reviews": [],
@@ -518,7 +518,7 @@
 									"polarity": null
 								},
 								{
-									"id": 1253,
+									"idpart": 1253,
 									"part": "bière",
 									"synonyms": [],
 									"reviews": [],
@@ -528,7 +528,7 @@
 									"polarity": null
 								},
 								{
-									"id": 1254,
+									"idpart": 1254,
 									"part": "jus de fruit",
 									"synonyms": [
 										"soda",
@@ -545,7 +545,7 @@
 							"polarity": null
 						},
 						{
-							"id": 126,
+							"idpart": 126,
 							"part": "cuisinier",
 							"synonyms": [
 								"chef",
@@ -558,14 +558,14 @@
 							"polarity": null
 						},
 						{
-							"id": 127,
+							"idpart": 127,
 							"part": "service",
 							"synonyms": [],
 							"reviews": [],
 							"reviewmean": null,
 							"subparts": [
 								{
-									"id": 1271,
+									"idpart": 1271,
 									"part": "serveur",
 									"synonyms": [
 										"barman",
@@ -587,14 +587,14 @@
 					"polarity": null
 				},
 				{
-					"id": 13,
+					"idpart": 13,
 					"part": "installation",
 					"synonyms": [],
 					"reviews": [],
 					"reviewmean": null,
 					"subparts": [
 						{
-							"id": 131,
+							"idpart": 131,
 							"part": "spa",
 							"synonyms": [],
 							"reviews": [],
@@ -604,7 +604,7 @@
 							"polarity": null
 						},
 						{
-							"id": 132,
+							"idpart": 132,
 							"part": "sauna",
 							"synonyms": [],
 							"reviews": [],
@@ -614,7 +614,7 @@
 							"polarity": null
 						},
 						{
-							"id": 133,
+							"idpart": 133,
 							"part": "jacuzzi",
 							"synonyms": [],
 							"reviews": [],
@@ -624,7 +624,7 @@
 							"polarity": null
 						},
 						{
-							"id": 134,
+							"idpart": 134,
 							"part": "salle de sport",
 							"synonyms": [
 								"gym",
@@ -637,7 +637,7 @@
 							"polarity": null
 						},
 						{
-							"id": 135,
+							"idpart": 135,
 							"part": "internet",
 							"synonyms": [
 								"wifi"
@@ -649,7 +649,7 @@
 							"polarity": null
 						},
 						{
-							"id": 136,
+							"idpart": 136,
 							"part": "escalier",
 							"synonyms": [],
 							"reviews": [],
@@ -659,7 +659,7 @@
 							"polarity": null
 						},
 						{
-							"id": 137,
+							"idpart": 137,
 							"part": "ascenseur",
 							"synonyms": [],
 							"reviews": [],
@@ -673,7 +673,7 @@
 					"polarity": null
 				},
 				{
-					"id": 14,
+					"idpart": 14,
 					"part": "personnel",
 					"synonyms": [
 						"équipe",
@@ -684,7 +684,7 @@
 					"reviewmean": null,
 					"subparts": [
 						{
-							"id": 141,
+							"idpart": 141,
 							"part": "accueil",
 							"synonyms": [
 								"réception"
@@ -696,7 +696,7 @@
 							"polarity": null
 						},
 						{
-							"id": 142,
+							"idpart": 142,
 							"part": "disponibilité",
 							"synonyms": [],
 							"reviews": [],
@@ -710,21 +710,21 @@
 					"polarity": null
 				},
 				{
-					"id": 15,
+					"idpart": 15,
 					"part": "activités",
 					"synonyms": [],
 					"reviews": [],
 					"reviewmean": null,
 					"subparts": [
 						{
-							"id": 151,
+							"idpart": 151,
 							"part": "animation",
 							"synonyms": [],
 							"reviews": [],
 							"reviewmean": null,
 							"subparts": [
 								{
-									"id": 1511,
+									"idpart": 1511,
 									"part": "animateur",
 									"synonyms": [],
 									"reviews": [],
@@ -738,7 +738,7 @@
 							"polarity": null
 						},
 						{
-							"id": 152,
+							"idpart": 152,
 							"part": "soirée",
 							"synonyms": [
 								"discothèque",
@@ -751,7 +751,7 @@
 							"polarity": null
 						},
 						{
-							"id": 153,
+							"idpart": 153,
 							"part": "excursion",
 							"synonyms": [
 								"sortie",
@@ -768,21 +768,21 @@
 					"polarity": null
 				},
 				{
-					"id": 16,
+					"idpart": 16,
 					"part": "extérieur",
 					"synonyms": [],
 					"reviews": [],
 					"reviewmean": null,
 					"subparts": [
 						{
-							"id": 161,
+							"idpart": 161,
 							"part": "accès",
 							"synonyms": [],
 							"reviews": [],
 							"reviewmean": null,
 							"subparts": [
 								{
-									"id": 1611,
+									"idpart": 1611,
 									"part": "accès handicapé",
 									"synonyms": [],
 									"reviews": [],
@@ -796,7 +796,7 @@
 							"polarity": null
 						},
 						{
-							"id": 162,
+							"idpart": 162,
 							"part": "parking",
 							"synonyms": [
 								"voiture"
@@ -808,7 +808,7 @@
 							"polarity": null
 						},
 						{
-							"id": 163,
+							"idpart": 163,
 							"part": "cadre",
 							"synonyms": [
 								"environnement",
@@ -821,7 +821,7 @@
 							"polarity": null
 						},
 						{
-							"id": 164,
+							"idpart": 164,
 							"part": "jardin",
 							"synonyms": [
 								"parc",
@@ -834,7 +834,7 @@
 							"polarity": null
 						},
 						{
-							"id": 165,
+							"idpart": 165,
 							"part": "piscine",
 							"synonyms": [
 								"petite bassin",
@@ -847,7 +847,7 @@
 							"polarity": null
 						},
 						{
-							"id": 166,
+							"idpart": 166,
 							"part": "plage",
 							"synonyms": [
 								"bord de mer",
@@ -864,7 +864,7 @@
 					"polarity": null
 				},
 				{
-					"id": 17,
+					"idpart": 17,
 					"part": "bruit",
 					"synonyms": [
 						"insonorisation",

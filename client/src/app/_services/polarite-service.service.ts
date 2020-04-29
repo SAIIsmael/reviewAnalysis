@@ -40,8 +40,8 @@ export class PolariteServiceService {
     return this.http.get(this.url+"ontology/load");
   }
 
-  setOntology(word: string, polarity: number) : Observable<any> {
-    return this.http.get(this.url+"ontology/set/"+word+"/"+polarity);
+  setOntology(idreview: number, reviewpol: number, part: string) : Observable<any> {
+    return this.http.get(this.url+"ontology/set/"+idreview+"/"+reviewpol+"/"+part);
   }
 
   resetOntology() : Observable<any> {

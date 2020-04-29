@@ -307,16 +307,17 @@ MongoClient.connect(url, {
 	});
 
 	// affecte la valeur de polarité a la partie de l ontologie correspondande
-	app.get("/ontology/set/:part/:polarity", cors(corsOptions), (req,res) => {
+	app.get("/ontology/set/:idreview/:reviewpol/:part", cors(corsOptions), (req,res) => {
+	let idreview=req.params.idreview;
+	let reviewpol=req.params.reviewpol;
 		let part=req.params.part;
-		let polarity=req.params.polarity;
-		console.log("/ontology/set/"+part+"/"+polarity);
+		console.log("/ontology/set/"+idreview+"/"+reviewpol+"/"+part);
 		try {
 			//get collection
 			db.collection("ontology").find().toArray((err, ontology) => {
 				delete ontology[0]['_id'];
 				// add polarity
-				setPolarity(ontology[0].root[0],part,polarity);
+				setPolarity(ontology[0].root[0],idreview,reviewpol,part);
 				try{
 					// drop collection
 					db.collection("ontology").drop({}, () => {
@@ -327,21 +328,21 @@ MongoClient.connect(url, {
 						});
 					});
 				}catch(e) {
-					console.log("Erreur sur /ontology/set/"+part+"/"+polarity+": "+e);
+					console.log("Erreur sur /ontology/set/"+idreview+"/"+reviewpol+"/"+part+": "+e);
 					res.end(JSON.stringify([]));
 				}
 			});
 		} catch(e) {
-			console.log("Erreur sur /ontology/set/"+part+"/"+polarity+": "+e);
+			console.log("Erreur sur /ontology/set/"+idreview+"/"+reviewpol+"/"+part+": "+e);
 			res.end(JSON.stringify([]));
 		}
 	});
 
 	// recherche recursivement la partie de l ontologie a polariser
-	function setPolarity(node,part,polarity) {
+	function setPolarity(node,idreview,reviewpol,part) {
 		var trace=true;
 	var find=false;
-	var id=0;
+	var idpart=0;
 	var reviewmean=null;
 	var subparts=[];
 	var subpartmean=null;
@@ -349,8 +350,8 @@ MongoClient.connect(url, {
 		for (var key in node) {
 			if (node.hasOwnProperty(key)) {
 				var value = node[key];
-				if(key=="id") {
-					id=value;
+				if(key=="idpart") {
+					idpart=value;
 					// if(trace) console.log("id part: "+value);
 				}
 				if(key=="part") {
@@ -361,8 +362,8 @@ MongoClient.connect(url, {
 				}
 				if(key=="synonyms") {
 					if(!find) {
-						for (var i=0; i<value.length; i++) {
-							if(value[i].toLowerCase()==part.toLowerCase()) {
+						for (var s=0; s<value.length; s++) {
+							if(value[s].toLowerCase()==part.toLowerCase()) {
 								if(trace) console.log("find synonym: "+part);
 								find=true;
 							}
@@ -371,11 +372,21 @@ MongoClient.connect(url, {
 				}
 				if(key=="reviews") {
 					if(find) {
-						if(trace) console.log("add to reviews: "+polarity);
-						value.push(polarity);
+						if(trace) console.log("add to reviews: "+reviewpol);
+						var newReview = { "idreview": idreview, "reviewpol": reviewpol };
+						value.push(newReview);
 						reviewmean=0;
-						for (var i=0; i<value.length; i++) {
-							reviewmean += parseInt(value[i]);
+						for (var r=0; r<value.length; r++) {
+							var obj = value[r];
+							for (var k in obj) {
+								var v = obj[k];
+								if(k=="idreview") {
+									//
+								}
+								if(k=="reviewpol") {
+									reviewmean += parseInt(v);
+								}
+							}
 						}
 						reviewmean = Math.round(reviewmean/value.length);
 					}
@@ -389,8 +400,8 @@ MongoClient.connect(url, {
 						reviewmean=node[key];
 				}
 				if(key=="subparts") {
-					for (var j=0; j<value.length; j++) {
-						subresult = setPolarity(value[j],part,polarity);
+					for (var p=0; p<value.length; p++) {
+						subresult = setPolarity(value[p],idreview,reviewpol,part);
 						if(subresult!=null) {
 							subparts.push(subresult);
 						}
@@ -398,8 +409,8 @@ MongoClient.connect(url, {
 					if(subparts!=null) {
 						if(subparts.length>0) {
 							subpartmean=0;
-							for (var i=0; i<subparts.length; i++) {
-								subpartmean += parseInt(subparts[i]);
+							for (var p=0; p<subparts.length; p++) {
+								subpartmean += parseInt(subparts[p]);
 							}
 							subpartmean = Math.round(subpartmean/subparts.length);
 						}
@@ -490,6 +501,5 @@ MongoClient.connect(url, {
 			res.end(JSON.stringify([]));
 		}
 	});
-
 
 });
