@@ -8,9 +8,9 @@ import { PolariteServiceService } from '../_services/polarite-service.service';
 })
 export class SentenceTagComponent implements OnInit {
 
-  private sentence : any;
-  private tab : any[] = new Array();
-  private motapolarise = [];
+   sentence : any;
+   tab : any[] = new Array();
+   motapolarise = [];
 
   constructor(private polarite : PolariteServiceService) { }
 
@@ -25,10 +25,10 @@ export class SentenceTagComponent implements OnInit {
     }
   }*/
 
-  requete() {
+  /*requete() {
     this.polarite.requetetreetagger().subscribe(data =>{
       this.tab = data;
-      
+
       for (let i = 0; i < this.tab.length; i++) {
           this.tab[i].forEach(element => {
             if (element.pos == "ADJ" ){
@@ -54,7 +54,7 @@ export class SentenceTagComponent implements OnInit {
           });
       }
     });
-  }
+  }*/
 
   nettoyage(){
 

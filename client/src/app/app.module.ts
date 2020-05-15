@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +13,8 @@ import { ACPComponent } from './acp/acp.component';
 import { RAComponent } from './acp/ra/ra.component';
 import { SidebarComponent } from './acp/sidebar/sidebar.component';
 import { TopbarComponent } from './acp/topbar/topbar.component';
+import { RatingComponent } from './acp/ra/rating/rating.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -32,14 +34,17 @@ const appRoutes: Routes = [
     ACPComponent,
     RAComponent,
     SidebarComponent,
-    TopbarComponent
+    TopbarComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,
+    NgbModule,
     AppRoutingModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
     ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [PolariteServiceService],
   bootstrap: [AppComponent]
 })

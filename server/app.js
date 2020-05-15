@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const treetagger = require('treetagger');
 const cors = require('cors');
 const http = require('http');
+const fs = require('fs');
 const request = require('request');
 var qs = require('querystring');
 const shell = require('shelljs');

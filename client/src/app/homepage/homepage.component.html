@@ -1,5 +1,5 @@
 <button type="button" routerLinkActive="active" routerLink="login">Login</button>
-<textarea name="sentence" (input)="updateData($event.target.name, $event.target.value)" rows=" 8" cols="80"></textarea>
+<!-- <textarea name="sentence" (input)="updateData($event.target.name, $event.target.value)" rows=" 8" cols="80"></textarea>
 <button type="button" (click)="reqrev()">envoyer avis</button>
 <button type="button" (click)="analyse()">analyse</button>
 <button type="button" (click)="coloration()">coloration</button>
@@ -10,17 +10,17 @@
 <button type="button" (click)="testPolarite()">testPol</button>
 <button type="button" (click)="printReviewTagged()">debug</button>
 <button type="button" (click)="testColoration()">colorOntologie</button>
-<button type="button" (click)="debugPolarize()">debugPolarize</button>
+<button type="button" (click)="debugPolarize()">debugPolarize</button> -->
 <span class="rouge" *ngIf="red">{{sentence}}</span>
 <span class="vert" *ngIf="!red">{{sentence}}</span>
 
 <div>
   <input type="text" value="" name="word" (input)="updateData($event.target.name, $event.target.value)">
-  <button type="button" (click)="requete()">Valider</button>
+  <!-- <button type="button" (click)="requete()">Valider</button> -->
 </div>
 
-<div *ngFor="let index of tab">
+<!-- <div *ngFor="let index of tab">
   <span>
     {{index}}
   </span>
-</div>
+</div> -->

@@ -8,21 +8,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-  @Input() private sentence : any;
-  @Input() private word : any;
-  private tab : any[] = new Array();
-  private motapolarise : any[] =  new Array();
-  private polariteNom : any[] = new Array();
-  private polaritePhrase : any;
-  private red = false;
-  private cpt;
-  private endPos = false;
-
-  private review = [];
-  private tmp = [];
-  private sentenceTags = [];
-  private parsedWord = [];
-  private polarizedWords = [];
+  @Input()  sentence : any;
+  @Input()  word : any;
+   tab : any[] = new Array();
+   motapolarise : any[] =  new Array();
+   polariteNom : any[] = new Array();
+   polaritePhrase : any;
+   red = false;
+   cpt;
+   endPos = false;
+   review = [];
+   tmp = [];
+   sentenceTags = [];
+   parsedWord = [];
+   polarizedWords = [];
 
   constructor(private polarite : PolariteServiceService, private router : Router) { }
 
@@ -61,7 +60,7 @@ test(){
   })
 }
 
-testPolarite(){
+/* testPolarite(){
   this.sentenceTags = [];
 for (let i = 0; i < this.tmp.length; i++) {
   for(let j = 0; j < this.tmp[i][0].length; j++){
@@ -299,5 +298,5 @@ requete() {
     this.tab = data;
     console.log(data);
   });
-}
+}*/
 }

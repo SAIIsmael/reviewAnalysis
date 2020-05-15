@@ -13,7 +13,7 @@ export class PolariteServiceService {
   constructor(private http:HttpClient) { }
 
 
-requeterezo(word : any) : Observable<any> {
+rezoDumpPolarite(word : any) : Observable<any> {
   return this.http.get(this.url+"testreq/"+word);
   }
 

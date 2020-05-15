@@ -4283,6 +4283,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 }
 
 .card-body {
+  position: relative;
   flex: 1 1 auto;
   padding: 1.25rem
 }
@@ -11213,4 +11214,13 @@ footer.sticky-footer .copyright {
 
 body.sidebar-toggled footer.sticky-footer {
   width: 100%
+}
+
+.rating {
+  position: absolute;
+  margin-left: 60%;
+}
+
+.review {
+  size: 21px;
 }

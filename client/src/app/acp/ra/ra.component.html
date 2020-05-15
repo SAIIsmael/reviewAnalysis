@@ -28,26 +28,37 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Review : </h6>
-
+                  <h6 class="m-0 font-weight-bold text-primary">
+                    Review :
+                  </h6>
+                  <span class="navigation" (click)="previousReview()"><i class="material-icons">arrow_back</i>previous review</span>
+                  <span class="navigation" (click)="nextReview()">next review<i class="material-icons">arrow_forward</i></span>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  First name : {{ getLastReview().fname }}
-                  Last name : {{ getLastReview().lname }}
-                  Rating : {{ getLastReview().rating }}
+
+                  <span class="author">Author : {{reviews[reviewDisplayed].fname }} {{ reviews[reviewDisplayed].lname }}</span>
+                  <span class="rating">Rating :
+                    <ngb-rating max="5" rate="{{ reviews[reviewDisplayed].rating }}" readonly="false"></ngb-rating> <b>{{ reviews[reviewDisplayed].rating }}/5</b></span>
+                  <br />
+                  <hr />
+                  <br />
                   <div class="chart-area">
-                    {{ getLastReview().review }}
+                    <span class="review">{{ reviews[reviewDisplayed].review }}</span>
+                    <br />
+                    <hr />
+                    <br />
+                    <div class="analysisResult" *ngFor="let result of toPrint"><span class="resultText">{{ result }}</span><br /></div>
+                    <div class="patternResult" *ngFor="let match of patternPolarite"><span class="resultText">phrase :{{ match.phrase }} <br /> polarité : {{ match.polarite}}</span><br /></div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <button type="button" name="button">A</button>
-          <button type="button" name="button">A</button>
-          <button type="button" name="button">A</button>
-          <button type="button" name="button">A</button>
-          <button type="button" name="button">A</button>
+          <button class="typeAnalysis btn btn-primary" type="button" name="button" (click)="selectReview()">select this review</button>
+          <button class="typeAnalysis btn btn-primary" type="button" name="button" (click)="polariteCalcul()">polarite calc</button>
+          <button class="typeAnalysis btn btn-primary" type="button" name="button" (click)="executePropagation()" *ngIf="hasBeenSelected">executer la propagation</button>
+          <button class="typeAnalysis btn btn-primary" type="button" name="button" (click)="executePattern()" *ngIf="hasBeenSelected">executer le patternMatching</button>
 
           <!-- Content Row -->
           <div class="row">
