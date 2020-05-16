@@ -1,7 +1,4 @@
-Le	DET:ART	le
-jardin	NOM	jardin
-n'	ADV	ne
+Ce	PRO:DEM	ce
+balcon	NOM	balcon
 est	VER:pres	être
-pas	ADV	pas
-très	ADV	très
-beau	ADJ	beau
+spacieux	ADJ	spacieux

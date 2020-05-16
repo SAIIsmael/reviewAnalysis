@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../_services/auth.service';
 import { ReviewsService } from '../../_services/reviews.service';
-import { PolariteServiceService } from '../../_services/polarite-service.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PolariteServiceService } from '../../_services/polarite-service.service';
+import { jqxTreeGridComponent } from 'jqwidgets-ng/jqxtreegrid';
 
 @Component({
   selector: 'app-ra',
@@ -11,6 +12,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./ra.component.css']
 })
 export class RAComponent implements OnInit {
+
+  @ViewChild('treeGridReference', {static: false}) treeGrid: jqxTreeGridComponent;
+
+
   authSubscription : Subscription;
   connected:  Boolean;
   idConnected : string;
@@ -33,9 +38,18 @@ export class RAComponent implements OnInit {
   patternPolarite = [];
 
 
+
+	private ontologyMemory: any = new Object();
+
+	private idreview: number = null;
+	private reviewpol: number = null;
+	private part: string = "";
+
+
   constructor(private AuthService : AuthService, private ReviewsService : ReviewsService, private PolariteService : PolariteServiceService) { }
 
   ngOnInit() {
+    this.load();
 
     this.authSubscription = this.AuthService.loginSubject.subscribe(
       (loginInfos: any[]) =>{
@@ -48,6 +62,7 @@ export class RAComponent implements OnInit {
         this.ReviewsService.getAllReviews(this.memberInfos.hotel[0].name).subscribe(data =>{
           for( var i = 0; i < data.length; i ++ ){
             this.reviews.push(data[i]);
+
           }
         });
       });
@@ -166,7 +181,6 @@ export class RAComponent implements OnInit {
       }
   }
   this.parsedWordisOk = true;
-  this.polarizedWords = [];
     for( let i = 0; i < this.sentenceTags.length; i++){
 
       let polarite = 0;
@@ -177,7 +191,7 @@ export class RAComponent implements OnInit {
 
         console.log("[*"+(this.sentenceTags[i].polarite.positif - this.sentenceTags[i].polarite.negatif)+"] par adjectif plus proche : " + this.sentenceTags[i].t + " sur " + this.parsedWord[this.sentenceTags[i].sentence][this.sentenceTags[i].npp]);
 
-        this.toPrint.push("[*"+(this.sentenceTags[i].polarite.positif - this.sentenceTags[i].polarite.negatif)+"] par adjectif plus proche : " + this.sentenceTags[i].t + " sur " + this.parsedWord[this.sentenceTags[i].sentence][this.sentenceTags[i].npp]);
+        this.toPrint.push("[*"+(this.sentenceTags[i].polarite.positif - this.sentenceTags[i].polarite.negatif)+"] par adjectif plus proche : " + this.sentenceTags[i].t + " sur " + this.sentenceTags[this.sentenceTags[i].npp].t);
 
           this.sentenceTags[this.sentenceTags[i].npp].polaritePropa += (this.sentenceTags[i].polarite.positif - this.sentenceTags[i].polarite.negatif);
 
@@ -187,7 +201,7 @@ export class RAComponent implements OnInit {
         if (this.sentenceTags[i].itens > 0 ){
          npp =  this.parsedWord[this.sentenceTags[i].sentence][this.sentenceTags[i].npp];
           console.log("[*" +this.sentenceTags[i].itens+"] par intens : " + this.sentenceTags[i].t + " sur " + this.parsedWord[this.sentenceTags[i].sentence][this.sentenceTags[i].npp]);
-          this.toPrint.push("[*" +this.sentenceTags[i].itens+"] par intens : " + this.sentenceTags[i].t + " sur " + this.parsedWord[this.sentenceTags[i].sentence][this.sentenceTags[i].npp]);
+          this.toPrint.push("[*" +this.sentenceTags[i].itens+"] par intens : " + this.sentenceTags[i].t + " sur " + this.sentenceTags[this.sentenceTags[i].npp].t);
          this.sentenceTags[this.sentenceTags[i].npp].polaritePropa *= this.sentenceTags[i].itens;
 
           console.log("polarite de : "+this.sentenceTags[this.sentenceTags[i].npp].t+ "-> " + this.sentenceTags[this.sentenceTags[i].npp].polaritePropa );
@@ -196,7 +210,7 @@ export class RAComponent implements OnInit {
         if (this.sentenceTags[i].neg == true){
            npp =  this.parsedWord[this.sentenceTags[i].sentence][this.sentenceTags[i].npp];
           console.log("[* -1]par negation : " + this.sentenceTags[i].t + " sur " + this.parsedWord[this.sentenceTags[i].sentence][this.sentenceTags[i].npp]);
-          this.toPrint.push("[* -1]par negation : " + this.sentenceTags[i].t + " sur " + this.parsedWord[this.sentenceTags[i].sentence][this.sentenceTags[i].npp]);
+          this.toPrint.push("[* -1]par negation : " + this.sentenceTags[i].t + " sur " + this.sentenceTags[this.sentenceTags[i].npp].t);
           this.sentenceTags[this.sentenceTags[i].npp].polaritePropa *= -1;
           console.log("polarite de : "+this.sentenceTags[this.sentenceTags[i].npp].t+ "-> " + this.sentenceTags[this.sentenceTags[i].npp].polaritePropa );
 
@@ -205,8 +219,137 @@ export class RAComponent implements OnInit {
 
       }
 
-
+      for (let i = 0; i < this.sentenceTags.length; i++) {
+          if(this.sentenceTags[i].pos.localeCompare("NOM") == 0){
+            let toPush = {};
+            console.log(JSON.stringify(this.reviews[this.reviewDisplayed]));
+            if( this.sentenceTags[i].l.includes("unknown") ){
+             toPush = {
+              "idreview" : this.reviews[this.reviewDisplayed].idreview,
+              "name" : this.sentenceTags[i].t,
+              "polarite" : this.sentenceTags[i].polaritePropa
+            }
+}else{
+  toPush = {
+    "idreview" : this.reviews[this.reviewDisplayed].idreview,
+    "name" : this.sentenceTags[i].l,
+    "polarite" : this.sentenceTags[i].polaritePropa
   }
+}
+            console.log("pushed ->" + JSON.stringify(toPush));
+        this.polarizedWords.push(toPush);
+        }
+      }
+  }
+
+  setPolarity(id, pol, word) {
+console.log("IN SET POLARITY WITH " + id + pol + word);
+		this.PolariteService.setOntology(id,pol,word).subscribe(data =>{
+			Object.assign(this.ontologyMemory, data);
+			this.treeGrid.updateBoundData();
+			this.treeGrid.expandAll();
+//			this.treeGrid.collapseAll();
+		});
+
+	}
+
+	load() {
+		this.PolariteService.loadOntology().subscribe(data =>{
+			Object.assign(this.ontologyMemory, data);
+			this.treeGrid.updateBoundData();
+			this.treeGrid.expandAll();
+//			this.treeGrid.collapseAll();
+		});
+	}
+
+	reset() {
+		this.PolariteService.resetOntology().subscribe(data =>{
+			Object.assign(this.ontologyMemory, data);
+			this.treeGrid.updateBoundData();
+			this.treeGrid.expandAll();
+//			this.treeGrid.collapseAll();
+		});
+	}
+
+	dump() {
+		this.PolariteService.dumpOntology().subscribe(data =>{
+		});
+	}
+
+	private source: any =
+	{
+		dataType: "json",
+		localData: this.ontologyMemory,
+		dataFields: [
+			{ name: "idpart", type: "number" },
+			{ name: "part", type: "string" },
+			{ name: "synonyms", type: "string" },
+			{ name: "reviews", type: "array" },
+			{ name: "idreview", type: "number" },
+			{ name: "reviewpol", type: "number" },
+			{ name: "reviewmean", type: "number" },
+			{ name: "subparts", type: "array" },
+			{ name: "subpartmean", type: "number" },
+			{ name: "polarity", type: "number" }
+		],
+		root: "root",
+		id: "idpart",
+		hierarchy:
+		{
+			root: "subparts"
+		}
+	}
+
+	public dataAdapter: any = new jqx.dataAdapter(this.source);
+
+	public columns: any[] =
+	[
+		{ text: "Parts", dataField: "part", width: 200 },
+		{ text: "Synonyms", dataField: "synonyms", width: 250 },
+		{ text: "Reviews", dataField: "reviews", width: 125,
+			cellsRenderer: function (row, column, value, rowData) {
+				var result="";
+				if(value!=null) {
+					for (var r=0; r<value.length; r++) {
+						var obj = value[r];
+						for (var k in obj) {
+							var v = obj[k];
+							if(k=="reviewpol") {
+								result += v+" ";
+							}
+						}
+					}
+				}
+				return result;
+			}
+		},
+		{ text: "Review mean", dataField: "reviewmean", width: 100,
+			cellsRenderer: function (row, column, value, rowData) {
+				if (value <0) { return '<span style="color: #D00000; font-weight: bold;">' + value + '</span>'; }
+				if (value >0) { return '<span style="color: #00D000; font-weight: bold;">' + value + '</span>'; }
+				return value;
+			}
+		},
+		{ text: "Subpart mean", dataField: "subpartmean", width: 125,
+			cellsRenderer: function (row, column, value, rowData) {
+				if (value <0) { return '<span style="color: #D00000; font-weight: bold;">' + value + '</span>'; }
+				if (value >0) { return '<span style="color: #00D000; font-weight: bold;">' + value + '</span>'; }
+				return value;
+			}
+		},
+		{ text: "Polarity", dataField: "polarity", width: 100,
+			cellsRenderer: function (row, column, value, rowData) {
+				if (value <0) { return '<span style="color: #D00000; font-weight: bold;">' + value + '</span>'; }
+				if (value >0) { return '<span style="color: #00D000; font-weight: bold;">' + value + '</span>'; }
+				return value;
+			}
+		}
+];
+
+	public ready: any = () => {
+		this.treeGrid.expandAll();
+//		this.treeGrid.collapseAll();
+	};
 
 
 

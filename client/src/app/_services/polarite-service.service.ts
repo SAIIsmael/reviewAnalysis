@@ -36,6 +36,22 @@ requetePattern(sentence : any) : Observable<any> {
   return this.http.get(this.url+"review/matchPattern/"+ sentence);
 }
 
+loadOntology() : Observable<any> {
+  return this.http.get(this.url+"ontology/load");
+}
+
+setOntology(idreview: number, reviewpol: number, part: string) : Observable<any> {
+  return this.http.get(this.url+"ontology/set/"+idreview+"/"+reviewpol+"/"+part);
+}
+
+resetOntology() : Observable<any> {
+  return this.http.get(this.url+"ontology/reset");
+}
+
+dumpOntology() : Observable<any> {
+  return this.http.get(this.url+"ontology/dump");
+}
+
 ttSentence(sentence : any) : Observable<any>{
   return this.http.get(this.url+"analysis/"+sentence);
 }

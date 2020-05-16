@@ -22,9 +22,8 @@
           </div>
 
           <div class="row">
-
             <!-- Area Chart -->
-            <div class="col-xl-12 col-lg-7">
+            <div class="col-xl-8 col-lg-7">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -36,7 +35,6 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-
                   <span class="author">Author : {{reviews[reviewDisplayed].fname }} {{ reviews[reviewDisplayed].lname }}</span>
                   <span class="rating">Rating :
                     <ngb-rating max="5" rate="{{ reviews[reviewDisplayed].rating }}" readonly="false"></ngb-rating> <b>{{ reviews[reviewDisplayed].rating }}/5</b></span>
@@ -54,11 +52,61 @@
                 </div>
               </div>
             </div>
+
+            <!-- Pie Chart -->
+            <div class="col-xl-4 col-lg-5">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Mots polarisés</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-pie pt-4 pb-2">
+                    <div class="analysisResult" *ngFor="let word of polarizedWords">
+                      <span class="pola">Review : {{ word.idreview }} Word : {{ word.name }} Polarité {{ word.polarite }}
+                        <span class="addToOnto" (click)="setPolarity(word.idreview, word.polarite, word.name)"><i class="material-icons" style="font-size: 14px">add_circle</i></span></span>
+                      <br />
+                    </div>
+                  </div>
+                  <div class="mt-4 text-center small">
+                    <span class="mr-2">
+                    </span>
+                    <span class="mr-2">
+                    </span>
+                    <span class="mr-2">
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <button class="typeAnalysis btn btn-primary" type="button" name="button" (click)="selectReview()">select this review</button>
-          <button class="typeAnalysis btn btn-primary" type="button" name="button" (click)="polariteCalcul()">polarite calc</button>
-          <button class="typeAnalysis btn btn-primary" type="button" name="button" (click)="executePropagation()" *ngIf="hasBeenSelected">executer la propagation</button>
-          <button class="typeAnalysis btn btn-primary" type="button" name="button" (click)="executePattern()" *ngIf="hasBeenSelected">executer le patternMatching</button>
+          <div class="row">
+            <button class="typeAnalysis btn btn-primary" type="button" name="button" (click)="selectReview()">select this review</button>
+            <button class="typeAnalysis btn btn-primary" type="button" name="button" (click)="polariteCalcul()">polarite calc</button>
+            <button class="typeAnalysis btn btn-primary" type="button" name="button" (click)="executePropagation()" *ngIf="hasBeenSelected">executer la propagation</button>
+            <button class="typeAnalysis btn btn-primary" type="button" name="button" (click)="executePattern()" *ngIf="hasBeenSelected">executer le patternMatching</button>
+            <br />
+            <br />
+            <br />
+            <!-- Area Chart -->
+            <div class="col-xl-12 col-lg-7">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  Voici l'ontologie de votre hôtel.
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <jqxTreeGrid #treeGridReference [width]="900" [height]="'auto'" [source]="dataAdapter" [pageable]="false" [columns]="columns" [ready]="ready">
+                  </jqxTreeGrid>
+                </div>
+              </div>
+            </div>
+            <button type="button" (click)="reset()">Reset</button>
+            <button type="button" (click)="dump()">Dump</button>
+          </div>
+
 
           <!-- Content Row -->
           <div class="row">

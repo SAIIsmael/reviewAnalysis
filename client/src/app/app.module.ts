@@ -15,12 +15,16 @@ import { SidebarComponent } from './acp/sidebar/sidebar.component';
 import { TopbarComponent } from './acp/topbar/topbar.component';
 import { RatingComponent } from './acp/ra/rating/rating.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { OntologyComponent } from './ontology/ontology.component';
+import { jqxTreeGridComponent } from 'jqwidgets-ng/jqxtreegrid';
+import { OntoComponent } from './acp/onto/onto.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'auth', component: AuthComponent},
   { path: 'acp', component: ACPComponent},
   {path: 'acp/reviewanalyzer', component: RAComponent},
+  {path: 'acp/onto', component: OntoComponent},
   { path: '', component: HomepageComponent}
 ];
 
@@ -33,9 +37,12 @@ const appRoutes: Routes = [
     AuthComponent,
     ACPComponent,
     RAComponent,
+    jqxTreeGridComponent,
     SidebarComponent,
     TopbarComponent,
-    RatingComponent
+    RatingComponent,
+    OntologyComponent,
+    OntoComponent
   ],
   imports: [
     BrowserModule,

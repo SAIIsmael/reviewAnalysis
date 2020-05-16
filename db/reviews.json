@@ -1,24 +1,451 @@
 [{
+    "idreview": "1",
     "hName": "hotel 1",
     "fname": "jean",
     "lname": "jean",
     "rating": 4.5,
     "date_of_stay": "1577951605",
-    "review": "Chambres spacieuses et bien agrémentées. Minibar apprécié. Propreté correcte. Climatisation efficace."
-  }, {
+    "review": "Ce balcon est spacieux."
+  },
+  {
+    "idreview": "2",
     "hName": "hotel 1",
     "fname": "jean",
     "lname": "jean",
-    "rating": 2,
+    "rating": 4.5,
     "date_of_stay": "1577951605",
-    "review": "Le jardin n'est pas très beau."
+    "review": "La chambre est lumineuse."
   },
   {
+    "idreview": "3",
     "hName": "hotel 1",
-    "fname": "jacques",
-    "lname": "jacques",
-    "rating": 2.5,
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
     "date_of_stay": "1577951605",
-    "review": "La lumière ne marche pas."
+    "review": "L'entrée est étroite."
+  },
+  {
+    "idreview": "4",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Une propreté laissant a désirer."
+  },
+  {
+    "idreview": "5",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Une mauvaise literie."
+  },
+  {
+    "idreview": "6",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Le personnel est aimable."
+  },
+  {
+    "idreview": "7",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "L’hôtel très bien situé."
+  },
+  {
+    "idreview": "8",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Les chambres sont propres et le restaurant correct."
+  },
+  {
+    "idreview": "9",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "On y vient et on y revient en sécurité."
+  },
+  {
+    "idreview": "10",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Le service était correct, les toilettes impeccables."
+  },
+  {
+    "idreview": "11",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Le séjour était parfait."
+  },
+  {
+    "idreview": "12",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Le responsable de l'hôtel était très à l'écoute."
+  },
+  {
+    "idreview": "13",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Un personel arrogant."
+  },
+  {
+    "idreview": "14",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Le rapport qualité prix est bon."
+  },
+  {
+    "idreview": "15",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Bonne literie, radiateur réglable."
+  },
+  {
+    "idreview": "16",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Première impression excellente, même si la chambre se situe sous les toits et qu'il y fait très très chaud."
+  },
+  {
+    "idreview": "17",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Bon hotel, propre et chambre convenable."
+  },
+  {
+    "idreview": "18",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Vue très moche sur des habitations et des cables."
+  },
+  {
+    "idreview": "19",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Hotel avec chambre minuscule et salle de bain encore pire."
+  },
+  {
+    "idreview": "20",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Cher pour cette prestation."
+  },
+  {
+    "idreview": "21",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Seul avantage: il est bien placé."
+  },
+  {
+    "idreview": "22",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Aucun probleme dans cet hotel."
+  },
+  {
+    "idreview": "23",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Le prix était tout à fait correct surtout vu sa localisation."
+  },
+  {
+    "idreview": "24",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Chambres propres et modernes, personnel accueillant."
+  },
+  {
+    "idreview": "25",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Le petit déjeuner est varié et les terrasses appréciables."
+  },
+  {
+    "idreview": "26",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Hic : refuser une chambre donnant sur la Place d'Armes."
+  },
+  {
+    "idreview": "27",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Idéalement situé sur une des places principales de la ville, force est de constater que cet hôtel ne remplit pas toutes les attentes."
+  },
+  {
+    "idreview": "28",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Le seul bemol est l insonorisation du couloir et les poubelles ramassees a 5h du matin."
+  },
+  {
+    "idreview": "29",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Hotel effectivement très bien situé et propre mais c'est tout ce qui est positif."
+  },
+  {
+    "idreview": "30",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Attention la WIFI est annoncée mais elle au 5 ème étage, il n'est pas possible d'avoir le signal."
+  },
+  {
+    "idreview": "31",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Le personnel n'était pas très sympa."
+  },
+  {
+    "idreview": "32",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Propre, très central et pratique, sympa et avec un bon petit déjeuner-buffet."
+  },
+  {
+    "idreview": "33",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "L'emplacement est le meilleur atout de l'hôtel."
+  },
+  {
+    "idreview": "34",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Ils nous ont donné deux petites chambres à l'arrière de l'immeuble, il n'y a pas de vue."
+  },
+  {
+    "idreview": "35",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Il n'y a rien qui cloche avec cet hôtel mais il n'y a rien de particulier sur cet hôtel."
+  },
+  {
+    "idreview": "36",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Le petit déjeuner n'est pas très varié, mais les produits servis sont délicieux."
+  },
+  {
+    "idreview": "37",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Endroit bruyant."
+  },
+  {
+    "idreview": "38",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Ce n'est pas un hôtel bon marché mais le prix en vaut la peine."
+  },
+  {
+    "idreview": "39",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Le parking est proche, il n'est qu'à 2 minutes à pied du centre-ville."
+  },
+  {
+    "idreview": "40",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "L'emplacement est de premier ordre et cela vaut vraiment la peine de réserver cet hôtel."
+  },
+  {
+    "idreview": "41",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Le lit était un peu dur."
+  },
+  {
+    "idreview": "42",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Le petit déjeuner était compris dans le prix était correct, mais pas très varié."
+  },
+  {
+    "idreview": "43",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "La chambre était correcte, propre mais petite et simple."
+  },
+  {
+    "idreview": "44",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Si vous avez une voiture, le parking est très difficile et il vous faut stationner dans un garage local qui est un bout de chemin à pied."
+  },
+  {
+    "idreview": "45",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "L'hôtel dispose d'un très bon emplacement en plein coeur de la vieille ville."
+  },
+  {
+    "idreview": "46",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Bonne situation et bon accueil, mais ensemble moyen."
+  },
+  {
+    "idreview": "47",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Très déçu par cet hôtel qui ressemble à une pension de famille."
+  },
+  {
+    "idreview": "48",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Reservation avec Wonderbox, 8 mois d'attente et une chambre dans les combles."
+  },
+  {
+    "idreview": "49",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Le petit déjeuner mériterait en revanche d'être plus garni et avec davantage de produits maison."
+  },
+  {
+    "idreview": "50",
+    "hName": "hotel 1",
+    "fname": "jean",
+    "lname": "jean",
+    "rating": 4.5,
+    "date_of_stay": "1577951605",
+    "review": "Parking à proximité afin de profiter de la ville à pied."
   }
 ]

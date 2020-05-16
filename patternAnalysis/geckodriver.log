@@ -2770,3 +2770,41 @@ JavaScript error: , line 0: uncaught exception: undefined
 JavaScript error: https://eus.rubiconproject.com/usync.html?gdpr=1&gdpr_consent=BOxB_c4OxB_c4DlDKAENDD-AAAAuuAAA&us_privacy=1---, line 12: SecurityError: The operation is insecure.
 1585499337947	Marionette	INFO	Stopped listening on port 56173
 1585499341777	Marionette	INFO	Stopped listening on port 56733
+1589668057197	mozrunner::runner	INFO	Running command: "/Applications/Firefox Developer Edition.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/6y/shzbsrcs4t70h3zj_xgdth4w0000gn/T/rust_mozprofile0tQI1N"
+1589668062680	Marionette	INFO	Listening on port 65419
+1589668065896	Marionette	INFO	Stopped listening on port 65419
+1589668068778	mozrunner::runner	INFO	Running command: "/Applications/Firefox Developer Edition.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/6y/shzbsrcs4t70h3zj_xgdth4w0000gn/T/rust_mozprofileH2qXH5"
+1589668070905	Marionette	INFO	Listening on port 65462
+1589668070934	Marionette	WARN	TLS certificate errors will be ignored for this session
+1589668192661	mozrunner::runner	INFO	Running command: "/Applications/Firefox Developer Edition.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/6y/shzbsrcs4t70h3zj_xgdth4w0000gn/T/rust_mozprofileh6WRcd"
+1589668198062	Marionette	INFO	Stopped listening on port 65462
+1589668200565	Marionette	INFO	Listening on port 49173
+1589668200645	Marionette	WARN	TLS certificate errors will be ignored for this session
+1589668252677	mozrunner::runner	INFO	Running command: "/Applications/Firefox Developer Edition.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/6y/shzbsrcs4t70h3zj_xgdth4w0000gn/T/rust_mozprofilelZsCrU"
+1589668254752	Marionette	INFO	Listening on port 49297
+1589668254831	Marionette	WARN	TLS certificate errors will be ignored for this session
+1589668254979	Marionette	INFO	Stopped listening on port 49173
+1589668300611	Marionette	INFO	Stopped listening on port 49297
+1589668306175	mozrunner::runner	INFO	Running command: "/Applications/Firefox Developer Edition.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/6y/shzbsrcs4t70h3zj_xgdth4w0000gn/T/rust_mozprofileeEKm34"
+1589668308357	Marionette	INFO	Listening on port 49362
+1589668308425	Marionette	WARN	TLS certificate errors will be ignored for this session
+1589668339330	Marionette	INFO	Stopped listening on port 49362
+1589668348546	mozrunner::runner	INFO	Running command: "/Applications/Firefox Developer Edition.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/6y/shzbsrcs4t70h3zj_xgdth4w0000gn/T/rust_mozprofileBuI99e"
+1589668350722	Marionette	INFO	Listening on port 49430
+1589668350794	Marionette	WARN	TLS certificate errors will be ignored for this session
+1589668427946	mozrunner::runner	INFO	Running command: "/Applications/Firefox Developer Edition.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/6y/shzbsrcs4t70h3zj_xgdth4w0000gn/T/rust_mozprofilesUBNY9"
+1589668430055	Marionette	INFO	Listening on port 49522
+1589668430100	Marionette	WARN	TLS certificate errors will be ignored for this session
+1589668480499	Marionette	INFO	Stopped listening on port 49522
+1589668482888	Marionette	INFO	Stopped listening on port 49430
+1589668501406	mozrunner::runner	INFO	Running command: "/Applications/Firefox Developer Edition.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/6y/shzbsrcs4t70h3zj_xgdth4w0000gn/T/rust_mozprofileRMsUOW"
+1589668503559	Marionette	INFO	Listening on port 49593
+1589668503659	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/, line 682: ReferenceError: main is not defined
+JavaScript error: resource:///modules/UrlbarInput.jsm, line 2049: TypeError: event.target.closest is not a function
+1589668683115	Marionette	INFO	Stopped listening on port 49593
+1589668745818	mozrunner::runner	INFO	Running command: "/Applications/Firefox Developer Edition.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/6y/shzbsrcs4t70h3zj_xgdth4w0000gn/T/rust_mozprofilece4JyO"
+1589668748076	Marionette	INFO	Listening on port 49695
+1589668748101	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/, line 682: ReferenceError: main is not defined
+1589668766971	Marionette	INFO	Stopped listening on port 49695

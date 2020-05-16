@@ -11218,9 +11218,17 @@ body.sidebar-toggled footer.sticky-footer {
 
 .rating {
   position: absolute;
-  margin-left: 60%;
+  margin-left: 40%;
 }
 
 .review {
   size: 21px;
+}
+
+.pola {
+  font-size: 10px !important;
+}
+
+.material-icons {
+  vertical-align: middle;
 }

@@ -44,13 +44,14 @@ function getIntensifier(word) {
 
 function getNPP(ttArray, index) {
   let res = 10000000;
+  let dist = 1000000000;
   for (let j = 0; j < ttArray.length; j++) {
-    //  console.log("NPP : " + JSON.stringify(ttArray[j]));
-    //  console.log()
     if (ttArray[j].pos == "NOM") {
-      console.log("ADJ:" + ttArray[index].t + " POS : " + index + ", NOM" + ttArray[j].t + "POS : " + j);
-      if (Math.abs(j - index) < res) {
+      console.log(Math.abs(j - index) + "<" + dist);
+      if (Math.abs(j - index) < dist) {
+        console.log("NPP found : [" + j + "]" + ttArray[j].t);
         res = j;
+        dist = Math.abs(j - index);
       }
     }
   }

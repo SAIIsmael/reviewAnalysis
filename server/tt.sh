@@ -1,1 +1,1 @@
-echo "Le jardin n'est pas très beau" | tree-tagger-french
+echo "Ce balcon est spacieux" | tree-tagger-french

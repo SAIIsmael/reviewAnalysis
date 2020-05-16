@@ -378,4 +378,215 @@ MongoClient.connect(url, {
     });
   });
 
+  app.get("/ontology/load", cors(corsOptions), (req, res) => {
+    console.log("/ontology/load");
+    try {
+      db.collection("ontology").find().toArray((err, ontology) => {
+        delete ontology[0]['_id'];
+        res.end(JSON.stringify(ontology[0]));
+      });
+    } catch (e) {
+      console.log("Erreur sur /ontology/load: " + e);
+      res.end(JSON.stringify([]));
+    }
+  });
+
+  // affecte la valeur de polarité a la partie de l ontologie correspondande
+  app.get("/ontology/set/:idreview/:reviewpol/:part", cors(corsOptions), (req, res) => {
+    let idreview = req.params.idreview;
+    let reviewpol = req.params.reviewpol;
+    let part = req.params.part;
+    console.log("/ontology/set/" + idreview + "/" + reviewpol + "/" + part);
+    try {
+      //get collection
+      db.collection("ontology").find().toArray((err, ontology) => {
+        delete ontology[0]['_id'];
+        // add polarity
+        setPolarity(ontology[0].root[0], idreview, reviewpol, part);
+        try {
+          // drop collection
+          db.collection("ontology").drop({}, () => {
+            // put collection
+            db.collection("ontology").insertOne(ontology[0], () => {
+              delete ontology[0]['_id'];
+              res.end(JSON.stringify(ontology[0]));
+            });
+          });
+        } catch (e) {
+          console.log("Erreur sur /ontology/set/" + idreview + "/" + reviewpol + "/" + part + ": " + e);
+          res.end(JSON.stringify([]));
+        }
+      });
+    } catch (e) {
+      console.log("Erreur sur /ontology/set/" + idreview + "/" + reviewpol + "/" + part + ": " + e);
+      res.end(JSON.stringify([]));
+    }
+  });
+
+  // recherche recursivement la partie de l ontologie a polariser
+  function setPolarity(node, idreview, reviewpol, part) {
+    var trace = true;
+    var find = false;
+    var idpart = 0;
+    var reviewmean = null;
+    var subparts = [];
+    var subpartmean = null;
+    var result = null;
+    for (var key in node) {
+      if (node.hasOwnProperty(key)) {
+        var value = node[key];
+        if (key == "idpart") {
+          idpart = value;
+          // if(trace) console.log("id part: "+value);
+        }
+        if (key == "part") {
+          if (value.toLowerCase() == part.toLowerCase()) {
+            if (trace) console.log("find part: " + part);
+            find = true;
+          }
+        }
+        if (key == "synonyms") {
+          if (!find) {
+            for (var s = 0; s < value.length; s++) {
+              if (value[s].toLowerCase() == part.toLowerCase()) {
+                if (trace) console.log("find synonym: " + part);
+                find = true;
+              }
+            }
+          }
+        }
+        if (key == "reviews") {
+          if (find) {
+            if (trace) console.log("add to reviews: " + reviewpol);
+            var newReview = {
+              "idreview": idreview,
+              "reviewpol": reviewpol
+            };
+            value.push(newReview);
+            reviewmean = 0;
+            for (var r = 0; r < value.length; r++) {
+              var obj = value[r];
+              for (var k in obj) {
+                var v = obj[k];
+                if (k == "idreview") {
+                  //
+                }
+                if (k == "reviewpol") {
+                  reviewmean += parseInt(v);
+                }
+              }
+            }
+            reviewmean = Math.round(reviewmean / value.length);
+          }
+        }
+        if (key == "reviewmean") {
+          if (find) {
+            if (trace) console.log("new review mean: " + reviewmean);
+            node[key] = reviewmean;
+          } else
+            reviewmean = node[key];
+        }
+        if (key == "subparts") {
+          for (var p = 0; p < value.length; p++) {
+            subresult = setPolarity(value[p], idreview, reviewpol, part);
+            if (subresult != null) {
+              subparts.push(subresult);
+            }
+          }
+          if (subparts != null) {
+            if (subparts.length > 0) {
+              subpartmean = 0;
+              for (var p = 0; p < subparts.length; p++) {
+                subpartmean += parseInt(subparts[p]);
+              }
+              subpartmean = Math.round(subpartmean / subparts.length);
+            }
+          }
+        }
+        if (key == "subpartmean") {
+          if (subpartmean != null)
+            node[key] = subpartmean;
+        }
+        if (key == "polarity") {
+          var polarity = null;
+          var nbmean = 0;
+          if (reviewmean != null) {
+            polarity += reviewmean;
+            nbmean++;
+          }
+          if (subpartmean != null) {
+            polarity += subpartmean;
+            nbmean++;
+          }
+          if (nbmean > 1) {
+            polarity = Math.round(polarity / nbmean);
+          }
+          if (polarity != null) {
+            node[key] = polarity;
+            result = polarity;
+          }
+        }
+      }
+    }
+    return result;
+  }
+
+  // monte le contenu de l ontologie depuis le fichier vierge vers la base et retourne ce nouveau contenu
+  app.get("/ontology/reset", cors(corsOptions), (req, res) => {
+    console.log("/ontology/reset");
+    try {
+      // drop collection
+      db.collection("ontology").drop({}, () => {
+        const fs = require('fs');
+        try {
+          // read file
+          fs.readFile('../db/ontologieHotellerie.json', (err, fromfile) => {
+            let ontology = JSON.parse(fromfile);
+            try {
+              // put collection
+              db.collection("ontology").insertOne(ontology, () => {
+                delete ontology['_id'];
+                res.end(JSON.stringify(ontology));
+              });
+            } catch (e) {
+              console.log("Erreur sur /ontology/reset: " + e);
+              res.end(JSON.stringify([]));
+            }
+          });
+        } catch (e) {
+          console.log("Erreur sur /ontology/reset: " + e);
+          res.end(JSON.stringify([]));
+        }
+      });
+    } catch (e) {
+      console.log("Erreur sur /ontology/reset: " + e);
+      res.end(JSON.stringify([]));
+    }
+  });
+
+  // descend le contenu de l ontologie depuis la base vers le fichier dump
+  app.get("/ontology/dump", cors(corsOptions), (req, res) => {
+    console.log("/ontology/dump");
+    const fs = require('fs');
+    try {
+      // get collection
+      db.collection("ontology").find().toArray((err, ontology) => {
+        delete ontology[0]['_id'];
+        let tofile = JSON.stringify(ontology[0]);
+        try {
+          // write file
+          fs.writeFile('./dump.json', tofile, (err) => {
+            res.end(JSON.stringify([]));
+          });
+        } catch (e) {
+          console.log("Erreur sur /ontology/dump: " + e);
+          res.end(JSON.stringify([]));
+        }
+      });
+    } catch (e) {
+      console.log("Erreur sur /ontology/dump: " + e);
+      res.end(JSON.stringify([]));
+    }
+  });
+
 });
