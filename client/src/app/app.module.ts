@@ -18,6 +18,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { OntologyComponent } from './ontology/ontology.component';
 import { jqxTreeGridComponent } from 'jqwidgets-ng/jqxtreegrid';
 import { OntoComponent } from './acp/onto/onto.component';
+import { NgxGraphModule } from '@swimlane/ngx-graph';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -48,6 +52,7 @@ const appRoutes: Routes = [
     BrowserModule,
     NgbModule,
     AppRoutingModule,
+    NgxGraphModule, NgxChartsModule,BrowserAnimationsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
     ],

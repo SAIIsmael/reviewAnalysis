@@ -5,6 +5,9 @@ import { ReviewsService } from '../../_services/reviews.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PolariteServiceService } from '../../_services/polarite-service.service';
 import { jqxTreeGridComponent } from 'jqwidgets-ng/jqxtreegrid';
+import { Edge, Node } from '@swimlane/ngx-graph';
+import * as d3 from 'd3';
+import * as shape from 'd3-shape';
 
 @Component({
   selector: 'app-ra',
@@ -36,6 +39,7 @@ export class RAComponent implements OnInit {
   toPrint = [];
   parsedWordisOk = false;
   patternPolarite = [];
+  displayAnSyn = false;
 
 
 
@@ -46,9 +50,17 @@ export class RAComponent implements OnInit {
 	private part: string = "";
 
 
+  public words : any[] = new Array();
+  public edges : any[] = new Array();
+  private print : boolean = false;
+  public nodes: Node[] = [];
+  public links: Edge[] = [];
+  curve = shape.curveLinear;
+
   constructor(private AuthService : AuthService, private ReviewsService : ReviewsService, private PolariteService : PolariteServiceService) { }
 
   ngOnInit() {
+    this.print = false;
     this.load();
 
     this.authSubscription = this.AuthService.loginSubject.subscribe(
@@ -72,6 +84,7 @@ export class RAComponent implements OnInit {
     this.hasBeenSelected = false;
     this.toPrint = [];
     this.patternPolarite =[];
+    this.displayAnSyn = false;
 
     if(this.reviewDisplayed > 0){
       this.reviewDisplayed--;
@@ -82,6 +95,7 @@ export class RAComponent implements OnInit {
     this.hasBeenSelected = false;
     this.toPrint = [];
     this.patternPolarite =[];
+    this.displayAnSyn = false;
 
     if(this.reviewDisplayed < this.reviews.length -1){
       this.reviewDisplayed++;
@@ -152,9 +166,23 @@ export class RAComponent implements OnInit {
               "phrase" : sentenceToTest[i],
               "polarite" : data.polarité
             }
+            for( let i = 0; i < this.sentenceTags.length; i++){
+                  if (this.sentenceTags[i].pos.localeCompare("NOM") == 0 ){
+                    console.log(JSON.stringify(this.sentenceTags[i]));
+                    this.sentenceTags[i].polaritePattern = data.polarité;
+                    let toPush2 = {
+                      "idreview" : this.reviews[this.reviewDisplayed].idreview,
+                      "name" : this.sentenceTags[i].t,
+                      "polarite" : this.sentenceTags[i].polaritePattern
+                    };
+                    console.log("pushed ->" + toPush2)
+                    this.polarizedWords.push(toPush2);
+                  }
+              }
           }
           console.log("pushed -> "+ JSON.stringify(toPush) );
             this.patternPolarite.push(toPush);
+
           })
       }
 
@@ -351,6 +379,72 @@ console.log("IN SET POLARITY WITH " + id + pol + word);
 //		this.treeGrid.collapseAll();
 	};
 
+  printgraph(){
+
+    for(let i = 0 ; i<this.nodes.length;i++){
+      console.log("node number "+i+" "+JSON.stringify(this.nodes[i]));
+    }
+    for(let i = 0 ; i<this.edges.length;i++){
+      console.log("edge number "+i+" "+JSON.stringify(this.links[i]));
+    }
+    this.print=true;
+    this.displayAnSyn = false;
+  }
+
+  getgraph(){
+    console.log("HERE HERE HERE " + this.currentReview);
+    this.PolariteService.requeteGraphe(this.currentReview).subscribe(data =>{
+      console.log("recu : " + JSON.stringify(data));
+
+      this.words = data.graph.words;
+      this.edges = data.graph.links;
+      this.nodes = new Array(this.words.length);
+      this.links = new Array(this.edges.length);
+      console.log("words : "+this.words+" taille : "+this.words.length);
+      console.log("edges : "+this.edges+" taille : "+this.edges.length);
+
+
+      for(let i=0;i<this.words.length;i++){
+          let label: string = this.words[i].label;
+          let idword: string = this.words[i].id;
+          this.nodes[i] = {
+            id: idword,
+            label: label
+          }
+
+       /*
+          console.log("traitement du mot "+label+" d'id "+idword)
+          for(let j = 0; j< this.edges.length;j++){
+
+
+            console.log("l arete courante est : "+JSON.stringify(this.edges[j]));
+            if(idword==this.edges[j].target){
+              console.log("correspondance trouvee entre  "+this.edges[j].target+" et "+idword)
+              this.edges[j].target = label;
+            }
+            else if(idword==this.edges[j].source){
+              console.log("correspondance trouvee entre  "+this.edges[j].source+" et "+idword)
+              this.edges[j].source = label;
+            }
+          }*/
+      }
+
+      for(let i=0;i<this.edges.length;i++){
+
+        let idl : string = this.edges[i].id;
+        let sl : string = this.edges[i].source;
+        let tl : string = this.edges[i].target;
+        let ll : string = this.edges[i].label;
+
+        this.links[i] = {
+          id: idl,
+          source: sl,
+          target: tl,
+          label: ll
+        }
+      }
+    });
+  }
 
 
 }

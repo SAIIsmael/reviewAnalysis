@@ -1,1 +1,1 @@
-echo "Ce balcon est spacieux" | tree-tagger-french
+echo "L'entrée est étroite" | tree-tagger-french

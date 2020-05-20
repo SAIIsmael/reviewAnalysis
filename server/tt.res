@@ -1,4 +1,4 @@
-Ce	PRO:DEM	ce
-balcon	NOM	balcon
+L'	DET:ART	le
+entrée	NOM	entrée
 est	VER:pres	être
-spacieux	ADJ	spacieux
+étroite	ADJ	étroit

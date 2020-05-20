@@ -52,6 +52,10 @@ dumpOntology() : Observable<any> {
   return this.http.get(this.url+"ontology/dump");
 }
 
+requeteGraphe(phrase : any ) : Observable<any> {
+  return this.http.get(this.url+"getgraphe/"+phrase);
+}
+
 ttSentence(sentence : any) : Observable<any>{
   return this.http.get(this.url+"analysis/"+sentence);
 }

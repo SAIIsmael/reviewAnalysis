@@ -46,8 +46,10 @@
                     <br />
                     <hr />
                     <br />
-                    <div class="analysisResult" *ngFor="let result of toPrint"><span class="resultText">{{ result }}</span><br /></div>
-                    <div class="patternResult" *ngFor="let match of patternPolarite"><span class="resultText">phrase :{{ match.phrase }} <br /> polarité : {{ match.polarite}}</span><br /></div>
+                    <div class="analysisResult" *ngFor="let result of toPrint"><span class="resultText">[propagation] {{ result }}</span><br /></div>
+                    <div class="patternResult" *ngFor="let match of patternPolarite"><span class="resultText">[PatternMatching] phrase :{{ match.phrase }} polarité : {{ match.polarite}}</span><br /></div>
+                    <div class="aResult" *ngFor="let w of words"><span *ngIf="displayAnSyn">[analyseur syntaxique] Le mot {{w.label}} d'id {{w.id}}</span></div>
+                    <div class="aResult" *ngFor="let e of edges"><span *ngIf="displayAnSyn">[analyseur syntaxique] Il y a une arête de {{e.source}} vers {{e.target}} labellée {{e.label}}</span></div>
                   </div>
                 </div>
               </div>
@@ -81,14 +83,71 @@
               </div>
             </div>
           </div>
+          <button class="typeAnalysis btn btn-primary" type="button" name="button" (click)="selectReview()">select this review</button>
+          <button class="typeAnalysis btn btn-primary" type="button" name="button" (click)="polariteCalcul()" *ngIf="hasBeenSelected">polarite calc</button>
+          <button class="typeAnalysis btn btn-primary" type="button" name="button" (click)="executePropagation()" *ngIf="hasBeenSelected">executer la propagation</button>
+          <button class="typeAnalysis btn btn-primary" type="button" name="button" (click)="executePattern()" *ngIf="hasBeenSelected">executer le patternMatching</button>
+          <button class="typeAnalysis btn btn-primary" type="button" (click)="getgraph()" *ngIf="hasBeenSelected"> build graph</button>
+          <button class="typeAnalysis btn btn-primary" type="button" (click)="printgraph()" *ngIf="hasBeenSelected"> print graph</button>
+
+          <br />
+          <br />
+          <br />
           <div class="row">
-            <button class="typeAnalysis btn btn-primary" type="button" name="button" (click)="selectReview()">select this review</button>
-            <button class="typeAnalysis btn btn-primary" type="button" name="button" (click)="polariteCalcul()">polarite calc</button>
-            <button class="typeAnalysis btn btn-primary" type="button" name="button" (click)="executePropagation()" *ngIf="hasBeenSelected">executer la propagation</button>
-            <button class="typeAnalysis btn btn-primary" type="button" name="button" (click)="executePattern()" *ngIf="hasBeenSelected">executer le patternMatching</button>
-            <br />
-            <br />
-            <br />
+            <div class="col-xl-12 col-lg-7">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  Graphe de la phrase
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div *ngIf="print" style="overflow-y:scroll;">
+                    <ngx-graph [view]="[500, 200]" [links]="links" [nodes]="nodes" layout="dagre" [curve]="curve" [draggingEnabled]="draggingEnabled">
+
+                      <ng-template #defsTemplate>
+                        <svg:marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="4" markerHeight="4" orient="auto">
+                          <svg:path d="M0,-5L10,0L0,5" class="arrow-head" />
+                        </svg:marker>
+                      </ng-template>
+
+                      <ng-template #clusterTemplate let-cluster>
+                        <svg:g class="node cluster">
+                          <svg:rect rx="5" ry="5" [attr.width]="cluster.dimension.width" [attr.height]="cluster.dimension.height" [attr.fill]="cluster.data.color" />
+                        </svg:g>
+                      </ng-template>
+
+                      <ng-template #nodeTemplate let-node>
+                        <svg:g class="node">
+                          <svg:rect [attr.width]="node.dimension.width" [attr.height]="node.dimension.height" [attr.fill]="node.data.color" />
+                          <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.dimension.height / 2">{{node.label}}</svg:text>
+                        </svg:g>
+                      </ng-template>
+
+                      <ng-template #linkTemplate let-link>
+                        <svg:g class="edge">
+                          <svg:path class="line" stroke-width="2" marker-end="url(#arrow)">
+                          </svg:path>
+                          <svg:text class="edge-label" text-anchor="middle">
+                            <textPath class="text-path" [attr.href]="'#' + link.id" [style.dominant-baseline]="link.dominantBaseline" startOffset="50%">
+                              {{link.label}}
+                            </textPath>
+                          </svg:text>
+                        </svg:g>
+                      </ng-template>
+
+
+
+
+
+
+                    </ngx-graph>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
             <!-- Area Chart -->
             <div class="col-xl-12 col-lg-7">
               <div class="card shadow mb-4">

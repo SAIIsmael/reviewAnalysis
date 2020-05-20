@@ -11232,3 +11232,73 @@ body.sidebar-toggled footer.sticky-footer {
 .material-icons {
   vertical-align: middle;
 }
+
+.graph {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.graph .edge {
+  stroke: #666;
+  fill: none;
+}
+
+.graph .edge .edge-label {
+  stroke: none;
+  font-size: 12px;
+  fill: #666;
+}
+
+.graph .panning-rect {
+  fill: transparent;
+  cursor: move;
+}
+
+.graph .node-group .node:focus {
+  outline: none;
+}
+
+.graph {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.graph .edge {
+  stroke: #666;
+  fill: none;
+}
+
+.graph .edge .edge-label {
+  stroke: none;
+  font-size: 12px;
+  fill: #666;
+}
+
+.graph .panning-rect {
+  fill: transparent;
+  cursor: move;
+}
+
+.graph .node-group .node:focus {
+  outline: none;
+}
+
+.edge {
+  stroke: #666 !important;
+}
+
+.analysisResult {
+  color: #66ccff;
+}
+
+.patternResult {
+  color: #ff9900;
+}
+
+.aResult {
+  color: #00cc99;
+}
