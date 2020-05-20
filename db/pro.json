@@ -1,0 +1,10 @@
+[{
+  "password": "1111",
+  "email": "test@test.fr",
+  "hotel": [{
+    "name": "hotel 1",
+    "address": "17 rue Dujardin",
+    "city": "Montpellier",
+    "reviewCounter": 1
+  }]
+}]

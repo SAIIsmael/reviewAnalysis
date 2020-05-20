@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+    <div class="col-md-8 col-lg-6">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
+              <img class="heading" src="../assets/images/logo_transparent.png">
+              <h3 class="login-heading mb-4">Welcome to MyHotel.com!</h3>
+              <h5 class="login-heading mb-4">Your Hotel informations :</h5>
+
+              <form>
+                <div class="form-label-group">
+                  <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" (input)="updateData($event.target.name, $event.target.value)" value="{{toLog.email}}" required autofocus>
+                </div>
+
+                <div class="form-label-group">
+                  <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" (input)="updateData($event.target.name, $event.target.value)" value="{{toLog.password}}" required>
+                </div>
+
+                <div class="custom-control custom-checkbox mb-3">
+                  <a class="button" (click)=log()>Next step</a>
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

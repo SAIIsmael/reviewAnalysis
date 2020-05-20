@@ -1,1 +1,1 @@
-echo "," | tree-tagger-french
+echo "L'entrée est étroite" | tree-tagger-french

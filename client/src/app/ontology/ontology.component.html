@@ -1,0 +1,13 @@
+<label>id </label><input type="number" (input)="updateData($event.target.name, $event.target.value)" name="idreview" />
+<label>polarity </label><input type="number" (input)="updateData($event.target.name, $event.target.value)" name="reviewpol" />
+<label>part </label><input type="text" (input)="updateData($event.target.name, $event.target.value)" name="part" />
+<button type="button" (click)="setPolarity()">Set</button>
+<br>
+<button id="collapseBt" (click)="this.treeGrid.collapseAll()">Collapse</button>
+<button id="expandBt" (click)="this.treeGrid.expandAll()">Expand</button>
+<button type="button" (click)="load()">Load</button>
+<button type="button" (click)="reset()">Reset</button>
+<button type="button" (click)="dump()">Dump</button>
+<br>
+<jqxTreeGrid #treeGridReference [width]="900" [height]="'auto'" [source]="dataAdapter" [pageable]="false" [columns]="columns" [ready]="ready">
+</jqxTreeGrid>

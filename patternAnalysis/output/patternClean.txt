@@ -1,0 +1,15 @@
+### t not working -> * ne marche pas
+très désagréable -> * très désagréable
+plus que moyen -> * plus que moyen
+la chambre voisine -> j'entends * de la chambre voisine
+très content de -> très content de *
+rien à voir avec les photos -> * n'a rien à voir avec les photos
+très bon accueil de -> très bon accueil de *
+la résidence ne possède pas -> le * ne possède pas de *
+nous avons été très -> nous avons été très * de *
+t le manque de -> * manque de *
+bonne qualité -> * de bonne qualité || bonne qualité de *
+day i had a problem with -> j'ai eu un problème avec *
+
+%%%
+.* ne marche pas:-2&.* très désagréable:-2&.* plus que moyen:-1&j'entends .* de la chambre voisine: -1&très content de .* : 2&.* n'a rien à voir avec les photos.:-2&le .* ne possède pas de .*:&nous avons été très .* de .*&.* manque de .*:-1&.* de bonne qualité:1&j'ai eu un problème avec .*:-2
