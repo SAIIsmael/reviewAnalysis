@@ -1,1 +1,1 @@
-echo "L'entrée est étroite" | tree-tagger-french
+echo "Une mauvaise literie" | tree-tagger-french

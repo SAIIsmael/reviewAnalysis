@@ -1,4 +1,3 @@
-L'	DET:ART	le
-entrée	NOM	entrée
-est	VER:pres	être
-étroite	ADJ	étroit
+Une	DET:ART	un
+mauvaise	ADJ	mauvais
+literie	NOM	literie

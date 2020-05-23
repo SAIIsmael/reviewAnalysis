@@ -1789,3 +1789,41 @@ JavaScript error: resource://gre/actors/SelectChild.jsm, line 275: TypeError: In
 1589967938865	Marionette	WARN	TLS certificate errors will be ignored for this session
 1589968783086	Marionette	INFO	Stopped listening on port 49204
 1589968785771	Marionette	INFO	Stopped listening on port 49430
+1589971579846	mozrunner::runner	INFO	Running command: "/Applications/Firefox Developer Edition.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/6y/shzbsrcs4t70h3zj_xgdth4w0000gn/T/rust_mozprofileRy2ku7"
+1589971582148	Marionette	INFO	Listening on port 50159
+1589971582227	Marionette	WARN	TLS certificate errors will be ignored for this session
+1589971636862	Marionette	INFO	Stopped listening on port 50159
+1589971830429	mozrunner::runner	INFO	Running command: "/Applications/Firefox Developer Edition.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/6y/shzbsrcs4t70h3zj_xgdth4w0000gn/T/rust_mozprofileHJOjqV"
+1589971832625	Marionette	INFO	Listening on port 50304
+1589971832692	Marionette	WARN	TLS certificate errors will be ignored for this session
+1589971834786	Marionette	WARN	TimedPromise timed out after 500 ms: stacktrace:
+TimedPromise/<@chrome://marionette/content/sync.js:245:13
+TimedPromise@chrome://marionette/content/sync.js:230:10
+interaction.flushEventLoop@chrome://marionette/content/interaction.js:416:10
+webdriverClickElement@chrome://marionette/content/interaction.js:182:31
+async*interaction.clickElement@chrome://marionette/content/interaction.js:131:11
+clickElement/<@chrome://marionette/content/listener.js:1344:28
+navigate/<@chrome://marionette/content/listener.js:446:13
+navigate@chrome://marionette/content/listener.js:447:7
+clickElement@chrome://marionette/content/listener.js:1342:18
+MessageListener.receiveMessage*startListeners@chrome://marionette/content/listener.js:572:21
+registerSelf@chrome://marionette/content/listener.js:501:5
+@chrome://marionette/content/listener.js:1855:1
+1589971835737	Marionette	WARN	TimedPromise timed out after 500 ms: stacktrace:
+TimedPromise/<@chrome://marionette/content/sync.js:245:13
+TimedPromise@chrome://marionette/content/sync.js:230:10
+interaction.flushEventLoop@chrome://marionette/content/interaction.js:416:10
+webdriverClickElement@chrome://marionette/content/interaction.js:182:31
+async*interaction.clickElement@chrome://marionette/content/interaction.js:131:11
+clickElement/<@chrome://marionette/content/listener.js:1344:28
+navigate/<@chrome://marionette/content/listener.js:446:13
+navigate@chrome://marionette/content/listener.js:447:7
+clickElement@chrome://marionette/content/listener.js:1342:18
+MessageListener.receiveMessage*startListeners@chrome://marionette/content/listener.js:572:21
+registerSelf@chrome://marionette/content/listener.js:501:5
+@chrome://marionette/content/listener.js:1855:1
+1589971868862	mozrunner::runner	INFO	Running command: "/Applications/Firefox Developer Edition.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/6y/shzbsrcs4t70h3zj_xgdth4w0000gn/T/rust_mozprofileI9xWlK"
+1589971871107	Marionette	INFO	Listening on port 50393
+1589971871142	Marionette	WARN	TLS certificate errors will be ignored for this session
+1589971874509	Marionette	INFO	Stopped listening on port 50304
+1589971973693	Marionette	INFO	Stopped listening on port 50393
